@@ -160,6 +160,8 @@ if res:
 if not res:
     agi.stream_file('one-moment-please')
     response_data = main(filename + '-in.ulaw', languageCode)
+    logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
+    logging.debug(json.dumps(response_data, ensure_ascii=False))
     string = response_data['results'][0]['alternatives'][0]['transcript']
     res = string.encode('utf8', 'replace')
     agi.stream_file('you-entered')
