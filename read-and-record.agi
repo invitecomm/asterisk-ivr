@@ -85,7 +85,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'ja-JP',  # a BCP-47 language tag 
+                'languageCode': 'en-US',  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
             },
             'audio': {
@@ -104,7 +104,7 @@ def main(speech_file):
     # [END send_request]
     
 def moh_start():
-    agi.stream_file('/var/lib/asterisk/sounds/ja/one-moment-please')
+    agi.stream_file('/var/lib/asterisk/sounds/en/one-moment-please')
     #agi.execute('EXEC', 'MusicOnHold')
 
 def moh_stop():
@@ -112,7 +112,6 @@ def moh_stop():
 
 # [START run_application]
     
-audiotest = '/var/lib/asterisk/sounds/en/one-moment-please.ulaw'    
 temp = tempfile.NamedTemporaryFile()
 temp.close()
 
@@ -120,78 +119,13 @@ agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
 
-filename = temp.name
-format = 'ulaw'
-intkey = '#'
-timeout = 20000
-beep = 'beep'
-offset = '0'
-silence = 's=10'
-agi.execute('RECORD FILE', (filename), (format), (intkey), (timeout), (offset), (beep), (silence))
+#pls-enter-conf-password
 
-#agi.exec_command('Monitor', (filename))
+res = '13579'
+agi.say_digits(res)
+
 #digits = agi.exec_command('Read')
 
-#if not digits:
-#    print(no digits)
-
-
-
-# agi.record_file((filename), (format))
-#agi.verbose(temp.name + '.ulaw')
-#agi.verbose(filename)
-
-#moh_start()
-#ttt = 
-
-moh_start()
-#start_new_thread(moh_start)
-#ttt.start()
-agi.verbose('NEXT')
-response_data = main(temp.name + '.ulaw')
-#moh_stop()
-#response_data = main(audiotest)S
-
-
-logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
-logging.debug(json.dumps(response_data, ensure_ascii=False))
-
-#conf = []
-#text = []
-
-#data = json.loads(json.dumps(response_data, ensure_ascii=False))
-
-#for key, result in data.items():
-#	conf.append(result['confidence'])  
-#	text.append(result['transcript'])
-#	print key, result
-
-string = response_data['results'][0]['alternatives'][0]['transcript']
-#string = 'VERBOSE "カタカナ" 1'
-res = string.encode('utf8', 'replace')
-
-#res.decode().encode('utf-8')
-#print('START')
-agi.verbose('%s' % res)
-#print(res)
-#print('NEXT')
-#type_info = type(res)
-#print(type_info)
-#print('DONE')
-
-
-#res = 
-#agi.verbose(u'PYTHON SUCKS: %s' % res )
-#print(type(res))
-
-#agi.verbose(text[0])
-#print(json.dumps(response_data['results'][0]['alternatives'], ensure_ascii=False))
-#print(text[0])
-
-#agi.verbose('temp:', temp)
-#agi.verbose(temp.name, '.ulaw')
-
-#agi.verbose('python agi ended')
 agi.set_variable('RESPONSE', res)
 
 
