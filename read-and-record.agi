@@ -137,7 +137,7 @@ if language.lower() == 'en':
 agi.set_variable('CHANNEL(language)', language.lower())
 
 try:
-    agi.env['agi_arg_3']
+    tts
 except NameError:
     agi.stream_file(question)
 else:
