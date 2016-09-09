@@ -159,7 +159,8 @@ if not res:
     #agi.say_digits('999')
     #agi.control_stream_file((filename) + '-in.ulaw')
     
-agi.stream_file('if-correct-press')  
+agi.stream_file('if-correct-press')
+agi.stream_file('digits/1')
 
 #digits = agi.exec_command('Read')
 
