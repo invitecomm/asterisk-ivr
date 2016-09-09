@@ -140,7 +140,7 @@ agi.set_variable('CHANNEL(language)', language.lower())
 try:
     agi.env['agi_arg_3']
 except Exception as ex:
-    template = "An exception of type {0} occured."
+    template = "An exception of type {0} occured. Arguments:{1!r}"
     message = template.format(type(ex).__name__, ex.args)
     agi.verbose(message)
     agi.stream_file(question)
