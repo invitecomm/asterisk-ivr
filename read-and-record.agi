@@ -134,7 +134,7 @@ agi.exec_command('StopMonitor')
 if res:
     agi.say_digits(res)
 if not res:
-	agi.stream_file('one-moment-please')
+    agi.stream_file('one-moment-please')
     response_data = main(filename + '-in.ulaw')
     string = response_data['results'][0]['alternatives'][0]['transcript']
     res = string.encode('utf8', 'replace')
