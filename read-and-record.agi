@@ -24,6 +24,7 @@ import base64
 import json
 
 import os
+import re
 from asterisk.agi import *
 import logging
 import tempfile
@@ -162,8 +163,13 @@ if not res:
     response_data = main(filename + '-in.ulaw', languageCode)
     logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
     logging.debug(json.dumps(response_data, ensure_ascii=False))
+    
+    
+    non_decimal = re.compile(r'[^\d.]+')
+    
     string = response_data['results'][0]['alternatives'][0]['transcript']
     res = string.encode('utf8', 'replace')
+    res = non_decimal.sub('', res)
     agi.stream_file('you-entered')
     agi.say_digits(res[:8])
 	#recording = (filename) + '-in'
