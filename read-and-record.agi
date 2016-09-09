@@ -134,7 +134,6 @@ if language.lower() == 'en':
 #Set(CHANNEL(language)=ja)
 agi.set_variable('CHANNEL(language)', language.lower())
 
-
 agi.stream_file(question)
 
 #agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', 'say or enter 8-digits', 'en')
@@ -150,6 +149,7 @@ if not res:
     response_data = main(filename + '-in.ulaw', languageCode)
     string = response_data['results'][0]['alternatives'][0]['transcript']
     res = string.encode('utf8', 'replace')
+    agi.stream_file('you-entered')
     agi.say_digits(res[:8])
 	#recording = (filename) + '-in'
     #agi.verbose(recording)
