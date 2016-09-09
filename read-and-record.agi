@@ -129,7 +129,7 @@ language = agi.env['agi_arg_2']
 
 try:
     agi.env['agi_arg_3']
-except NameError:
+except:
     agi.verbose("x = false")
 else:
     agi.verbose("x = true")
