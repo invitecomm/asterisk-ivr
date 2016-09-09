@@ -143,6 +143,7 @@ agi.exec_command('StopMonitor')
 
 #res = '13579'
 if res:
+    agi.stream_file('you-entered')
     agi.say_digits(res)
 if not res:
     agi.stream_file('one-moment-please')
@@ -157,6 +158,8 @@ if not res:
 	#agi.get_data((filename) + '-in.ulaw')
     #agi.say_digits('999')
     #agi.control_stream_file((filename) + '-in.ulaw')
+    
+agi.stream_file('if-correct-press')  
 
 #digits = agi.exec_command('Read')
 
