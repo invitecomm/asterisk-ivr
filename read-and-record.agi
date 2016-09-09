@@ -132,9 +132,9 @@ agi.exec_command('StopMonitor')
 if res:
     agi.say_digits(res)
 if not res:
-	recording = (filename) + '-in.ulaw'
+	recording = (filename) + '-in'
 	agi.verbose(recording)
-    agi.exec_command('Playback', recording)
+    agi.stream_file(recording)
 	#agi.get_data((filename) + '-in.ulaw')
     #agi.say_digits('999')
     #agi.control_stream_file((filename) + '-in.ulaw')
