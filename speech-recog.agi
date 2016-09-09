@@ -27,7 +27,7 @@ import os
 from asterisk.agi import *
 import logging
 import tempfile
-import threading
+#import threading
 
 import sys
 reload(sys)
@@ -141,8 +141,8 @@ moh_start()
 #ttt.start()
 agi.verbose('NEXT')
 response_data = main(temp.name + '.ulaw')
-moh_stop()
-#response_data = main(audiotest)
+#moh_stop()
+#response_data = main(audiotest)S
 
 
 logging.basicConfig(filename='/var/log/json.log',level=logging.DEBUG)
