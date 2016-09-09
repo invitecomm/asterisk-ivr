@@ -124,7 +124,10 @@ agi.verbose("python agi started")
 res = agi.get_data('pls-enter-conf-password')
 
 #res = '13579'
-agi.say_digits(res)
+if res:
+    agi.say_digits(res)
+if not res:
+    agi.say_digits('999')
 
 #digits = agi.exec_command('Read')
 
