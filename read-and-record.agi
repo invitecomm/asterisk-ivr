@@ -123,9 +123,9 @@ agi.verbose("python agi started")
 
 filename = temp.name
 
-please_enter = 'After the tone.  Please say or enter an 8-digit number, followed by pound.'
 
-agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', please_enter, 'en')
+
+agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', 'Enter or say 8-digits', 'en')
 agi.exec_command('Monitor', 'ulaw', (filename), 'o')
 res = agi.get_data('beep', 20000, 8)
 agi.exec_command('StopMonitor')
