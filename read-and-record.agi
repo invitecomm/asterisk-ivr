@@ -59,7 +59,7 @@ def get_speech_service():
 # [END authenticating]
 
 
-def main(speech_file):
+def main(speech_file, languageCode):
     """Transcribe the given audio file.
 
     Args:
@@ -85,7 +85,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'ja-JP',  # a BCP-47 language tag 
+                'languageCode': languageCode,  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
             },
             'audio': {
@@ -147,7 +147,7 @@ if res:
     agi.say_digits(res)
 if not res:
     agi.stream_file('one-moment-please')
-    response_data = main(filename + '-in.ulaw')
+    response_data = main(filename + '-in.ulaw', languageCode)
     string = response_data['results'][0]['alternatives'][0]['transcript']
     res = string.encode('utf8', 'replace')
     agi.say_digits(res[:8])
