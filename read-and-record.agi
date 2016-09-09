@@ -128,7 +128,7 @@ language = agi.env['agi_arg_2']
 #tts = agi.env['agi_arg_3']
 
 try:
-    x
+    agi.env['agi_arg_3']
 except NameError:
     agi.verbose("x = false")
 else:
