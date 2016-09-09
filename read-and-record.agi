@@ -121,7 +121,12 @@ agi.verbose("python agi started")
 
 #pls-enter-conf-password
 
+filename = temp.name
+
+
+agi.exec_command('Monitor', (filename))
 res = agi.get_data('pls-enter-conf-password')
+agi.exec_command(StopMonitor)
 
 #res = '13579'
 if res:
