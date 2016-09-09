@@ -126,7 +126,7 @@ filename = temp.name
 
 agi.exec_command('Monitor', 'ulaw', (filename))
 res = agi.get_data('pls-enter-conf-password')
-agi.exec_command(StopMonitor)
+#agi.exec_command(StopMonitor)
 
 #res = '13579'
 if res:
