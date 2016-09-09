@@ -136,9 +136,12 @@ if language.lower() == 'en':
 #Set(CHANNEL(language)=ja)
 agi.set_variable('CHANNEL(language)', language.lower())
 
-if not tts:
+try:
+    agi.env['agi_arg_3']
+except NameError:
     agi.stream_file(question)
-
+else:
+    agi.stream_file('feature-not-avail-line')
 
 #agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', 'say or enter 8-digits', 'en')
 agi.exec_command('Monitor', 'ulaw', (filename), 'o')
