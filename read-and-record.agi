@@ -124,6 +124,16 @@ agi.verbose("python agi started")
 #agi.verbose(agi.env['agi_arg_2'])
 
 question = agi.env['agi_arg_1']
+language = agi.env['agi_arg_2']
+
+if language.lower() = 'ja'
+    languageCode = 'ja-JP'
+if language.lower() = 'en'
+    languageCode = 'en-US'
+
+#Set(CHANNEL(language)=ja)
+agi.set_variable('CHANNEL(language)', language.lower())
+
 
 agi.stream_file(question)
 
