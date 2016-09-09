@@ -85,7 +85,7 @@ def main(speech_file):
                 'encoding': 'MULAW',  # raw 16-bit signed LE samples
                 'sampleRate': 8000,  # 16 khz
                 # See https://goo.gl/DPeVFW for a list of supported languages.
-                'languageCode': 'en-US',  # a BCP-47 language tag 
+                'languageCode': 'ja-JP',  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
             },
             'audio': {
