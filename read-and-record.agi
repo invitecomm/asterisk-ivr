@@ -111,20 +111,19 @@ def moh_stop():
     agi.execute('EXEC', 'StopMusicOnHold')
 
 # [START run_application]
-    
-temp = tempfile.NamedTemporaryFile().close()
+
+# Create a NamedTemporaryFile for Audio  
+temp = tempfile.NamedTemporaryFile()
+temp.close()
 filename = temp.name
 
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-agi.verbose(agi.env['agi_arg_1'])
-agi.verbose(agi.env['agi_arg_2'])
+#agi.verbose(agi.env['agi_arg_1'])
+#agi.verbose(agi.env['agi_arg_2'])
 
-#pls-enter-conf-password
-
-
-
+agi.stream_file(agi.env['agi_arg_1'])
 
 #agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', 'say or enter 8-digits', 'en')
 agi.exec_command('Monitor', 'ulaw', (filename), 'o')
