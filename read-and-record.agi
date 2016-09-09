@@ -142,8 +142,7 @@ try:
 except:
     agi.stream_file(question)
 else:
-    text = agi.env['agi_arg_3']
-    tts = text.encode('utf8', 'replace')
+    tts = agi.env['agi_arg_1']
     agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', tts, language.lower())
 
 
