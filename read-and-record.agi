@@ -160,7 +160,9 @@ if not res:
     #agi.control_stream_file((filename) + '-in.ulaw')
     
 agi.stream_file('if-correct-press')
-agi.stream_file('digits/1')
+#agi.stream_file('digits/1')
+agi.get_data('digits/1', 20000, 1)
+agi.stream_file('demo-thanks')
 
 #digits = agi.exec_command('Read')
 
