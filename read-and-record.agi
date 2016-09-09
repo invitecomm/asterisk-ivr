@@ -136,19 +136,19 @@ if language.lower() == 'en':
 agi.set_variable('CHANNEL(language)', language.lower())
 
 
+def question():
+    try:
+        agi.env['agi_arg_3']
+    except Exception as ex:
+        template = "An exception of type {0} occured. Arguments:{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        agi.verbose(message)
+        agi.stream_file(question)
+    else:
+        tts = agi.env['agi_arg_1']
+        agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', tts, language.lower())
 
-try:
-    agi.env['agi_arg_3']
-except Exception as ex:
-    template = "An exception of type {0} occured. Arguments:{1!r}"
-    message = template.format(type(ex).__name__, ex.args)
-    agi.verbose(message)
-    agi.stream_file(question)
-else:
-    tts = agi.env['agi_arg_1']
-    agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', tts, language.lower())
-
-
+question()
 
 #agi.exec_command('AGI', 'asterisk-googletts/googletts.agi', 'say or enter 8-digits', 'en')
 agi.exec_command('Monitor', 'ulaw', (filename), 'o')
