@@ -133,7 +133,7 @@ if res:
     agi.say_digits(res)
 if not res:
 	recording = (filename) + '-in.ulaw'
-	agi.verbose(recording)
+	agi.stream_file(recording)
 	#agi.get_data((filename) + '-in.ulaw')
     #agi.say_digits('999')
     #agi.control_stream_file((filename) + '-in.ulaw')
