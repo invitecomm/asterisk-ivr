@@ -118,8 +118,8 @@ temp.close()
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-agi.verbose(argv[0])
-agi.verbose(argv[1])
+agi.verbose(agi.env['agi_arg_1'])
+agi.verbose(agi.env['agi_arg_2'])
 
 #pls-enter-conf-password
 
