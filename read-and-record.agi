@@ -184,10 +184,10 @@ incorrect = 0
 agi.stream_file('if-correct-press')
 agi.stream_file('digits/' + correct)
 agi.stream_file('otherwise-press')
-agi.stream_file('digits/' + incorrect)
-otherwise-press
+#agi.stream_file('digits/' + incorrect)
+#otherwise-press
 #agi.stream_file('digits/1')
-agi.get_data('digits/1', 20000, 1)
+agi.get_data('digits/' + incorrect, 20000, 1)
 agi.stream_file('demo-thanks')
 
 #digits = agi.exec_command('Read')
