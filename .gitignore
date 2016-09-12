@@ -1,0 +1,13 @@
+*.pyc
+*data/*
+*build/*
+*dist/*
+*ez_setup.py
+*.egg/*
+*egg-info/*
+*bin/*
+*include/*
+*lib*
+.ropeproject
+portage/
+*.patch
