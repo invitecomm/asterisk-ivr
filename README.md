@@ -6,7 +6,7 @@ Just my work Area for IRV testing
 
 ## Read & Record
 
-This is an example of using Automatic Speech Recognition (ASR) and `Read()` to accept **BOTH** DTMF and Speech input from the dialplan user.  
+This is an example of using Automatic Speech Recognition (ASR) and `Read()` to accept DTMF or Speech input from the dialplan user.  
 
 **Records a file and accepts DTMF input simultaneously.**
 - Recording the file for ASR uses the Asterisk `Monitor()` command to start recording.
