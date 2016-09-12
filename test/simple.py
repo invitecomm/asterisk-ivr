@@ -19,6 +19,9 @@
 
 import ivr
 
-#ivr = IVR()
-
-print(ivr.test())
+# Import classes from your brand new package
+from ivr import Mammals
+ 
+# Create an object of Mammals class & call a method of it
+myMammal = Mammals()
+myMammal.printMembers()
