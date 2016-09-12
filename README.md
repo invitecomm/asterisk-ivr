@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/pyst2.svg)](https://badge.fury.io/py/pyst2)
+
 # asterisk-ivr
 
 _Not much to see here_
