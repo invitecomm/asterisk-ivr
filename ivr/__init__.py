@@ -7,7 +7,7 @@ ivr     - The IVR Template
 
 """
 
-from ivr.ivr import *
+from .ivr import *
 
 __all__ = ['ivr']
 __version__ = '0.0.2'
