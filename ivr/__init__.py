@@ -12,7 +12,4 @@ ivr     - The IVR Template
 #__all__ = ['ivr']
 __version__ = '0.0.2'
 
-
-def joke():
-    return (u'Wenn ist das Nunst\u00fcck git und Slotermeyer? Ja! ... '
-            u'Beiherhund das Oder die Flipperwaldt gersput.')
+from .test import joke
