@@ -12,7 +12,7 @@ setup(
     author = 'Brian LaVallee',
     author_email = 'brian.lavallee@invite-comm.jp',
     url = 'https://github.com/invitecomm/asterisk-ivr', # use the URL to the github repo
-    download_url = 'https://github.com/invitecomm/asterisk-ivr/tarball/0.1', # I'll explain this in a second
+    download_url = 'https://github.com/invitecomm/asterisk-ivr/tarball/' + version, # I'll explain this in a second
     keywords = 'python asterisk agi ivr telephony telephony sip voip',
     classifiers = [],
 

@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/pyst2.svg)](https://badge.fury.io/py/pyst2)
+[![PyPI version](https://badge.fury.io/py/ivr.svg)](https://badge.fury.io/py/ivr)
 
 # asterisk-ivr
 
