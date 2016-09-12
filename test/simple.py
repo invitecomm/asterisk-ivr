@@ -18,10 +18,4 @@
 # limitations under the License.
 
 import ivr
-
-# Import classes from your brand new package
-#from ivr import *
- 
-# Create an object of Mammals class & call a method of it
-myMammal = ivr()
-myMammal.printMembers()
+>>> print ivr.joke()
