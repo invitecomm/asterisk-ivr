@@ -18,7 +18,9 @@
 # limitations under the License.
 
 
-def test():
-	return 'foo'
+class IVR:
+
+    def test():
+	    return 'foo'
 	
 	

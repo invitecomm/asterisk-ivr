@@ -19,4 +19,6 @@
 
 import ivr
 
-print(test())
+ivr = IVR()
+
+print(ivr.test())
