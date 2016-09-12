@@ -1,5 +1,6 @@
 [![PyPI version](https://badge.fury.io/py/ivr.svg)](https://badge.fury.io/py/ivr)
-My first PyPI version.
+
+My first PyPI version.  Testing dependencies and working on the structure.
 
 # asterisk-ivr
 
