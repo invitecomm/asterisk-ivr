@@ -20,8 +20,8 @@
 import ivr
 
 # Import classes from your brand new package
-from ivr import Mammals
+#from ivr import *
  
 # Create an object of Mammals class & call a method of it
-myMammal = Mammals()
+myMammal = IVR()
 myMammal.printMembers()

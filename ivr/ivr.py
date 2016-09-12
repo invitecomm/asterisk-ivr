@@ -18,7 +18,7 @@
 # limitations under the License.
 
 
-class Mammals:
+class IVR:
     def __init__(self):
     ''' Constructor for this class. '''
     # Create some member animals
