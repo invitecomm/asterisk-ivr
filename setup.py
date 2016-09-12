@@ -1,6 +1,9 @@
 """Packaging files and information."""
 
-from setuptools import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
 from ivr import __version__ as version
 
@@ -14,12 +17,13 @@ setup(
     url = 'https://github.com/invitecomm/asterisk-ivr', # use the URL to the github repo
     download_url = 'https://github.com/invitecomm/asterisk-ivr/tarball/' + version, # I'll explain this in a second
     keywords = 'python asterisk agi ivr telephony telephony sip voip',
-    classifiers = [],
+    classifiers = [
+        'Development Status :: 1 - Planning',
+        'Development Status :: 2 - Pre-Alpha',
+    ],
+    license = 'GNU GENERAL PUBLIC LICENSE',
 
     # Package dependencies:
-    install_requires = [
-        'six>=1.9.0',
-        'google-api-python-client==1.5.3',
-        'pyst2'
-    ],
+    install_requires = ['six>=1.9.0','google-api-python-client==1.5.3','pyst2'],
+    
 )
