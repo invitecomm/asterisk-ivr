@@ -18,4 +18,5 @@
 # limitations under the License.
 
 import ivr
->>> print ivr.joke()
+
+print(ivr.joke())
