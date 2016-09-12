@@ -1,10 +1,13 @@
-[![PyPI version](https://badge.fury.io/py/ivr.png)](https://badge.fury.io/py/ivr)
+[![PyPI version](https://badge.fury.io/py/ivr.svg)](https://badge.fury.io/py/ivr)
+My first PyPI version.
 
 # asterisk-ivr
 
 _Not much to see here_
 
-Just my work Area for IRV testing
+**BETA TESTING** 
+
+Currently my work area.  Doesn't do much right now.
 
 ## Read & Record
 
