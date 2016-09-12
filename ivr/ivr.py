@@ -25,6 +25,4 @@ class IVR:
  
  
     def printMembers(self):
-        print('Printing members of the Mammals class')
-        for member in self.members:
-        #print('\t%s ' % member)
+        return 'python sucks'
