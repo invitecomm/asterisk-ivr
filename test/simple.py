@@ -23,5 +23,5 @@ import ivr
 #from ivr import *
  
 # Create an object of Mammals class & call a method of it
-myMammal = IVR()
+myMammal = ivr()
 myMammal.printMembers()
