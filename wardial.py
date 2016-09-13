@@ -39,6 +39,7 @@ def question(file, valid_digits):
         loop = loop + 1
         if loop > 2:
             agi.hangup()
+            break
     
     agi.verbose('Entry Was %s' % res)
     return res         
