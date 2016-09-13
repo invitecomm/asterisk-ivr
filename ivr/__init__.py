@@ -9,7 +9,7 @@ ivr     - The IVR Template
 
 #from ivr.ivr import *
 
-#__all__ = ['ivr']
+__all__ = ['ivr']
 __version__ = '0.0.2'
 
-from .ivr import MyClass
+#from .ivr import MyClass
