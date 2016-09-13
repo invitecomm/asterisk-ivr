@@ -32,7 +32,7 @@ import mysql.connector
 
 
 
-"""
+
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
@@ -51,7 +51,7 @@ def question(file, valid_digits):
     if regexp.search(res) is not None:
         #agi.verbose('Entry Was %s' % res)
         return res
-"""
+
 
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
