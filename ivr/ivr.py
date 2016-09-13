@@ -18,7 +18,7 @@
 # limitations under the License.
 
 
-class MyClass:
+class IVR:
     """A simple example class"""
     i = 12345
 

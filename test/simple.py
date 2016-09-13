@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ivr.ivr import *
+from ivr.ivr import IVR
 
-foo = MyClass()
+foo = AGI()
 print(foo.f())
