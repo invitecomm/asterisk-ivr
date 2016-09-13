@@ -20,19 +20,16 @@
 
 import ConfigParser
 
-
-#import os
-
 class IVR:
     """A simple example class"""
     def __init__(self):
-        #settings = ConfigParser.RawConfigParser()
-        #settings.read('settings.conf')
-        x = 1
+        settings = ConfigParser.RawConfigParser()
+        settings.read('test/settings.conf')
+        description-file = settings.get('metadata', 'description-file')
 		
     def f(self):
         """ Nothing to see here"""
         settings = ConfigParser.RawConfigParser()
         settings.read('test/settings.conf')
-        return settings.get('metadata', 'description-file')
+        return description-file
         #return os.path.abspath(__file__)
