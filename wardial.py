@@ -29,17 +29,17 @@ import re
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
-    #res = ''
-    loop = 0
+    res = ''
     
-    while not res or regexp.search(res) is None:
+    while regexp.search(res) is None:
         res = agi.get_data(file, 20000, 1)
         
         if not res:
             agi.hangup()
         loop = loop + 1
-        if loop > 2:
+        if looped:
             agi.hangup()
+        looped = 1
     
     if regexp.search(res) is not None:
         #agi.verbose('Entry Was %s' % res)
