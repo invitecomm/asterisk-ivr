@@ -30,6 +30,9 @@ import ConfigParser
 class IVR:
     """A simple example class"""
     def __init__(self, config='settings.conf'):
+        """
+        Load the configuration.
+        """
        	settings = ConfigParser.RawConfigParser()
         settings.read(config)
         self.foo = settings.get('metadata', 'description-file')
