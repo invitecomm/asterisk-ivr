@@ -29,7 +29,7 @@ import re
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-agi.stream_file('wardial/greeting')
+#agi.stream_file('wardial/greeting')
 q1 = agi.get_data('wardial/question1', 20000, 1)
 regexp = re.compile(r'[12]')
 if not q1:
