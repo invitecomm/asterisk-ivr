@@ -18,6 +18,28 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+"""
+.. module:: agi
+   :synopsis: This module contains functions and classes to implment AGI scripts in python. 
+   
+pyvr
+
+{'agi_callerid' : 'mars.putland.int',
+ 'agi_channel'  : 'IAX[kputland@kputland]/119',
+ 'agi_context'  : 'default',
+ 'agi_dnid'     : '1000',
+ 'agi_enhanced' : '0.0',
+ 'agi_extension': '1000',
+ 'agi_language' : 'en',
+ 'agi_priority' : '1',
+ 'agi_rdnis'    : '',
+ 'agi_request'  : 'pyst',
+ 'agi_type'     : 'IAX'}
+
+Specification
+-------------
+"""
+
 import ConfigParser
 #from test import joke
 
