@@ -35,13 +35,13 @@ class IVR:
         self.foo = settings.get('metadata', 'description-file')
 		
     def f(self):
-        """ 
-        Nothing to see here
-            I could say a lot more
-            Even other things go here
-        Note:
-            Something else
         """
+        agi.say_time(seconds, escape_digits='') --> digit
+        Say a given time, returning early if any of the given DTMF digits are
+        pressed.  
+        The time should be in seconds since the UNIX Epoch (Jan 1, 1970 00:00:00)
+        """
+
         settings = ConfigParser.RawConfigParser()
         settings.read('test/settings.conf')
         return self.foo
