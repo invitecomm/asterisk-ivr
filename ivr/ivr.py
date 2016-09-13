@@ -19,6 +19,8 @@
 #
 
 import ConfigParser
+from ivr.test import joke
+
 
 class IVR:
     """A simple example class"""
@@ -33,3 +35,6 @@ class IVR:
         settings.read('test/settings.conf')
         return self.foo
         #return os.path.abspath(__file__)
+        
+    def j(self):
+        return joke()
