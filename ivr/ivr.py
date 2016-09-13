@@ -37,6 +37,10 @@ class IVR:
     def f(self):
         """ 
         Nothing to see here
+            I could say a lot more
+            Even other things go here
+        Note:
+            Something else
         """
         settings = ConfigParser.RawConfigParser()
         settings.read('test/settings.conf')
