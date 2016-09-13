@@ -45,6 +45,15 @@ class IVR:
         settings = ConfigParser.RawConfigParser()
         settings.read('test/settings.conf')
         return self.foo
+
+    def a(self):
+        """
+        Is this what we all want to see?
+        """
+
+        settings = ConfigParser.RawConfigParser()
+        settings.read('test/settings.conf')
+        return self.foo
         #return os.path.abspath(__file__)
         
     #def j(self):
