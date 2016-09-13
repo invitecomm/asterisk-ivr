@@ -30,16 +30,17 @@ def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
     res = ''
+    loop = 1
     
     while regexp.search(res) is None:
         res = agi.get_data(file, 20000, 1)
         
         if not res:
             agi.hangup()
-        if loop:
+        loop = loop + 1
+        if loop > 1:
             agi.hangup()
-        loop = 1
-            
+    
     if regexp.search(res) is not None:
         #agi.verbose('Entry Was %s' % res)
         return res         
@@ -47,7 +48,7 @@ def question(file, valid_digits):
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-#agi.stream_file('wardial/greeting')
+agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
 q2 = question('wardial/question2', '123')
