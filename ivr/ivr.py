@@ -31,7 +31,7 @@ class IVR:
     """A simple example class"""
     def __init__(self):
        	settings = ConfigParser.RawConfigParser()
-        settings.read('test/settings.conf')
+        settings.read('/var/lib/asterisk/agi-bin/asterisk-ivr/test/settings.conf')
         self.foo = settings.get('metadata', 'description-file')
 		
     def f(self):
