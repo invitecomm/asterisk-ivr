@@ -21,7 +21,12 @@ import sys
 
 
 class IVR:
-
+    """
+    This class encapsulates communication between Asterisk an a python script.
+    It handles encoding commands to Asterisk and parsing responses from
+    Asterisk.
+    """
+    
     def __init__(self):
         # Create some member animals
         self.members = ['Tiger', 'Elephant', 'Wild Cat']
