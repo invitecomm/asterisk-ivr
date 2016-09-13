@@ -19,5 +19,5 @@
 
 import ivr
 
-foo = IVR()
-print(foo.printMembers())
+foo = MyClass()
+#print(foo.printMembers())

@@ -12,4 +12,4 @@ ivr     - The IVR Template
 #__all__ = ['ivr']
 __version__ = '0.0.2'
 
-from .ivr import IVR
+from .ivr import *
