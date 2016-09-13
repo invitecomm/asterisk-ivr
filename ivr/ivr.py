@@ -23,4 +23,5 @@ class IVR:
     i = 12345
 
     def f(self):
+    """ Nothing to see here"""
         return 'hello world'
