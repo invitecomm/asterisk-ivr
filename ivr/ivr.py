@@ -18,7 +18,6 @@
 # limitations under the License.
 
 
-class ivr:
     def __init__(self):
         # Create some member animals
         self.members = ['Tiger', 'Elephant', 'Wild Cat']
