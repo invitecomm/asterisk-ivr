@@ -26,19 +26,33 @@
 from asterisk.agi import *
 import re
 
+def question(file, valid_digits):
+    regexp = re.compile(r'[' + valid_digits + ']')
+    
+    while not regexp.search(res) is None:
+        res = agi.get_data(file, 20000, 1)
+        if not res:
+            agi.hangup()
+        if loop:
+            break
+        loop = 1
+    agi.verbose('Entry Was %s' % res)
+    return res 
+            
+    
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
 #agi.stream_file('wardial/greeting')
 
-q1 = agi.get_data('wardial/question1', 20000, 1)
-digits='12'
-regexp = re.compile(r'[' + digits + ']')
-if not q1:
-    agi.hangup()
-if regexp.search(q1) is None:
-    agi.verbose('Entry Was %s' % q1)
-    agi.stream_file('invalid')
+q1 = question('wardial/question1', '12')
+#digits='12'
+#regexp = re.compile(r'[' + digits + ']')
+#if not q1:
+#    agi.hangup()
+##if regexp.search(q1) is None:
+#    agi.verbose('Entry Was %s' % q1)
+#    agi.stream_file('invalid')
     
 agi.get_data('wardial/question2', 20000, 1)
 agi.get_data('wardial/question3', 20000, 1)
