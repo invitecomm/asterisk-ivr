@@ -36,7 +36,6 @@ def question(file, valid_digits):
         
         if not res:
             agi.hangup()
-        loop = loop + 1
         if looped:
             agi.hangup()
         looped = 1
