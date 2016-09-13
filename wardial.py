@@ -32,7 +32,7 @@ def question(file, valid_digits):
     #res = ''
     loop = 0
     
-    while regexp.search(res) is None:
+    while regexp.search(res) is None or not res:
         res = agi.get_data(file, 20000, 1)
         
         if not res:
