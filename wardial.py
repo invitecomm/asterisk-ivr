@@ -75,7 +75,7 @@ def insert(text, digit):
     }             
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    cursor.execute("INSERT INTO wardial (text, digit) VALUES (%s, %s)" % text, digit)
+    cursor.execute("INSERT INTO wardial (text, digit) VALUES (%s, %s)" % data_wardial)
     cnx.commit()
     cursor.close()
     cnx.close()     
