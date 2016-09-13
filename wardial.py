@@ -30,7 +30,7 @@ def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
     counter = 0
-    while counter:
+    while counter < 2:
     
         res = agi.get_data(file, 20000, 1)
         if regexp.search(res) is not None:
