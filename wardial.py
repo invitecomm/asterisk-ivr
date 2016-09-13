@@ -32,7 +32,6 @@ import mysql.connector
 
 
 
-"""
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
@@ -51,7 +50,7 @@ def question(file, valid_digits):
     if regexp.search(res) is not None:
         #agi.verbose('Entry Was %s' % res)
         return res
-"""
+
 
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
@@ -81,21 +80,24 @@ def insert(text, digit):
     cnx.close()     
 
 
-insert('skdjf',5)
 
-"""
+
+
 agi = AGI()
 agi.answer()
 
 #agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
+insert('q1',q1)
 
 q2 = question('wardial/question2', '123')
+insert('q2',q2)
+
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
 q5 = question('wardial/question5', '123')
 
 agi.stream_file('wardial/goodby')
 agi.hangup()
-"""
+
