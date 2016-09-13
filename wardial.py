@@ -28,8 +28,9 @@ import re
 import ConfigParser
 
 
+from __future__ import print_function
+from datetime import date, datetime, timedelta
 import mysql.connector
-
 
 
 def question(file, valid_digits):
@@ -65,13 +66,12 @@ config = {
 
 def data_insert(text, digit):
 
-    add_wardial = ("INSERT INTO wardial "
-                   "(text, digit) "
-                   "VALUES (%s, %s)")
-                               
+    add_wardial = ("INSERT INTO wardial (text, digit) VALUES (%s, %s)")
+    data_wardial = (text, digit)                               
+    
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    cursor.execute("INSERT INTO wardial (text, digit) VALUES ('%s', '%s')" % (text, digit))
+    cursor.execute(add_wardial, data_wardial)
     cnx.commit()
     cursor.close()
     cnx.close()
