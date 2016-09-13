@@ -32,4 +32,4 @@ ivr     - The IVR Template
 __all__ = ['ivr','test']
 __version__ = '0.0.2'
 
-#from .ivr import MyClass
+#from .test import joke
