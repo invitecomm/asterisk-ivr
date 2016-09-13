@@ -18,10 +18,10 @@
 # limitations under the License.
 
 
-    def __init__(self):
-        # Create some member animals
-        self.members = ['Tiger', 'Elephant', 'Wild Cat']
+def __init__(self):
+    # Create some member animals
+    self.members = ['Tiger', 'Elephant', 'Wild Cat']
  
  
-    def printMembers(self):
-        return 'python sucks'
+def printMembers(self):
+    return 'python sucks'
