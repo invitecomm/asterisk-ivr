@@ -64,17 +64,32 @@ config = {
   'raise_on_warnings': True,
 }
 
+def insert(text, digit):
 
+    add_wardial = ("INSERT INTO wardial "
+                   "(text, digit) "
+                   "VALUES (%s, %s)")
+    data_wardial = {
+        'text': text,
+        'digit': digit,
+    }             
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    cursor.execute(add_wardial, data_wardial)
+    cnx.commit()
+    cursor.close()
+    cnx.close()     
 
 agi = AGI()
 agi.answer()
 
-cnx = mysql.connector.connect(**config)
-cnx.close()
 
-agi.stream_file('wardial/greeting')
+
+#agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
+insert('q1', q1)
+
 q2 = question('wardial/question2', '123')
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
