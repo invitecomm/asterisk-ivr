@@ -49,18 +49,11 @@ agi.verbose("python agi started")
 #agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-#digits='12'
-#regexp = re.compile(r'[' + digits + ']')
-#if not q1:
-#    agi.hangup()
-##if regexp.search(q1) is None:
-#    agi.verbose('Entry Was %s' % q1)
-#    agi.stream_file('invalid')
-    
-agi.get_data('wardial/question2', 20000, 1)
-agi.get_data('wardial/question3', 20000, 1)
-agi.get_data('wardial/question4', 20000, 1)
-agi.get_data('wardial/question5', 20000, 1)
+q2 = question('wardial/question2', '123')
+q3 = question('wardial/question3', '12345')
+q4 = question('wardial/question4', '123')
+q5 = question('wardial/question5', '123')
+
 agi.stream_file('wardial/goodby')
 agi.hangup()
 
