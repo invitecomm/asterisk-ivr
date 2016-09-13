@@ -22,13 +22,13 @@
  using the REST API."""
 
 # [START import_libraries]
+from __future__ import print_function
 
 from asterisk.agi import *
 import re
 import ConfigParser
 
 
-from __future__ import print_function
 from datetime import date, datetime, timedelta
 import mysql.connector
 
