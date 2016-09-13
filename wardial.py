@@ -71,8 +71,6 @@ agi.answer()
 
 try:
     cnx = mysql.connector.connect(**config)
-if cnx:
-    agi.verbose('DB Connection Success')
 
 cnx.close()
 
