@@ -26,7 +26,7 @@
 from asterisk.agi import *
 import re
 import ConfigParser
-import MySQLdb
+#import MySQLdb
 
 """
 def question(file, valid_digits):
