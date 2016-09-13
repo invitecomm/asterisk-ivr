@@ -30,12 +30,15 @@ def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
     res = ''
+    loop = 0
     while regexp.search(res) is None:
         res = agi.get_data(file, 20000, 1)
         
         if not res:
             agi.hangup()
-        agi.stream_file('invalid')
+        loop = loop + 1
+        if loop > 2:
+            agi.hangup()
     
     agi.verbose('Entry Was %s' % res)
     return res         
