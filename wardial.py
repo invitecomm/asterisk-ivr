@@ -39,7 +39,7 @@ def question(file, valid_digits):
         if not res:
             agi.hangup()
         counter = counter + 1    
-        if counter = 2
+        if counter = 2:
             agi.hangup()
             
     
