@@ -30,12 +30,15 @@ agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
 #agi.stream_file('wardial/greeting')
+
 q1 = agi.get_data('wardial/question1', 20000, 1)
-regexp = re.compile(r'[12]')
+digits='12'
+regexp = re.compile(r'[' + digits + ']')
 if not q1:
     agi.hangup()
 if regexp.search(q1) is not None:
     agi.verbose('Entry Was %s' % q1)
+    
 agi.get_data('wardial/question2', 20000, 1)
 agi.get_data('wardial/question3', 20000, 1)
 agi.get_data('wardial/question4', 20000, 1)
