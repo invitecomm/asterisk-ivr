@@ -20,6 +20,6 @@
 
 from ivr.ivr import IVR
 
-foo = IVR()
+foo = IVR('test/settings.conf')
 print(foo.f())
 #print(foo.j())

@@ -29,9 +29,9 @@ import ConfigParser
 
 class IVR:
     """A simple example class"""
-    def __init__(self):
+    def __init__(self, config):
        	settings = ConfigParser.RawConfigParser()
-        settings.read('/var/lib/asterisk/agi-bin/asterisk-ivr/test/settings.conf')
+        settings.read(config)
         self.foo = settings.get('metadata', 'description-file')
 		
     def f(self):
@@ -50,9 +50,8 @@ class IVR:
         """
         Is this what we all want to see?
         """
-
-        settings = ConfigParser.RawConfigParser()
-        settings.read('test/settings.conf')
+        #settings = ConfigParser.RawConfigParser()
+        #settings.read('test/settings.conf')
         return self.foo
         #return os.path.abspath(__file__)
         
