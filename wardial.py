@@ -55,14 +55,27 @@ def question(file, valid_digits):
 
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
-dbhost = settings.get('general', 'dbhost')
-dbname = settings.get('general', 'dbname')
-dbuser = settings.get('general', 'dbuser')
-dbpass = settings.get('general', 'dbpass')
-"""    
+
+config = {
+  'user': settings.get('general', 'dbuser'),
+  'password': settings.get('general', 'dbpass'),
+  'host': settings.get('general', 'dbhost'),
+  'database': settings.get('general', 'dbname'),
+  'raise_on_warnings': True,
+}
+
+
+
 agi = AGI()
 agi.answer()
-agi.verbose(dbhost)
+
+try:
+    cnx = mysql.connector.connect(**config)
+if cnx:
+    agi.verbose('DB Connection Success')
+
+cnx.close()
+
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
@@ -73,8 +86,4 @@ q5 = question('wardial/question5', '123')
 
 agi.stream_file('wardial/goodby')
 agi.hangup()
-
-"""
-print(dbhost)
-
 
