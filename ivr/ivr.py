@@ -23,5 +23,5 @@ def __init__(self):
     self.members = ['Tiger', 'Elephant', 'Wild Cat']
  
  
-def printMembers(self):
+def printMembers():
     return 'python sucks'
