@@ -36,8 +36,9 @@ digits='12'
 regexp = re.compile(r'[' + digits + ']')
 if not q1:
     agi.hangup()
-if regexp.search(q1) is not None:
+if regexp.search(q1) is None:
     agi.verbose('Entry Was %s' % q1)
+    agi.stream_file('invalid')
     
 agi.get_data('wardial/question2', 20000, 1)
 agi.get_data('wardial/question3', 20000, 1)
