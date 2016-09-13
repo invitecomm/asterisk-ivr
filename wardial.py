@@ -28,7 +28,14 @@ from asterisk.agi import *
 agi = AGI()
 agi.answer()
 agi.verbose("python agi started")
-res = agi.get_data('wardial/greeting', 20000, 1)
+agi.stream_file('wardial/greeting')
+agi.get_data('wardial/question1', 20000, 1)
+agi.get_data('wardial/question2', 20000, 1)
+agi.get_data('wardial/question3', 20000, 1)
+agi.get_data('wardial/question4', 20000, 1)
+agi.get_data('wardial/question5', 20000, 1)
+agi.stream_file('wardial/goodby')
+agi.hangup()
 
 
 
