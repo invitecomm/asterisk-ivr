@@ -19,5 +19,5 @@
 
 import ivr
 
-#ivr = IVR()
-print(ivr.printMembers())
+foo = IVR()
+print(foo.printMembers())
