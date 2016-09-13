@@ -18,8 +18,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import ConfigParser
-from test import joke
+from ConfigParser import RawConfigParser, read, get
+#from test import joke
 
 
 class IVR:
@@ -36,5 +36,5 @@ class IVR:
         return self.foo
         #return os.path.abspath(__file__)
         
-    def j(self):
-        return joke()
+    #def j(self):
+    #    return joke()

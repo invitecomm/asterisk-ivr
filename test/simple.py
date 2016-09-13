@@ -22,4 +22,4 @@ from ivr.ivr import IVR
 
 foo = IVR()
 print(foo.f())
-print(foo.j())
+#print(foo.j())
