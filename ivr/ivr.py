@@ -19,7 +19,7 @@
 #
 
 import ConfigParser
-from .test import joke
+from test import joke
 
 
 class IVR:
