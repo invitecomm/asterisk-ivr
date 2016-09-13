@@ -19,5 +19,5 @@
 
 from ivr.ivr import IVR
 
-foo = AGI()
+foo = IVR()
 print(foo.f())
