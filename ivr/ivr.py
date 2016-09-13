@@ -44,19 +44,11 @@ class IVR:
         pressed.  
         The time should be in seconds since the UNIX Epoch (Jan 1, 1970 00:00:00)
         """
-
-        settings = ConfigParser.RawConfigParser()
-        settings.read('test/settings.conf')
         return self.foo
 
-    def a(self):
+    def a(self, text):
         """
         Is this what we all want to see?
         """
-        #settings = ConfigParser.RawConfigParser()
-        #settings.read('test/settings.conf')
-        return self.foo
-        #return os.path.abspath(__file__)
+        return text
         
-    #def j(self):
-    #    return joke()
