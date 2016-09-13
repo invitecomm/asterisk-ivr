@@ -24,8 +24,8 @@ class IVR:
     """A simple example class"""
     def __init__(self):
         settings = ConfigParser.RawConfigParser()
-        config.read('settings.conf')
+        settings.read('settings.conf')
 		
     def f(self):
         """ Nothing to see here"""
-        return config.get('metadata', 'description-file')
+        return settings.get('metadata', 'description-file')
