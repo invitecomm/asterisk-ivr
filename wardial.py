@@ -69,9 +69,7 @@ config = {
 agi = AGI()
 agi.answer()
 
-try:
-    cnx = mysql.connector.connect(**config)
-
+cnx = mysql.connector.connect(**config)
 cnx.close()
 
 agi.stream_file('wardial/greeting')
