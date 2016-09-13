@@ -19,8 +19,8 @@
 #
 
 """
-.. module:: agi
-   :synopsis: This module contains functions and classes to implment AGI scripts in python. 
+    module: ivr
+    synopsis: This module contains functions and classes to implment IVR scripts.
    
 pyvr
 
