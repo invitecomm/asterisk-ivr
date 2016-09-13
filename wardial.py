@@ -25,6 +25,9 @@
 
 from asterisk.agi import *
 import re
+import ConfigParser
+import MySQLdb
+
 
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
@@ -43,11 +46,19 @@ def question(file, valid_digits):
     
     if regexp.search(res) is not None:
         #agi.verbose('Entry Was %s' % res)
-        return res         
+        return res
+
+
+settings = ConfigParser.RawConfigParser()
+settings.read('/etc/asterisk/res_config_mysql.conf')
+dbhost = settings.get('general', 'dbhost')
+dbname = settings.get('general', 'dbname')
+dbuser = settings.get('general', 'dbuser')
+dbpass = settings.get('general', 'dbpass')
     
 agi = AGI()
 agi.answer()
-agi.verbose("python agi started")
+agi.verbose(dbhost)
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
