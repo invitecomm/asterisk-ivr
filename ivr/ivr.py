@@ -20,24 +20,7 @@
 
 """
     module: ivr
-    synopsis: This module contains functions and classes to implment IVR scripts.
-   
-pyvr
 
-{'agi_callerid' : 'mars.putland.int',
- 'agi_channel'  : 'IAX[kputland@kputland]/119',
- 'agi_context'  : 'default',
- 'agi_dnid'     : '1000',
- 'agi_enhanced' : '0.0',
- 'agi_extension': '1000',
- 'agi_language' : 'en',
- 'agi_priority' : '1',
- 'agi_rdnis'    : '',
- 'agi_request'  : 'pyst',
- 'agi_type'     : 'IAX'}
-
-Specification
--------------
 """
 
 import ConfigParser
@@ -52,7 +35,9 @@ class IVR:
         self.foo = settings.get('metadata', 'description-file')
 		
     def f(self):
-        """ Nothing to see here"""
+        """ 
+        Nothing to see here
+        """
         settings = ConfigParser.RawConfigParser()
         settings.read('test/settings.conf')
         return self.foo
