@@ -51,7 +51,6 @@ agi.verbose("python agi started")
 #agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-    agi.verbose('Entry Was %s' % q1)
 q2 = question('wardial/question2', '123')
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
