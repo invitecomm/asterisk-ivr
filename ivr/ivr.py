@@ -17,11 +17,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 
-def __init__(self):
-    # Create some member animals
-    self.members = ['Tiger', 'Elephant', 'Wild Cat']
+
+class IVR:
+
+    def __init__(self):
+        # Create some member animals
+        self.members = ['Tiger', 'Elephant', 'Wild Cat']
  
- 
-def printMembers():
-    return 'python sucks'
+    def printMembers(self):
+        return 'python sucks'
