@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from ivr.ivr import IVR
+import IVR
 
 foo = IVR()
 print(foo.f())

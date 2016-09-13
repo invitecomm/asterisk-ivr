@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from ConfigParser import RawConfigParser
+import ConfigParser
 #from test import joke
 
 
