@@ -25,6 +25,7 @@ class IVR:
     def __init__(self):
         #settings = ConfigParser.RawConfigParser()
         #settings.read('settings.conf')
+        x = 1
 		
     def f(self):
         """ Nothing to see here"""
