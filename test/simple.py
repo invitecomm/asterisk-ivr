@@ -20,4 +20,4 @@
 from ivr.ivr import *
 
 foo = MyClass()
-#print(foo.printMembers())
+print(foo.f())
