@@ -31,5 +31,5 @@ class IVR:
         """ Nothing to see here"""
         settings = ConfigParser.RawConfigParser()
         settings.read('test/settings.conf')
-        return foo
+        return self.foo
         #return os.path.abspath(__file__)
