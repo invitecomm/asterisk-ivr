@@ -19,4 +19,5 @@
 
 import ivr
 
-print(ivr.joke())
+ivr = IVR()
+print(ivr.printMembers())
