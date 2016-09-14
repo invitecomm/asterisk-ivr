@@ -92,6 +92,7 @@ session_id = data_insert(db_insert % ('q1', clid, q1))
 agi.verbose('RECORD #%s INSERTED' % session_id)
 
 q2 = question('wardial/question2', '123')
+data_insert(db_update % ('q2', q2, session_id))
 
 #"INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')"
 #UPDATE `test`.`wardial` SET `q2` = '2' WHERE `wardial`.`id` = 1; 
