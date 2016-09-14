@@ -73,7 +73,7 @@ def data_insert(clid, text, digit):
         cursor.execute("SELECT * FORM employees")   # Syntax error in query
         cnx.close()
     except mysql.connector.Error as err:
-        print("Something went wrong: {}".format(err))
+        print("Something went wrong: {0}".format(err))
 
 data_insert('this is text','q1','7')
 
