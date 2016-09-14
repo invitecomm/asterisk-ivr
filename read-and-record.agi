@@ -90,6 +90,9 @@ def main(speech_file, languageCode):
                 # See https://goo.gl/DPeVFW for a list of supported languages.
                 'languageCode': languageCode,  # a BCP-47 language tag 
                 # Working with: en-US/ja-JP
+                #"speech_context": {
+                #	"phrases": ['0','1','2','3','4','5','6','7','8','9']
+                #},
             },
             'audio': {
                 'content': speech_content.decode('UTF-8')
