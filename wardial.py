@@ -63,7 +63,7 @@ def data_insert(clid, text, digit):
 
     add_wardial = ("INSERT INTO wardial (text, digit, %s) VALUES (%s, %s, %s)")
     data_wardial = (text, clid, digit, digit)                               
-    #agi.verbose(add_wardial % data_wardial)
+    agi.verbose(add_wardial % data_wardial)
     try:
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
