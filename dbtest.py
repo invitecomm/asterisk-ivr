@@ -84,7 +84,7 @@ def data_insert(clid, text, digit):
     mariadb_connection.close()
     print('completed')
 
-data_insert('this is text','q1',7)
+data_insert('this is text','q1','7')
 
 
 
