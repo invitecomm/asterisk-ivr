@@ -68,7 +68,7 @@ def data_insert(clid, text, digit):
     data_wardial = (text, clid, digit)                               
     print(add_wardial % data_wardial)
     try:
-        cnx = mysql.connector.connect(user='scott', database='employees')
+        cnx = mysql.connector.connect(**config)
         cursor = cnx.cursor()
         cursor.execute("SELECT * FORM employees")   # Syntax error in query
         cnx.close()
