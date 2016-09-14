@@ -78,8 +78,8 @@ def data_insert(text, digit):
     mariadb_connection.commit()
 
     cursor.close()
-    mariadb_connection.close()
     """
+    mariadb_connection.close()
 
 
 agi = AGI()
