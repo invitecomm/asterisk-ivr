@@ -95,7 +95,7 @@ agi.verbose(clid)
 #agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-#data_insert(clid,'q1',q1)
+data_insert(clid,'q1',q1)
 
 q2 = question('wardial/question2', '123')
 #data_insert(clid,'q2',q2)
