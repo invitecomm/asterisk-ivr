@@ -68,14 +68,13 @@ def data_insert(clid, text, digit):
     try:
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
-        cursor.execute(add_wardial % data_wardial)
+        cursor.execute(add_wardial, data_wardial)
         mariadb_connection.commit()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
         agi.verbose("Error: {0}".format(error))
-    
-    agi.verbose('completed')
+    #agi.verbose('completed')
 
 agi = AGI()
 agi.answer()
