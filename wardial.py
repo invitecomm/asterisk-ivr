@@ -85,6 +85,9 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
+if agi.env['agi_arg_2'] == "MACHINE":
+    agi.hangup()
+
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
