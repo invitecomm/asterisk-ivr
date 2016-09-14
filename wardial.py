@@ -37,14 +37,13 @@ def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
     res = agi.get_data(file, 20000, 1)
-    
     if regexp.search(res) is not None:
         return res
 
-    res = agi.get_data(file, 20000, 1)
-    
+    res = agi.get_data(file, 20000, 1)    
     if regexp.search(res) is not None:
         return res
+        
     if not res:
         agi.hangup()
 
@@ -68,30 +67,27 @@ def data_insert(clid, text, digit):
     try:
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
-        cursor.execute(add_wardial, data_wardial)
+        cursor.execute(add_wardial % data_wardial)
         mariadb_connection.commit()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
-        agi.verbose("Error: {0}".format(error))
+        agi.verbose("Database Error: {0}".format(error))
     #agi.verbose('completed')
+    return mariadb_connection.insert_id()
 
 agi = AGI()
 agi.answer()
 
 clid = agi.env['agi_callerid']
-agi.verbose(clid)
-
-#data_insert(agi.env['agi_callerid'],agi.env['agi_extension'])
-
 #agi.stream_file('wardial/greeting')
 
+
 q1 = question('wardial/question1', '12')
-data_insert(clid,'q1',q1)
+foo = data_insert(clid,'q1',q1)
+agi.verbose('RECORD #%s INSERTED' % foo)
 
 q2 = question('wardial/question2', '123')
-#data_insert(clid,'q2',q2)
-
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
 q5 = question('wardial/question5', '123')
