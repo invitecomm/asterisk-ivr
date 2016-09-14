@@ -74,6 +74,8 @@ def data_insert(clid, text, digit):
         cursor.execute(add_wardial % data_wardial)
     except mariadb.Error as error:
         agi.verbose("Error: {}".format(error))
+    except:
+        agi.verbose('unknown error')
     mariadb_connection.commit()
     cursor.close()
     mariadb_connection.close()
