@@ -36,16 +36,16 @@ import mysql.connector as mariadb
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
-    res = ''
-    loop = 1
+    #res = ''
+    #loop = 1
     
-    while regexp.search(res) is None:
-        res = agi.get_data(file, 20000, 1)
+    #while regexp.search(res) is None:
+    res = agi.get_data(file, 20000, 1)
         
-        if not res:
-            agi.hangup()
-        loop = loop + 1
-        if loop > 1:
+    #    if not res:
+    #        agi.hangup()
+    #    loop = loop + 1
+    #    if loop > 1:
             agi.hangup()
     
     if regexp.search(res) is not None:
