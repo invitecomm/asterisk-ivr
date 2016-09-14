@@ -90,9 +90,10 @@ clid = agi.env['agi_callerid']
 q1 = question('wardial/question1', '12')
 session_id = data_insert(db_insert % ('q1', clid, q1))
 #agi.verbose('RECORD #%s INSERTED' % session_id)
+agi.verbose('this {0} that {1} and this {0} again').format('a','b')
 
 #q2 = question('wardial/question2', '123')
-data_insert(db_update % ('q{0}', question('wardial/question{0}', '123'), session_id)).format('2')
+data_insert(db_update % ('q2', question('wardial/question2', '123'), session_id))
 
 q3 = question('wardial/question3', '12345')
 data_insert(db_update % ('q3', q3, session_id))
