@@ -68,7 +68,7 @@ def data_insert(text, digit):
 
     add_wardial = ("INSERT INTO wardial (text, digit) VALUES (%s, %s)")
     data_wardial = (text, digit)                               
-   """ 
+    """ 
     try:
         mariadb_connection = mariadb.connect(**config)
     except mariadb.Error as error:
