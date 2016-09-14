@@ -69,13 +69,14 @@ def data_insert(clid, text, digit):
         cursor = mariadb_connection.cursor()
         cursor.execute(add_wardial % data_wardial)
         mariadb_connection.commit()
-        #record = cursor.lastrowid
+        #record = mariadb_connection.insert_id()
+        record = '88'
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
         agi.verbose("Database Error: {0}".format(error))
     #agi.verbose('completed')
-    return '99'
+    return record
 
 agi = AGI()
 agi.answer()
