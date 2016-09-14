@@ -75,10 +75,10 @@ def data_insert(text, digit):
     except mariadb.Error as error:
         agi.verbose("Error: {}".format(error))
     mariadb_connection.commit()
-    """
+
     cursor.close()
     mariadb_connection.close()
-
+    """"
 
 
 agi = AGI()
