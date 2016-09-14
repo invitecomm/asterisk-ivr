@@ -85,7 +85,7 @@ clid = agi.env['agi_callerid']
 
 
 q1 = question('wardial/question1', '12')
-session_id = data_insert(clid.str(),'q1',q1)
+session_id = data_insert(str(clid),'q1',q1)
 agi.verbose('RECORD #%s INSERTED' % session_id)
 
 q2 = question('wardial/question2', '123')
