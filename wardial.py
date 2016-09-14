@@ -68,8 +68,8 @@ def data_insert(clid, text, digit):
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
         cursor.execute(add_wardial % data_wardial)
+        record = cursor.lastrowid
         mariadb_connection.commit()
-        record = mariadb_connection.insert_id()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
