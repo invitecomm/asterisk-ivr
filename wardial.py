@@ -68,8 +68,8 @@ def data_insert(text, digit):
         mariadb_connection = mariadb.connect(**config)
     except mariadb.Error as error:
         agi.verbose("Error: {}".format(error))
-    cursor = mariadb.cursor()
     """
+    cursor = mariadb.cursor()
     try:
         cursor.execute(add_wardial, data_wardial)
     except mariadb.Error as error:
