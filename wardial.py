@@ -84,18 +84,15 @@ agi = AGI()
 agi.answer()
 
 clid = agi.env['agi_callerid']
-#agi.stream_file('wardial/greeting')
 
+agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
 session_id = data_insert(db_insert % ('q1', clid, q1))
-agi.verbose('RECORD #%s INSERTED' % session_id)
+#agi.verbose('RECORD #%s INSERTED' % session_id)
 
 q2 = question('wardial/question2', '123')
 data_insert(db_update % ('q2', q2, session_id))
-
-#"INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')"
-#UPDATE `test`.`wardial` SET `q2` = '2' WHERE `wardial`.`id` = 1; 
 
 q3 = question('wardial/question3', '12345')
 data_insert(db_update % ('q3', q3, session_id))
