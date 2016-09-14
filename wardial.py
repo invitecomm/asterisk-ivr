@@ -59,15 +59,15 @@ config = {
   'raise_on_warnings': True,
 }
 
-def data_insert(clid, text, digit):
+def data_insert(query):
 
-    add_wardial = ("INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')")
-    data_wardial = (text, clid, digit, digit)                               
-    agi.verbose(add_wardial % data_wardial)
+    #add_wardial = ("INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')")
+    #data_wardial = (text, clid, digit, digit)                               
+    agi.verbose(query)
     try:
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
-        cursor.execute(add_wardial % data_wardial)
+        cursor.execute(query)
         record = cursor.lastrowid
         mariadb_connection.commit()
         cursor.close()
@@ -77,6 +77,9 @@ def data_insert(clid, text, digit):
     #agi.verbose('completed')
     return record
 
+db_insert = ("INSERT INTO `wardial` (`clid`, `%s`) VALUES ('%s', '%s')")
+db_update = ("UPDATE `wardial` SET `%s` = '%s' WHERE `id` = '%s'")
+
 agi = AGI()
 agi.answer()
 
@@ -85,10 +88,14 @@ clid = agi.env['agi_callerid']
 
 
 q1 = question('wardial/question1', '12')
-session_id = data_insert(clid,'q1',q1)
+session_id = data_insert(db_insert % (clid, 'q1', q1))
 agi.verbose('RECORD #%s INSERTED' % session_id)
 
 q2 = question('wardial/question2', '123')
+
+#"INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')"
+#UPDATE `test`.`wardial` SET `q2` = '2' WHERE `wardial`.`id` = 1; 
+
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
 q5 = question('wardial/question5', '123')
