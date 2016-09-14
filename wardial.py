@@ -65,12 +65,11 @@ def data_insert(text, digit):
     add_wardial = ("INSERT INTO wardial (text, digit) VALUES (%s, %s)")
     data_wardial = (text, digit)                               
  
-    """"
     try:
         mariadb_connection = mariadb.connect(**config)
     except mariadb.Error as error:
         agi.verbose("Error: {}".format(error))
-
+    """
     cursor = mariadb.cursor()
     try:
         cursor.execute(add_wardial, data_wardial)
@@ -80,7 +79,7 @@ def data_insert(text, digit):
 
     cursor.close()
     mariadb_connection.close()
-    """"
+    """
 
 
 agi = AGI()
