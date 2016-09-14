@@ -65,23 +65,17 @@ def data_insert(clid, text, digit):
 
     add_wardial = ("INSERT INTO wardial (text, %s) VALUES (%s, %s)")
     data_wardial = (text, clid, digit)                               
-    agi.verbose(add_wardial % data_wardial)
+    #agi.verbose(add_wardial % data_wardial)
     try:
         mariadb_connection = mariadb.connect(**config)
-    except mariadb.Error as error:
-        agi.verbose("Error: {}".format(error))
-    except:
-        agi.verbose('unknown error')
-    cursor = mariadb_connection.cursor()
-    try:
+        cursor = mariadb_connection.cursor()
         cursor.execute(add_wardial % data_wardial)
+        mariadb_connection.commit()
+        cursor.close()
+        mariadb_connection.close()
     except mariadb.Error as error:
-        agi.verbose("Error: {}".format(error))
-    except:
-        agi.verbose('unknown error')
-    mariadb_connection.commit()
-    cursor.close()
-    mariadb_connection.close()
+        agi.verbose("Error: {0}".format(error))
+    
     agi.verbose('completed')
 
 agi = AGI()
