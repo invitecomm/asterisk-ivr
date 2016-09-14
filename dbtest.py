@@ -67,22 +67,12 @@ def data_insert(clid, text, digit):
     data_wardial = (text, clid, digit)                               
     print(add_wardial % data_wardial)
     try:
-        mariadb_connection = mariadb.connect(**config)
-    except mariadb.Error as error:
-        print("Error: {}".format(error))
-    except:
-        print('unknown error')
-    cursor = mariadb_connection.cursor()
-    try:
-        cursor.execute(add_wardial % data_wardial)
-    except mariadb.Error as error:
-        print("Error: {}".format(error))
-    except:
-        print('unknown error')
-    mariadb_connection.commit()
-    cursor.close()
-    mariadb_connection.close()
-    print('completed')
+        cnx = mysql.connector.connect(user='scott', database='employees')
+        cursor = cnx.cursor()
+        cursor.execute("SELECT * FORM employees")   # Syntax error in query
+        cnx.close()
+    except mysql.connector.Error as err:
+        print("Something went wrong: {}".format(err))
 
 data_insert('this is text','q1','7')
 
