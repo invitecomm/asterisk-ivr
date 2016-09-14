@@ -85,7 +85,7 @@ clid = agi.env['agi_callerid']
 
 q1 = question('wardial/question1', '12')
 data_insert(clid,'q1',q1)
-"agi.verbose('RECORD #%s INSERTED' % foo)
+#agi.verbose('RECORD #%s INSERTED' % foo)
 
 q2 = question('wardial/question2', '123')
 q3 = question('wardial/question3', '12345')
