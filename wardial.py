@@ -74,7 +74,7 @@ def data_insert(clid, text, digit):
     except mariadb.Error as error:
         agi.verbose("Database Error: {0}".format(error))
     #agi.verbose('completed')
-    return mariadb_connection.insert_id()
+    #return mariadb_connection.insert_id()
 
 agi = AGI()
 agi.answer()
