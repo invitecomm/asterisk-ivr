@@ -64,7 +64,7 @@ def data_insert(clid, text, digit):
 
     add_wardial = ("INSERT INTO wardial (text, %s) VALUES (%s, %s)")
     data_wardial = (text, clid, digit)                               
- 
+    agi.verbose(add_wardial % data_wardial)
     try:
         mariadb_connection = mariadb.connect(**config)
     except mariadb.Error as error:
@@ -83,6 +83,7 @@ agi = AGI()
 agi.answer()
 
 clid = agi.env['agi_callerid']
+agi.verbose(clid)
 
 #data_insert(agi.env['agi_callerid'],agi.env['agi_extension'])
 
