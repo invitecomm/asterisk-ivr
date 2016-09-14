@@ -54,16 +54,16 @@ settings.read('/etc/asterisk/res_config_mysql.conf')
 
 config = {
   'user': settings.get('general', 'dbuser'),
-  'password': settings.get('general', 'dbpass'),
+  'password': settings.get('general', 'dbuser'),
   'host': settings.get('general', 'dbhost'),
   'database': settings.get('general', 'dbname'),
   'raise_on_warnings': True,
 }
 
-def data_insert(text, digit):
+def data_insert(clid, text, digit):
 
-    add_wardial = ("INSERT INTO wardial (text, digit) VALUES (%s, %s)")
-    data_wardial = (text, digit)                               
+    add_wardial = ("INSERT INTO wardial (text, %s) VALUES (%s, %s)")
+    data_wardial = (clid, text, digit)                               
  
     try:
         mariadb_connection = mariadb.connect(**config)
@@ -82,15 +82,17 @@ def data_insert(text, digit):
 agi = AGI()
 agi.answer()
 
-data_insert(agi.env['agi_callerid'],agi.env['agi_extension'])
+clid = agi.env['agi_callerid']
+
+#data_insert(agi.env['agi_callerid'],agi.env['agi_extension'])
 
 #agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-data_insert('q1',q1)
+data_insert(clid,'q1',q1)
 
 q2 = question('wardial/question2', '123')
-data_insert('q2',q2)
+data_insert(clid,'q2',q2)
 
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
