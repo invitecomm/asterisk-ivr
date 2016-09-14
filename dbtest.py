@@ -31,6 +31,7 @@ import ConfigParser
 
 from datetime import date, datetime, timedelta
 import mysql.connector
+from mysql.connector.errors import Error
 
 
 def question(file, valid_digits):
