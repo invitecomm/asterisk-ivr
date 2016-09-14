@@ -71,7 +71,7 @@ def data_insert(clid, text, digit):
         agi.verbose("Error: {}".format(error))
     cursor = mariadb_connection.cursor()
     try:
-        cursor.execute(add_wardial, data_wardial)
+        cursor.execute(add_wardial % data_wardial)
     except mariadb.Error as error:
         agi.verbose("Error: {}".format(error))
     mariadb_connection.commit()
