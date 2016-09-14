@@ -46,7 +46,7 @@ def question(file, valid_digits):
     #        agi.hangup()
     #    loop = loop + 1
     #    if loop > 1:
-            agi.hangup()
+    #        agi.hangup()
     
     if regexp.search(res) is not None:
         #agi.verbose('Entry Was %s' % res)
