@@ -61,7 +61,7 @@ config = {
 
 def data_insert(clid, text, digit):
 
-    add_wardial = ("INSERT INTO wardial (text, digit, %s) VALUES ('%s', %s, %s)")
+    add_wardial = ("INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')")
     data_wardial = (text, clid, digit, digit)                               
     agi.verbose(add_wardial % data_wardial)
     try:
@@ -85,7 +85,7 @@ clid = agi.env['agi_callerid']
 
 
 q1 = question('wardial/question1', '12')
-session_id = data_insert(str(clid),'q1',q1)
+session_id = data_insert(clid,'q1',q1)
 agi.verbose('RECORD #%s INSERTED' % session_id)
 
 q2 = question('wardial/question2', '123')
