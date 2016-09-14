@@ -98,8 +98,13 @@ data_insert(db_update % ('q2', q2, session_id))
 #UPDATE `test`.`wardial` SET `q2` = '2' WHERE `wardial`.`id` = 1; 
 
 q3 = question('wardial/question3', '12345')
+data_insert(db_update % ('q3', q3, session_id))
+
 q4 = question('wardial/question4', '123')
+data_insert(db_update % ('q4', q4, session_id))
+
 q5 = question('wardial/question5', '123')
+data_insert(db_update % ('q5', q5, session_id))
 
 agi.stream_file('wardial/goodby')
 agi.hangup()
