@@ -68,7 +68,6 @@ def data_insert(text, digit):
         mariadb_connection = mariadb.connect(**config)
     except mariadb.Error as error:
         agi.verbose("Error: {}".format(error))
-    """
     cursor = mariadb.cursor()
     try:
         cursor.execute(add_wardial, data_wardial)
@@ -77,7 +76,6 @@ def data_insert(text, digit):
     mariadb_connection.commit()
     cursor.close()
     mariadb_connection.close()
-    """
 
 
 
@@ -89,10 +87,10 @@ data_insert(agi.env['agi_callerid'],agi.env['agi_extension'])
 #agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-#data_insert('q1',q1)
+data_insert('q1',q1)
 
 q2 = question('wardial/question2', '123')
-#data_insert('q2',q2)
+data_insert('q2',q2)
 
 q3 = question('wardial/question3', '12345')
 q4 = question('wardial/question4', '123')
