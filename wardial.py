@@ -53,7 +53,8 @@ settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
 
 config = {
-  'user': settings.get('general', 'dbuser'),
+  #'user': settings.get('general', 'dbuser'),
+  'user': 'needfullthings',
   'password': settings.get('general', 'dbpass'),
   'host': settings.get('general', 'dbhost'),
   'database': settings.get('general', 'dbname'),
