@@ -92,7 +92,7 @@ session_id = data_insert(db_insert % ('q1', clid, q1))
 #agi.verbose('RECORD #%s INSERTED' % session_id)
 
 #q2 = question('wardial/question2', '123')
-data_insert(db_update % ('q2', question('wardial/question2', '123'), session_id))
+data_insert((db_update % ('q{0}', question('wardial/question{0}', '123'), session_id)), 2)
 
 q3 = question('wardial/question3', '12345')
 data_insert(db_update % ('q3', q3, session_id))
