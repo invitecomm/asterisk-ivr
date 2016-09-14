@@ -30,7 +30,7 @@ import ConfigParser
 
 
 from datetime import date, datetime, timedelta
-import mysql.connector as mariadb
+import mysql.connector
 
 
 def question(file, valid_digits):
