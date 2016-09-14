@@ -83,7 +83,7 @@ db_update = ("UPDATE `wardial` SET `%s` = '%s' WHERE `id` = '%s'")
 agi = AGI()
 agi.answer()
 
-clid = agi.env['agi_callerid']
+clid = agi.env['agi_accountcode']
 
 agi.stream_file('wardial/greeting')
 
