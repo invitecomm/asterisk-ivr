@@ -86,7 +86,8 @@ agi.answer()
 clid = agi.env['agi_accountcode']
 
 if agi.env['agi_arg_2'] == "MACHINE":
-    agi.close()
+    data_insert(db_insert % ('q1', agi.env['agi_arg_2'], '0'))
+    agi.hangup()
 
 agi.stream_file('wardial/greeting')
 
