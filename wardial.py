@@ -85,7 +85,7 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
-#uniqueid = agi.get_variable['WOMBAT_HOPPER_ID']
+wombat = agi.get_variable['WOMBAT_HOPPER_ID']
 #agi.verbose('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
 #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
 
