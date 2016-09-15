@@ -89,6 +89,8 @@ amdcause = agi.env['AMDCAUSE']
 
 clid = agi.env['agi_accountcode']
 
+agi.verbose('Call Status = %s' % amdstatus)
+
 if amdstatus == "MACHINE":
     data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdcause)))
     agi.hangup()
