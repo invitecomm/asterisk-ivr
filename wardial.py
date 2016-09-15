@@ -28,10 +28,8 @@ from asterisk.agi import *
 import re
 import ConfigParser
 
-
 from datetime import date, datetime, timedelta
 import mysql.connector as mariadb
-
 
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
@@ -47,7 +45,6 @@ def question(file, valid_digits):
     if not res:
         agi.hangup()
 
-
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
 
@@ -59,10 +56,7 @@ config = {
   'raise_on_warnings': True,
 }
 
-def data_insert(query):
-
-    #add_wardial = ("INSERT INTO wardial (text, digit, %s) VALUES ('%s', '%s', '%s')")
-    #data_wardial = (text, clid, digit, digit)                               
+def data_insert(query):                           
     agi.verbose(query)
     try:
         mariadb_connection = mariadb.connect(**config)
@@ -74,7 +68,6 @@ def data_insert(query):
         mariadb_connection.close()
     except mariadb.Error as error:
         agi.verbose("Database Error: {0}".format(error))
-    #agi.verbose('completed')
     return record
 
 db_insert = ("INSERT INTO `wardial` (`clid`, `%s`) VALUES ('%s', '%s')")
@@ -86,30 +79,21 @@ agi.answer()
 clid = agi.env['agi_accountcode']
 
 wombat = agi.get_variable('WOMBAT_HOPPER_ID')
-#agi.verbose('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
-#agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
 
 amdstatus = agi.env['agi_arg_2']
 amdreason = agi.env['agi_arg_3']
 
 if amdstatus == "MACHINE":
-    #wombat = agi.appexec('DumpChan')
-    #agi.verbose('Wombat ID: %s' % wombat)
-    #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % wombat)
     agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
     data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
     agi.hangup()
 
 session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
 
-
-
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
 data_insert(db_update % ('q1', q1, session_id))
-#agi.verbose('RECORD #%s INSERTED' % session_id)
-#agi.verbose('this {0} that {1} and this {0} again'.format('a','b'))
 
 q2 = question('wardial/question2', '123')
 data_insert(db_update % ('q2', q2, session_id))
