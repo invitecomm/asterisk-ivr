@@ -86,7 +86,6 @@ agi.answer()
 clid = agi.env['agi_accountcode']
 
 if agi.env['agi_arg_2'] == "MACHINE":
-    #WaitForSilence(500,2)
     agi.close()
 
 agi.stream_file('wardial/greeting')
