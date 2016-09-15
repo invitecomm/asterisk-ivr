@@ -91,7 +91,7 @@ if agi.env['agi_arg_2'] == "MACHINE":
 
 session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
 
-wombat = agi.exec_command('DumpChan')
+wombat = agi.appexec('DumpChan')
 agi.verbose('Wombat ID: %s' % wombat)
 
 agi.stream_file('wardial/greeting')
