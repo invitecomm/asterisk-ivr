@@ -96,7 +96,9 @@ if amdstatus == "MACHINE":
     data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
     agi.hangup()
 
-session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
+session_id = data_insert(
+    db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason))
+)
 
 #wombat = agi.appexec('DumpChan')
 #agi.verbose('Wombat ID: %s' % wombat)
