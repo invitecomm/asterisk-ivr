@@ -89,12 +89,14 @@ if agi.env['agi_arg_2'] == "MACHINE":
     data_insert(db_insert % ('note', clid, agi.env['agi_arg_2']))
     agi.hangup()
 
+session_id = data_insert(db_insert % ('note', clid, '%s %s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
+
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-session_id = data_insert(db_insert % ('q1', clid, q1))
+data_insert(db_update % ('q1', q1, session_id))
 #agi.verbose('RECORD #%s INSERTED' % session_id)
-agi.verbose('this {0} that {1} and this {0} again'.format('a','b'))
+#agi.verbose('this {0} that {1} and this {0} again'.format('a','b'))
 
 q2 = question('wardial/question2', '123')
 data_insert(db_update % ('q2', q2, session_id))
