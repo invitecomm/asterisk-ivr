@@ -85,7 +85,7 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
-uniqueid = agi.get_variable['WOMBAT_HOPPER_ID']
+#uniqueid = agi.get_variable['WOMBAT_HOPPER_ID']
 #agi.verbose('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
 #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
 
@@ -93,7 +93,7 @@ amdstatus = agi.env['agi_arg_2']
 amdreason = agi.env['agi_arg_3']
 
 if amdstatus == "MACHINE":
-    agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
+    #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
     data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
     agi.hangup()
 
