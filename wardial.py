@@ -82,8 +82,8 @@ db_update = ("UPDATE `wardial` SET `%s` = '%s' WHERE `id` = '%s'")
 
 agi = AGI()
 agi.answer()
-agi.appexec('AMD')
-
+foo = agi.appexec('AMD')
+agi.verbose(foo)
 amdstatus = agi.env['AMDSTATUS']
 amdcause = agi.env['AMDCAUSE']
 
