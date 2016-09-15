@@ -82,20 +82,15 @@ db_update = ("UPDATE `wardial` SET `%s` = '%s' WHERE `id` = '%s'")
 
 agi = AGI()
 agi.answer()
-foo = agi.appexec('AMD')
-amdstatus = agi.env['AMDSTATUS']
-agi.verbose(amdstatus)
-amdcause = agi.env['AMDCAUSE']
+
 
 clid = agi.env['agi_accountcode']
 
-agi.verbose('Call Status = %s' % amdstatus)
-
-if amdstatus == "MACHINE":
-    data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdcause)))
+if agi.env['agi_arg_2'] == "MACHINE":
+    data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
     agi.hangup()
 
-session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdcause)))
+session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
 
 wombat = agi.appexec('DumpChan')
 agi.verbose('Wombat ID: %s' % wombat)
