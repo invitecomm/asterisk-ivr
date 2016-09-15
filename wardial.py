@@ -84,13 +84,16 @@ agi = AGI()
 agi.answer()
 agi.appexec('AMD')
 
+amdstatus = agi.env['AMDSTATUS']
+amdcause = agi.env['AMDCAUSE']
+
 clid = agi.env['agi_accountcode']
 
-if agi.env['agi_arg_2'] == "MACHINE":
-    data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
+if amdstatus == "MACHINE":
+    data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdcause)))
     agi.hangup()
 
-session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
+session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdcause)))
 
 wombat = agi.appexec('DumpChan')
 agi.verbose('Wombat ID: %s' % wombat)
