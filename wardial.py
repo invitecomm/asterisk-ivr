@@ -85,7 +85,7 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
-#wombat = agi.get_variable('PHONE_EXTEN')
+wombat = agi.get_variable('WOMBAT_HOPPER_ID')
 #agi.verbose('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
 #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
 
@@ -93,7 +93,7 @@ amdstatus = agi.env['agi_arg_2']
 amdreason = agi.env['agi_arg_3']
 
 if amdstatus == "MACHINE":
-    wombat = agi.appexec('DumpChan')
+    #wombat = agi.appexec('DumpChan')
     agi.verbose('Wombat ID: %s' % wombat)
     #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % uniqueid)
     data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
