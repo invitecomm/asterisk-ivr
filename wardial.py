@@ -86,6 +86,9 @@ agi.answer()
 clid = agi.env['agi_accountcode']
 
 if agi.env['agi_arg_2'] == "MACHINE":
+    #WaitForSilence(500,2)
+    agi.exec_command('WaitForSilence', '500', '2')
+    agi.stream_file('tt-allbusy')
     agi.hangup()
 
 agi.stream_file('wardial/greeting')
