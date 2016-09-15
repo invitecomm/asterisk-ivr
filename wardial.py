@@ -86,10 +86,10 @@ agi.answer()
 clid = agi.env['agi_accountcode']
 
 if agi.env['agi_arg_2'] == "MACHINE":
-    data_insert(db_insert % ('note', clid, agi.env['agi_arg_2']))
+    data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
     agi.hangup()
 
-session_id = data_insert(db_insert % ('note', clid, '%s %s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
+session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
 
 agi.stream_file('wardial/greeting')
 
