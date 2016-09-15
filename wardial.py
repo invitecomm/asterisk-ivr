@@ -96,7 +96,7 @@ if amdstatus == "MACHINE":
     #wombat = agi.appexec('DumpChan')
     #agi.verbose('Wombat ID: %s' % wombat)
     #agi.appexec('UserEvent', 'ATTRIBUTE, UniqueID:%s,Status:Machine' % wombat)
-    agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:RS_NOANSWER' % wombat)
+    agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
     data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
     agi.hangup()
 
