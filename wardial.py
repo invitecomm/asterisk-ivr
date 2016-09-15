@@ -87,7 +87,7 @@ clid = agi.env['agi_accountcode']
 
 uniqueid = agi.env['agi_uniqueid']
 #agi.verbose('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
-agi.appexec('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
+#agi.appexec('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
 
 if agi.env['agi_arg_2'] == "MACHINE":
     data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
