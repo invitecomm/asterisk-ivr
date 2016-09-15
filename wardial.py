@@ -85,18 +85,21 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
-uniqueid = agi.env['agi_uniqueid']
+#uniqueid = agi.env['agi_uniqueid']
 #agi.verbose('UserEvent','name','UniqueID:%s','P0:0' % uniqueid)
-agi.appexec('UserEvent', 'Attributes, UniqueID:%s,P0:0' % uniqueid)
+#agi.appexec('UserEvent', 'Attributes, UniqueID:%s,P0:0' % uniqueid)
 
-if agi.env['agi_arg_2'] == "MACHINE":
-    data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
+amdstatus = agi.env['agi_arg_2']
+amdreason = agi.env['agi_arg_3']
+
+if amdstatus == "MACHINE":
+    data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
     agi.hangup()
 
-session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (agi.env['agi_arg_2'], agi.env['agi_arg_3'])))
+session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
 
 #wombat = agi.appexec('DumpChan')
-agi.verbose('Wombat ID: %s' % wombat)
+#agi.verbose('Wombat ID: %s' % wombat)
 
 agi.stream_file('wardial/greeting')
 
