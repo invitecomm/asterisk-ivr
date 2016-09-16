@@ -19,7 +19,7 @@ Currently my work area.  Doesn't do much right now.
 │   |   ├── settings.conf
 │   |   └── simple.py
 │   ├── README.md
-│   └── STUFF THAT **MAY** NOT WORK
+│   └── stuff that MAY or MAY NOT work for you.
 |
 ├── README.md
 ├── LICENSE.txt
