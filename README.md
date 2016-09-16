@@ -12,15 +12,14 @@ Currently my work area.  Doesn't do much right now.
 ├── ivr
 │   ├── __init__.py			
 │   ├── ivr.py
-│   ├── test.py
-│   └── reseller001
+│   └── test.py
 │
 ├── pigeonhole | FOR TESTING STUFF
 │   ├── test - Testing Settings Files
 │   |   ├── settings.conf
 │   |   └── simple.py
-│	├── README.md
-│	└── and other stuff
+│   ├── README.md
+│   └── and other stuff
 |
 ├── README.md
 ├── LICENSE.txt
