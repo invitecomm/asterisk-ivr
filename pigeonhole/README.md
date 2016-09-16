@@ -1,6 +1,6 @@
-# asterisk-ivr
+# The Pigeonhole
 
-**The Pigeonhole is my work area** 
+**My work area, where varios things are stashed** 
 
 ## wardial.py
 
