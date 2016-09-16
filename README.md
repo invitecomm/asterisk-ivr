@@ -14,12 +14,12 @@ Currently my work area.  Doesn't do much right now.
 │   ├── ivr.py
 │   └── test.py
 │
-├── pigeonhole | FOR TESTING STUFF
+├── pigeonhole | WHERE IS STASH STUFF FOR TESTING
 │   ├── test - Testing Settings Files
 │   |   ├── settings.conf
 │   |   └── simple.py
 │   ├── README.md
-│   └── and other stuff
+│   └── STUFF THAT **MAY** NOT WORK
 |
 ├── README.md
 ├── LICENSE.txt
