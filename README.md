@@ -14,7 +14,7 @@ Currently my work area.  Doesn't do much right now.
 │   ├── ivr.py
 │   └── test.py
 │
-├── pigeonhole | WHERE IS STASH STUFF FOR TESTING
+├── pigeonhole | WHERE I STASH STUFF FOR TESTING
 │   ├── test - Testing Settings Files
 │   |   ├── settings.conf
 │   |   └── simple.py
