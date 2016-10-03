@@ -1,4 +1,5 @@
-[![PyPI version](https://badge.fury.io/py/ivr.svg)](https://badge.fury.io/py/ivr)
+[![PyPI version](https://img.shields.io/badge/Development Status-Alpha-f6772f.svg)](https://www.invite-comm.jp)  [![PyPI version](https://badge.fury.io/py/ivr.svg)](https://badge.fury.io/py/ivr)  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
 
 My first PyPI version.  Testing dependencies and working on the structure.
 
@@ -14,7 +15,7 @@ Currently my work area.  Doesn't do much right now.
 │   ├── ivr.py
 │   └── test.py
 │
-├── pigeonhole | WHERE IS STASH STUFF FOR TESTING
+├── pigeonhole | WHERE I STASH STUFF FOR TESTING
 │   ├── test - Testing Settings Files
 │   |   ├── settings.conf
 │   |   └── simple.py
