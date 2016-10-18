@@ -103,19 +103,19 @@ data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-data_insert(db_update % ('reply', q1, warlist))
+data_insert(db_update % ('q1', q1, warlist))
 
 q2 = question('wardial/question2', '123')
-data_insert(db_update % ('回答2'.encode('utf8', 'replace'), q2, warlist))
+data_insert(db_update % ('q2', q2, warlist))
 
 q3 = question('wardial/question3', '12345')
-data_insert(db_update % ('回答3', q3, warlist))
+data_insert(db_update % ('q3', q3, warlist))
 
 q4 = question('wardial/question4', '123')
-data_insert(db_update % ('回答4', q4, warlist))
+data_insert(db_update % ('q4', q4, warlist))
 
 q5 = question('wardial/question5', '123')
-data_insert(db_update % ('回答5', q5, warlist))
+data_insert(db_update % ('q5', q5, warlist))
 
 agi.stream_file('wardial/goodby')
 agi.hangup()
