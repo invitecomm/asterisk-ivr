@@ -98,7 +98,7 @@ if amdstatus == "MACHINE":
     data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
     agi.hangup()
 
-session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
+data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
 
 agi.stream_file('wardial/greeting')
 
