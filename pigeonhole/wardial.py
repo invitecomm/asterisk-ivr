@@ -106,7 +106,7 @@ q1 = question('wardial/question1', '12')
 data_insert(db_update % ('reply', q1, warlist))
 
 q2 = question('wardial/question2', '123')
-data_insert(db_update % ('回答2', q2, warlist))
+data_insert(db_update % ('`回答2`', q2, warlist))
 
 q3 = question('wardial/question3', '12345')
 data_insert(db_update % ('回答3', q3, warlist))
