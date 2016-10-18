@@ -86,6 +86,9 @@ clid = agi.env['agi_accountcode']
 #SIPCALLID=1583cd9c69daeca70f5a91477e22f3b7@172.17.70.223:5060
 
 wombat = agi.get_variable('WOMBAT_HOPPER_ID')
+warlist = agi.get_variable('warlist')
+
+agi.verbose("Database Record: {0}".format(warlist))
 
 amdstatus = agi.env['agi_arg_2']
 amdreason = agi.env['agi_arg_3']
