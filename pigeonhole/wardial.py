@@ -118,5 +118,12 @@ q5 = question('wardial/question5', '123')
 data_insert(db_update % ('q5', q5, warlist))
 
 agi.stream_file('wardial/goodby')
+
 agi.hangup()
+
+calltime = agi.get_variable('ANSWEREDTIME')
+data_insert(db_update % ('reply', calltime, warlist))
+
+
+
 
