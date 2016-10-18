@@ -103,7 +103,7 @@ data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
 agi.stream_file('wardial/greeting')
 
 q1 = question('wardial/question1', '12')
-data_insert(db_update % ('回答1', q1, warlist))
+data_insert(db_update % ('reply', q1, warlist))
 
 q2 = question('wardial/question2', '123')
 data_insert(db_update % ('回答2', q2, warlist))
