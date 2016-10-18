@@ -70,8 +70,8 @@ def data_insert(query):
         agi.verbose("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `wardial` (`clid`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `wardial` SET `%s` = '%s' WHERE `id` = '%s'")
+db_insert = ("INSERT INTO `warlist` (`clid`, `%s`) VALUES ('%s', '%s')")
+db_update = ("UPDATE `warlist` SET `%s` = '%s' WHERE `id` = '%s'")
 
 agi = AGI()
 agi.answer()
@@ -95,7 +95,7 @@ amdreason = agi.env['agi_arg_3']
 
 if amdstatus == "MACHINE":
     agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
-    data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
+    data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
     agi.hangup()
 
 session_id = data_insert(db_insert % ('note', clid, '%s:%s' % (amdstatus, amdreason)))
