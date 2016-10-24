@@ -89,7 +89,7 @@ wombat = agi.get_variable('WOMBAT_HOPPER_ID')
 warlist = agi.get_variable('warlist')
 
 agi.verbose("Database Record: {0}".format(warlist))
-data_insert(db_update % ('timestamp', 'now()', warlist))
+## -broken- data_insert(db_update % ('timestamp', 'now()', warlist))
 
 
 amdstatus = agi.env['agi_arg_2']
