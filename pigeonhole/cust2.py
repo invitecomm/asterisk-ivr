@@ -100,7 +100,7 @@ if amdstatus == "MACHINE":
 
 data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
 
-agi.stream_file('wardial/start')
+agi.stream_file('wardial/cust2-start')
 
 q1 = question('wardial/cust2-q1', '12')
 data_insert(db_update % ('q1', q1, warlist))
@@ -120,7 +120,7 @@ if q1 != 1:
         q5 = question('wardial/cust2-q5', '123')
         data_insert(db_update % ('q5', q5, warlist))
 
-agi.stream_file('wardial/end')
+agi.stream_file('wardial/cust2-end')
 
 agi.hangup()
 
