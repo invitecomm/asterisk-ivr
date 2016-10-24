@@ -105,12 +105,12 @@ agi.stream_file('wardial/cust2-start')
 q1 = question('wardial/cust2-q1', '12')
 data_insert(db_update % ('q1', q1, warlist))
 
-if not q1 == '1':
+if q1 == '2':
 
     q2 = question('wardial/cust2-q2', '12')
     data_insert(db_update % ('q2', q2, warlist))
 
-    if not q2 == '2':
+    if q2 == '1':
         q3 = question('wardial/cust2-q3', '12')
         data_insert(db_update % ('q3', q3, warlist))
 
