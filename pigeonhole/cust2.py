@@ -100,24 +100,27 @@ if amdstatus == "MACHINE":
 
 data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
 
-agi.stream_file('wardial/greeting')
+agi.stream_file('wardial/start')
 
-q1 = question('wardial/question1', '12')
+q1 = question('wardial/cust2-q1', '12')
 data_insert(db_update % ('q1', q1, warlist))
 
-q2 = question('wardial/question2', '123')
-data_insert(db_update % ('q2', q2, warlist))
+if q1 != 1:
 
-q3 = question('wardial/question3', '12345')
-data_insert(db_update % ('q3', q3, warlist))
+    q2 = question('wardial/cust2-q2', '12')
+    data_insert(db_update % ('q2', q2, warlist))
 
-q4 = question('wardial/question4', '123')
-data_insert(db_update % ('q4', q4, warlist))
+    if q2 != 2:
+        q3 = question('wardial/cust2-q3', '12')
+        data_insert(db_update % ('q3', q3, warlist))
 
-q5 = question('wardial/question5', '123')
-data_insert(db_update % ('q5', q5, warlist))
+        q4 = question('wardial/cust2-q4', '12')
+        data_insert(db_update % ('q4', q4, warlist))
 
-agi.stream_file('wardial/goodby')
+        q5 = question('wardial/cust2-q5', '123')
+        data_insert(db_update % ('q5', q5, warlist))
+
+agi.stream_file('wardial/end')
 
 agi.hangup()
 
