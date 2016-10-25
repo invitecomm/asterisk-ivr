@@ -58,7 +58,8 @@ def data_select(query):
     try:
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
-        results = cursor.execute(query)
+        cursor.execute(query)
+        results = cursor.fetchall()
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
