@@ -63,7 +63,9 @@ def data_select(query):
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor(dictionary=True)
         cursor.execute(query)
-        x = dict((row.dtmf, row.dtmf_next) for row in cursor)        
+        x = {}
+        for row in cursor:
+            x[row.dtmf] = row.dtmf_next        
         #results = cursor.fetchall()
         #record = cursor.lastrowid
         #mariadb_connection.commit()
