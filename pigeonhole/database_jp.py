@@ -28,9 +28,6 @@ import re
 import ConfigParser
 import pprint
 
-import base64
-import json
-import os
 
 from datetime import date, datetime, timedelta
 import mysql.connector as mariadb
@@ -90,8 +87,9 @@ string.decode('UTF-8')
 
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(string)
-#for x in string:
-#    print(x.encode('utf8', 'replace'))
+
+for x in string:
+    print(x['name'].encode('utf8', 'replace'))
 
 
 
