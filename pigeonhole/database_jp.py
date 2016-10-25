@@ -52,7 +52,7 @@ def data_insert(query):
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
-        agi.verbose("Database Error: {0}".format(error))
+        print("Database Error: {0}".format(error))
     return record
 
 db_insert = ("INSERT INTO `test.name` (`did`, `name`) VALUES ('0368671137', 'brian')")
