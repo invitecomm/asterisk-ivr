@@ -64,11 +64,6 @@ def data_select(query):
         cursor = mariadb_connection.cursor(dictionary=True)
         cursor.execute(query)
         results = cursor.fetchall()
-        #x = {}
-        #for (dtmf, dtmf_next) in results:
-        #    x[dtmf] = dtmf_next        
-        #record = cursor.lastrowid
-        #mariadb_connection.commit()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
@@ -90,6 +85,7 @@ string =  data_select(db_query)
 
 ##string.decode('UTF-8')
 
+# Create Dictionary and string of digits
 x = {}
 digits = ''
 for val in string:
