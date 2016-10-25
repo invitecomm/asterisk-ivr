@@ -74,8 +74,8 @@ def data_select(query):
 
 #db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
-db_insert = ("INSERT INTO `name` (`did`, `name`, `%s`) VALUES ('%s', '%s', '%s')")
-data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
+#db_insert = ("INSERT INTO `name` (`did`, `name`, `%s`) VALUES ('%s', '%s', '%s')")
+#data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
 
 #db_query = ("SELECT * FROM `name`")
 
