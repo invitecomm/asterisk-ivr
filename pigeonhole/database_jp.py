@@ -65,7 +65,7 @@ def data_select(query):
         cursor.execute(query)
         results = cursor.fetchall()
         x = {}
-        for (dtmf, dtmf_next) in cursor:
+        for (dtmf, dtmf_next) in results:
             x[dtmf] = dtmf_next        
         #record = cursor.lastrowid
         #mariadb_connection.commit()
