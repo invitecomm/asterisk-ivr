@@ -26,6 +26,7 @@ from __future__ import print_function
 #from asterisk.agi import *
 import re
 import ConfigParser
+import pprint
 
 from datetime import date, datetime, timedelta
 import mysql.connector as mariadb
@@ -75,12 +76,16 @@ data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
 
 db_query = ("SELECT * FROM `name`")
 
+#SELECT dtmf, dtmf_next FROM `survey_questions_dtmf` WHERE question = 'proj00000520' 
+
 
 string =  data_select(db_query)
 #res = string.encode('utf8', 'replace')
 
-for x in string:
-    print(x.encode('utf8', 'replace'))
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(string)
+#for x in string:
+#    print(x.encode('utf8', 'replace'))
 
 
 
