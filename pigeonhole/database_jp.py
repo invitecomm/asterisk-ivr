@@ -39,9 +39,11 @@ config = {
   'user': settings.get('general', 'dbuser'),
   'password': settings.get('general', 'dbpass'),
   'host': settings.get('general', 'dbhost'),
-  'database': settings.get('general', 'dbname'),
+  'database': 'kaos_portal_live',
   'raise_on_warnings': True,
 }
+
+#settings.get('general', 'dbname'),
 
 def data_insert(query):                           
     try:
@@ -75,9 +77,9 @@ def data_select(query):
 db_insert = ("INSERT INTO `name` (`did`, `name`, `%s`) VALUES ('%s', '%s', '%s')")
 data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
 
-db_query = ("SELECT * FROM `name`")
+#db_query = ("SELECT * FROM `name`")
 
-#SELECT dtmf, dtmf_next FROM `survey_questions_dtmf` WHERE question = 'proj00000520' 
+db_query = ("SELECT dtmf, dtmf_next FROM `survey_questions_dtmf` WHERE question = 'proj00000520'")
 
 
 string =  data_select(db_query)
