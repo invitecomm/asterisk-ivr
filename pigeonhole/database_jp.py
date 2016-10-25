@@ -77,10 +77,10 @@ db_query = ("SELECT * FROM `name`")
 
 
 string =  data_select(db_query)
-res = string.encode('utf8', 'replace')
+#res = string.encode('utf8', 'replace')
 
 for x in string:
-    print(x)
+    print(x.encode('utf8', 'replace'))
 
 
 
