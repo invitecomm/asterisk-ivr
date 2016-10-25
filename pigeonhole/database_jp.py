@@ -76,7 +76,7 @@ db_query = ("SELECT * FROM `name`")
 
 foo = data_select(db_query)
 
-for keys,values in foo:
+for keys,values in foo.items():
     print(keys)
     print(values)
 
