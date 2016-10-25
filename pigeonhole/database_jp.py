@@ -91,15 +91,17 @@ string =  data_select(db_query)
 ##string.decode('UTF-8')
 
 x = {}
+digits = ''
 for val in string:
     x[val['dtmf'].encode('utf8', 'replace')] = val['dtmf_next'].encode('utf8', 'replace')
+    digits += val['dtmf'
 #    print(x[2].encode('utf8', 'replace'))
 
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(x)
 
 print(x['3'])
-print(x.get('3'))
+print(digits)
 
 #data_insert(db_insert)
 
