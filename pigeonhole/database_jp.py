@@ -26,6 +26,9 @@ from __future__ import print_function
 #from asterisk.agi import *
 import re
 import ConfigParser
+import sys
+sys.setdefaultencoding("utf-8")
+
 
 from datetime import date, datetime, timedelta
 import mysql.connector as mariadb
