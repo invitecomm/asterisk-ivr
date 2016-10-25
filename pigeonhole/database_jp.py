@@ -83,7 +83,7 @@ db_query = ("SELECT * FROM `name`")
 string =  data_select(db_query)
 #res = string.encode('utf8', 'replace')
 
-string.decode('UTF-8')
+##string.decode('UTF-8')
 
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(string)
