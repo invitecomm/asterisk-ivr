@@ -55,9 +55,13 @@ def data_insert(query):
         print("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
+#db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
-data_insert(db_insert)
+db_insert = ("INSERT INTO `name` (`clid`, `name`, `%s`) VALUES ('%s', '%s', '%s')")
+data_insert(db_insert % ('番号', 9, 8, 7))
+
+
+#data_insert(db_insert)
 
 
 
