@@ -79,7 +79,7 @@ def data_select(query):
 
 #db_query = ("SELECT * FROM `name`")
 
-db_query = ("SELECT dtmf, dtmf_next FROM `survey_questions_dtmf` WHERE question = 'proj00000520'")
+db_query = ("SELECT dtmf_next AS dtmf FROM `survey_questions_dtmf` WHERE question = 'proj00000520'")
 
 
 string =  data_select(db_query)
@@ -90,8 +90,8 @@ string =  data_select(db_query)
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(string)
 
-for x in string:
-    print(x[2].encode('utf8', 'replace'))
+#for x in string:
+#    print(x[2].encode('utf8', 'replace'))
 
 
 
