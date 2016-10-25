@@ -63,14 +63,15 @@ def data_select(query):
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor(dictionary=True)
         cursor.execute(query)
-        results = cursor.fetchall()
+        x = { row.dtmf : row.dtmf_next for row in cursor }
+        #results = cursor.fetchall()
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
         print("Database Error: {0}".format(error))
-    return results
+    return x
 
 #db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
@@ -90,8 +91,8 @@ string =  data_select(db_query)
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(string)
 
-#for x in string:
-#    print(x[2].encode('utf8', 'replace'))
+for x in string:
+    print(x[2].encode('utf8', 'replace'))
 
 
 
