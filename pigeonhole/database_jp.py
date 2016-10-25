@@ -63,10 +63,10 @@ def data_select(query):
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor(dictionary=True)
         cursor.execute(query)
+        results = cursor.fetchall()
         x = {}
-        for row in cursor:
+        for row in results:
             x[row[0]] = row[1]        
-        #results = cursor.fetchall()
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
