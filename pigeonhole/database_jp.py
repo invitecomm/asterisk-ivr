@@ -64,16 +64,16 @@ def data_select(query):
         cursor = mariadb_connection.cursor(dictionary=True)
         cursor.execute(query)
         results = cursor.fetchall()
-        x = {}
-        for (dtmf, dtmf_next) in results:
-            x[dtmf] = dtmf_next        
+        #x = {}
+        #for (dtmf, dtmf_next) in results:
+        #    x[dtmf] = dtmf_next        
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
         print("Database Error: {0}".format(error))
-    return x
+    return results
 
 #db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
