@@ -55,7 +55,7 @@ def data_insert(query):
         print("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `test.name` (`did`, `name`) VALUES ('0368671137', 'brian')")
+db_insert = ("INSERT INTO `name` (`did`, `name`) VALUES ('0368671137', 'brian')")
 
 print data_insert(db_insert)
 
