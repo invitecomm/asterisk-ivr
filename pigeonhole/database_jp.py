@@ -59,6 +59,8 @@ def data_select(query):
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
         cursor.execute(query)
+        for did in cursor:
+            print(did)
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
@@ -74,10 +76,9 @@ data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
 
 db_query = ("SELECT * FROM `name`")
 
-foo = data_select(db_query)
+data_select(db_query)
 
-for x in foo:
-    print(x)
+
 
 #data_insert(db_insert)
 
