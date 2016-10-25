@@ -54,11 +54,31 @@ def data_insert(query):
         print("Database Error: {0}".format(error))
     return record
 
+def data_select(query):                           
+    try:
+        mariadb_connection = mariadb.connect(**config)
+        cursor = mariadb_connection.cursor()
+        cursor.execute(query)
+        #record = cursor.lastrowid
+        #mariadb_connection.commit()
+        cursor.close()
+        mariadb_connection.close()
+    except mariadb.Error as error:
+        print("Database Error: {0}".format(error))
+    return cursor
+
 #db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
 db_insert = ("INSERT INTO `name` (`did`, `name`, `%s`) VALUES ('%s', '%s', '%s')")
 data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
 
+db_query = ("SELECT * FROM `name`")
+
+foo = data_select(db_query)
+
+for keys,values in foo:
+    print(keys)
+    print(values)
 
 #data_insert(db_insert)
 
