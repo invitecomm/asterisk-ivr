@@ -18,8 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-"""AGI script that renders speech to text using Google Cloud Speech API
- using the REST API."""
+"""Touble with Japanese in the DB.  Testing for a solution."""
 
 # [START import_libraries]
 from __future__ import print_function
