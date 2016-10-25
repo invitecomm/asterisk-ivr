@@ -59,10 +59,9 @@ def data_insert(query):
 def data_select(query):                           
     try:
         mariadb_connection = mariadb.connect(**config)
-        cursor = mariadb_connection.cursor()
+        cursor = mariadb_connection.cursor(dictionary=True)
         cursor.execute(query)
         results = cursor.fetchall()
-        dict_cursor = cursor(cursors.DictCursor)
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
