@@ -94,7 +94,7 @@ x = {}
 digits = ''
 for val in string:
     x[val['dtmf'].encode('utf8', 'replace')] = val['dtmf_next'].encode('utf8', 'replace')
-    digits += val['dtmf'
+    digits += val['dtmf']
 #    print(x[2].encode('utf8', 'replace'))
 
 pp = pprint.PrettyPrinter(indent=4)
