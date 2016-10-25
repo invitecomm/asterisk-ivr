@@ -92,7 +92,7 @@ string =  data_select(db_query)
 
 x = {}
 for val in string:
-    x[val['dtmf']] = val['dtmf_next']
+    x[val['dtmf'].encode('utf8', 'replace')] = val['dtmf_next'].encode('utf8', 'replace')
 #    print(x[2].encode('utf8', 'replace'))
 
 pp = pprint.PrettyPrinter(indent=4)
