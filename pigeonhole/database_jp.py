@@ -68,7 +68,7 @@ def data_select(query):
         mariadb_connection.close()
     except mariadb.Error as error:
         print("Database Error: {0}".format(error))
-    return dict_cursor
+    return results
 
 #db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
