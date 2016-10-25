@@ -62,13 +62,14 @@ def data_select(query):
         cursor = mariadb_connection.cursor()
         cursor.execute(query)
         results = cursor.fetchall()
+        dict_cursor = cursor(MySQLdb.cursors.DictCursor)
         #record = cursor.lastrowid
         #mariadb_connection.commit()
         cursor.close()
         mariadb_connection.close()
     except mariadb.Error as error:
         print("Database Error: {0}".format(error))
-    return results
+    return dict_cursor
 
 #db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
 
