@@ -24,26 +24,12 @@
 # [START import_libraries]
 from __future__ import print_function
 
-from asterisk.agi import *
+#from asterisk.agi import *
 import re
 import ConfigParser
 
 from datetime import date, datetime, timedelta
 import mysql.connector as mariadb
-
-def question(file, valid_digits):
-    regexp = re.compile(r'[' + valid_digits + ']')
-    
-    res = agi.get_data(file, 20000, 1)
-    if regexp.search(res) is not None:
-        return res
-
-    res = agi.get_data(file, 20000, 1)    
-    if regexp.search(res) is not None:
-        return res
-        
-    if not res:
-        agi.hangup()
 
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
@@ -57,7 +43,6 @@ config = {
 }
 
 def data_insert(query):                           
-    agi.verbose(query)
     try:
         mariadb_connection = mariadb.connect(**config)
         cursor = mariadb_connection.cursor()
@@ -70,64 +55,11 @@ def data_insert(query):
         agi.verbose("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `warlist` (`clid`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `warlist` SET `%s` = '%s' WHERE `id` = '%s'")
+db_insert = ("INSERT INTO `test.name` (`did`, `name`) VALUES ('0368671137', 'brian')")
 
-agi = AGI()
-agi.answer()
-
-clid = agi.env['agi_accountcode']
-
-# Asterisk Dial-plan Application 'DumpChan()'
-#Variables:
-#WOMBAT_HOPPER_ID=2145573608
-#warlist=38418
-#NUM=
-#SIPCALLID=1583cd9c69daeca70f5a91477e22f3b7@172.17.70.223:5060
-
-wombat = agi.get_variable('WOMBAT_HOPPER_ID')
-warlist = agi.get_variable('warlist')
-
-agi.verbose("Database Record: {0}".format(warlist))
-## -broken- data_insert(db_update % ('timestamp', 'now()', warlist))
+data_insert(db_insert)
 
 
-amdstatus = agi.env['agi_arg_2']
-amdreason = agi.env['agi_arg_3']
-
-if amdstatus == "MACHINE":
-    agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
-    data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
-    agi.hangup()
-
-data_insert(db_update % ('note', '%s:%s' % (amdstatus, amdreason), warlist))
-
-agi.stream_file('wardial/cust2-start')
-
-q1 = question('wardial/cust2-q1', '12')
-data_insert(db_update % ('q1', q1, warlist))
-
-if q1 == '2':
-
-    q2 = question('wardial/cust2-q2', '12')
-    data_insert(db_update % ('q2', q2, warlist))
-
-    if q2 == '1':
-        q3 = question('wardial/cust2-q3', '12')
-        data_insert(db_update % ('q3', q3, warlist))
-
-        q4 = question('wardial/cust2-q4', '12')
-        data_insert(db_update % ('q4', q4, warlist))
-
-        q5 = question('wardial/cust2-q5', '123')
-        data_insert(db_update % ('q5', q5, warlist))
-
-agi.stream_file('wardial/cust2-end')
-
-agi.hangup()
-
-# calltime = agi.get_variable('ANSWEREDTIME')
-# data_insert(db_update % ('reply', calltime, warlist))
 
 
 
