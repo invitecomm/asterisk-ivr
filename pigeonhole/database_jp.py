@@ -55,7 +55,7 @@ def data_insert(query):
         print("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `name` (`番号`, `name`) VALUES ('5', '日本語')")
+db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '5', '日本語')")
 
 x = data_insert(db_insert)
 
