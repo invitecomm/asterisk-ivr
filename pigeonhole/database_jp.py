@@ -98,6 +98,8 @@ for val in string:
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(x)
 
+print x[3]
+
 #data_insert(db_insert)
 
 
