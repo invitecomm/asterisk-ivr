@@ -57,7 +57,7 @@ def data_insert(query):
 
 db_insert = ("INSERT INTO `test.name` (`did`, `name`) VALUES ('0368671137', 'brian')")
 
-data_insert(db_insert)
+print data_insert(db_insert)
 
 
 
