@@ -74,9 +74,9 @@ data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
 
 db_query = ("SELECT * FROM `name`")
 
-foo = data_select(db_query)
 
-for x in foo:
+
+for x in data_select(db_query):
     print(x)
 
 
