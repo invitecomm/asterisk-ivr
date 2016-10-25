@@ -93,8 +93,8 @@ string =  data_select(db_query)
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(string)
 
-for x in string:
-    print(x[2].encode('utf8', 'replace'))
+#for x in string:
+#    print(x[2].encode('utf8', 'replace'))
 
 
 
