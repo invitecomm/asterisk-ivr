@@ -59,9 +59,6 @@ db_insert = ("INSERT INTO `name` (`did`, `name`) VALUES ('0368671137', 'brian')"
 
 x = data_insert(db_insert)
 
-print x
-
-
 
 
 
