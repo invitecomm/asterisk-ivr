@@ -89,7 +89,7 @@ pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(string)
 
 for x in string:
-    print(x['name'].encode('utf8', 'replace'))
+    print(x[2].encode('utf8', 'replace'))
 
 
 
