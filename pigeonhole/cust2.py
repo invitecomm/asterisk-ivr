@@ -74,7 +74,7 @@ def data_insert(query):
     return record
 
 db_insert = ("INSERT INTO `%s` (`clid`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE `id` = '%s'")
+db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE `電話番号` = '%s'")
 
 agi = AGI()
 agi.answer()
@@ -89,7 +89,7 @@ clid = agi.env['agi_accountcode']
 #SIPCALLID=1583cd9c69daeca70f5a91477e22f3b7@172.17.70.223:5060
 
 wombat = agi.get_variable('WOMBAT_HOPPER_ID')
-warlist = agi.get_variable('warlist')
+warlist = agi.get_variable('agi_accountcode')
 newTable = agi.get_variable('table')
 
 
