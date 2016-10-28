@@ -74,7 +74,7 @@ def data_insert(query):
     return record
 
 db_insert = ("INSERT INTO `%s` (`clid`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE `did` = '%s'")
+db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE did = '%s'")
 
 agi = AGI()
 agi.answer()
@@ -91,6 +91,7 @@ clid = agi.env['agi_accountcode']
 wombat = agi.get_variable('WOMBAT_HOPPER_ID')
 #warlist = agi.get_variable('agi_accountcode')
 newTable = agi.get_variable('table')
+warlist = agi.env['agi_accountcode']
 
 
 agi.verbose("Database Record: {0}".format(warlist))
@@ -99,7 +100,7 @@ agi.verbose("Database Record: {0}".format(warlist))
 
 amdstatus = agi.env['agi_arg_2']
 amdreason = agi.env['agi_arg_3']
-warlist = agi.env['agi_accountcode']
+
 
 
 if amdstatus == "MACHINE":
