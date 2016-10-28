@@ -74,7 +74,7 @@ def data_insert(query):
     return record
 
 db_insert = ("INSERT INTO `%s` (`clid`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE `電話番号` = '%s'")
+db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE `did` = '%s'")
 
 agi = AGI()
 agi.answer()
