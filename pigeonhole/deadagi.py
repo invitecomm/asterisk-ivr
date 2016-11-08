@@ -31,7 +31,7 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
-agi.verbose(clid)
+agi.verbose('Playback Started')
 agi.stream_file('tt-codezone')
 agi.verbose('playback ended')
 
