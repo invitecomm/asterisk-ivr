@@ -26,6 +26,14 @@ from __future__ import print_function
 
 from asterisk.agi import *
 
+import signal, os
+
+def handler(signum, frame):
+    agi.verbose('SIGHUP')
+    raise agi.verbose('SIGHUP')
+
+signal.signal(signal.SIGHUP, handler)
+
 agi = AGI()
 agi.answer()
 
