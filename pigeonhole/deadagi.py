@@ -31,6 +31,7 @@ agi.answer()
 
 clid = agi.env['agi_accountcode']
 
-print clid
+agi.verbose(clid)
+agi.stream_file('tt-codezone')
 
 agi.hangup()
