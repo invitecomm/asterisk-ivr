@@ -37,6 +37,10 @@ signal.signal(signal.SIGHUP, handler)
 agi = AGI()
 agi.answer()
 
+agi.set_variable('AGI_TABLE', 'Nothing to See')
+agi.set_variable('AGI_RECORD', '234209384092384')
+
+
 clid = agi.env['agi_accountcode']
 
 agi.verbose('Playback Started')
