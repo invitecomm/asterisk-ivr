@@ -49,8 +49,10 @@ agi.verbose(foo)
 agi.stream_file('tt-codezone')
 agi.verbose('playback ended')
 
-foo = agi.get_variable('CDR(billsec)')
-agi.verbose(foo)
+
 
 
 agi.hangup()
+
+foo = agi.get_variable('CDR(billsec)')
+agi.verbose(foo)
