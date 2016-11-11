@@ -26,6 +26,8 @@ Contents:
 
    *
 
+.. autoclass:: ivr.IVR
+
 
 
 Indices and tables
