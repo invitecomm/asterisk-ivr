@@ -29,10 +29,16 @@ Contents:
 IVR
 ===
 
+.. autoclass:: ivr.ivr.IVR
+	:members: dummy
+
+
 .. autoclass:: ivr.IVR
 	:members: dummy
 
 
+.. autoclass:: IVR
+	:members: dummy
 
 Indices and tables
 ==================
