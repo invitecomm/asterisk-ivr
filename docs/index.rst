@@ -26,7 +26,7 @@ Contents:
 
    *
 
-.. autoclass:: ivr.IVR
+.. autoclass:: ivr.ivr.IVR
 
 
 
