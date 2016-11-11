@@ -27,6 +27,7 @@ Contents:
    *
 
 .. autoclass:: ivr.ivr.IVR
+	:members: dummy
 
 
 

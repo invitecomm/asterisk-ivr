@@ -51,4 +51,7 @@ class IVR:
         Is this what we all want to see?
         """
         return text
+    
+     def dummy(self):
+        """ Testing Read The Docs Content Generation """
         
