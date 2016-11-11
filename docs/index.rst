@@ -29,7 +29,7 @@ Contents:
 IVR
 ===
 
-.. autoclass:: ivr.ivr.IVR
+.. autoclass:: ivr.IVR
 	:members: dummy
 
 
