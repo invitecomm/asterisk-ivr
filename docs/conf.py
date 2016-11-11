@@ -17,7 +17,7 @@ import os
 
 import mock
  
-MOCK_MODULES = ['ivr.ivr', 'ivr/ivr.py']
+MOCK_MODULES = ['ivr.ivr', 'ivr/ivr.py', 'ivr', 'ivr.py']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = mock.Mock()
 
