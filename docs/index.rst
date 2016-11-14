@@ -20,9 +20,10 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-.. :py:class: ivr.ivr.IVR
-   :members:
-   :inherited-members:
+.. autoclass:: ivr.ivr.IVR
+   :members: 
+
+   .. automethod:: __init__
 
 Indices and tables
 ==================
