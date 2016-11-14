@@ -44,6 +44,13 @@ class IVR:
     .. _PEP 484:
         https://www.python.org/dev/peps/pep-0484/
 
+    Examples:
+        Examples should be written in doctest format, and should illustrate how
+        to use the function.
+
+        >>> print([i for i in example_generator(4)])
+        [0, 1, 2, 3]
+
     """
     
     def __init__(self, config='settings.conf'):
