@@ -23,6 +23,9 @@ Contents:
 .. autoclass:: ivr.IVR
    :members: 
 
+Google Sample:
+.. autoclass:: example_google
+
 
 Indices and tables
 ==================
