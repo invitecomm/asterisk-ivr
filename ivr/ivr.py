@@ -66,6 +66,13 @@ class IVR:
         Say a given time, returning early if any of the given DTMF digits are
         pressed.  
         The time should be in seconds since the UNIX Epoch (Jan 1, 1970 00:00:00)
+        
+        Example:
+            This is what an example should look like.
+            
+            for 10 in 20 {
+                // Do something
+            }
         """
         return self.foo
 
