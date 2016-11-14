@@ -23,13 +23,7 @@ Contents:
 .. autoclass:: ivr.IVR
    :members: 
 
-Google Sample:
 
-.. automodule:: example_google
-   :members:
-
-.. autoclass:: example_google
-   :members:
 
 
 
