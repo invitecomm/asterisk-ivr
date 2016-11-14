@@ -23,19 +23,6 @@ Contents:
 .. autoclass:: ivr.IVR
    :members: 
 
-Google Sample:
-
-.. automodule:: example_google.module_level_function
-   :members:
-
-.. autoclass:: example_google.ExampleError
-   :members:
-
-.. autoclass:: example_google.ExampleClass
-   :members:
-
-
-
 Indices and tables
 ==================
 
