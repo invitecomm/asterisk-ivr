@@ -24,7 +24,10 @@ Contents:
    :members: 
 
 Google Sample:
-.. autoclass:: example_google
+
+.. automodule:: example_google
+   :members: 
+
 
 
 Indices and tables
