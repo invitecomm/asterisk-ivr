@@ -20,7 +20,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-.. autoclass:: ivr.ivr.IVR
+.. :py:class: ivr.ivr.IVR
    :members:
    :inherited-members:
 
