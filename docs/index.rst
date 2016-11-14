@@ -23,7 +23,6 @@ Contents:
 .. autoclass:: ivr.ivr.IVR
    :members: 
 
-   .. automethod:: __init__
 
 Indices and tables
 ==================
