@@ -26,7 +26,11 @@ Contents:
 Google Sample:
 
 .. automodule:: example_google
-   :members: 
+   :members:
+
+.. autoclass:: example_google
+   :members:
+
 
 
 
