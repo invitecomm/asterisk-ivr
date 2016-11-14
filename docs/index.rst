@@ -20,7 +20,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-.. autoclass:: ivr.ivr.IVR
+.. autoclass:: ivr.IVR
    :members: 
 
    .. automethod:: __init__

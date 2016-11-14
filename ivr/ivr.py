@@ -52,6 +52,6 @@ class IVR:
         """
         return text
     
-     def dummy(self):
+    def dummy(self):
         """ Testing Read The Docs Content Generation """
         
