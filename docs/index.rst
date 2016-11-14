@@ -21,10 +21,7 @@ Contents:
    :maxdepth: 2
 
 .. autoclass:: ivr.IVR
-   :members: 
-
-.. autoclass:: example_google.ExampleClass
-   :members: 
+   :members: dummy
    
 Indices and tables
 ==================
