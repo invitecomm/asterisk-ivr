@@ -37,19 +37,17 @@ Example:
 asterisk_path = '/etc/asterisk'
 """String: Directory Path
 
-The path to the Asterisk Configuration Files.
+The path to the Asterisk Configuration Files for **your** installation.
 """
 
 asterisk_conf = 'res_config_mysql.conf'
 """String: Name of the configuration file you want to use.
 
-The docstring may span multiple lines. The type may optionally be specified
-on the first line, separated by a colon.
-
 .. warning:: 
 
     The MySQL Connector/Python does not support DSN configuration options.
     
+You can use any Asterisk configration file that contains the host, database, user, and password details.  *You could create a dedicate configuration file too.*
 """
 
 context = 'general'
