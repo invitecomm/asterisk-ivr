@@ -84,7 +84,7 @@ if __name__ == "__main__":
       'raise_on_warnings' : True,
     }
 else:
-    config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk']}
+    config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk'}
     """Array of Values
     
     This read from the config file
