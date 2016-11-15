@@ -88,16 +88,7 @@ else:
     config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk'}
     """    
     Using the arguments defined in this module, `connection.config`_ will return the settings needed to connect to the database.  
-    
-    Args:
-        param1 (str): `connection.asterisk_path`_
-        param2 (str): `connection.asterisk_conf`_
-        param3 (str): `connection.context`_
-
-        * `connection.asterisk_path`_
-        * `connection.asterisk_conf`_
-        * `connection.context`_
-        
+           
     Example:
         The following code is used to generate the connection data::
         
