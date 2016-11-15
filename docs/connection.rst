@@ -12,7 +12,7 @@ Database Connection Settings
 Settings
 ******************************
    
-:members: asterisk_path
+	:members: asterisk_path
 
 Connection Settings
 ******************************
