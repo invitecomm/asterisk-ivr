@@ -27,8 +27,7 @@ This module is used to read the database settings from an Asterisk configuration
 asterisk_path = '/etc/asterisk'
 """int: Module level variable documented inline.
 
-The docstring may span multiple lines. The type may optionally be specified
-on the first line, separated by a colon.
+The path to your asterisk configuration files.
 """
 
 asterisk_conf = 'res_config_mysql.conf'
