@@ -111,10 +111,12 @@ amdreason = agi.env['agi_arg_3']
 
 if amdstatus == "MACHINE":
     agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
-    data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), warlist))
+    data_insert(db_update % (newTable, 'amdstatus', '%s' % (amdstatus), warlist))
+    data_insert(db_update % (newTable, 'amdreason', '%s' % (amdreason), warlist))
     agi.hangup()
 
-data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), warlist))
+data_insert(db_update % (newTable, 'amdstatus', '%s' % (amdstatus), warlist))
+data_insert(db_update % (newTable, 'amdreason', '%s' % (amdreason), warlist))
 
 agi.stream_file('wardial/20161102/Start')
 
