@@ -7,7 +7,7 @@
 Database Connection Settings
 ******************************
 
-.. automodule:: connection.config
+.. module:: connection.config
    
 
 Configuration
