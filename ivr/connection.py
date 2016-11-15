@@ -82,3 +82,11 @@ if __name__ == "__main__":
       'database' : settings.get(context, 'dbhost'),
       'raise_on_warnings' : True,
     }
+else:
+    config = ['username', 'password', 'hostname', 'database']
+    """Array of Values
+    
+    This read from the config file
+    """
+
+print config
