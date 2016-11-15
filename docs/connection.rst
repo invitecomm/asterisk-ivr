@@ -13,7 +13,11 @@ Settings
 ******************************
    
 .. automodule:: connection.asterisk_path
-.. automember:: connection.asterisk_conf
+   :members:
+
+.. automodule:: connection.asterisk_conf
+   :members:
+
 .. autofunction:: connection.context
 
 Connection Settings
