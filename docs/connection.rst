@@ -12,8 +12,8 @@ Database Connection Settings
 Settings
 ******************************
    
-.. autofunction:: connection.asterisk_path
-.. autofunction:: connection.asterisk_conf
+.. automodule:: connection.asterisk_path
+.. automember:: connection.asterisk_conf
 .. autofunction:: connection.context
 
 Connection Settings
