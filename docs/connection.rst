@@ -6,14 +6,14 @@
 .. automodule:: connection
 
 Settings
-********
+########
    
 .. autofunction:: connection.asterisk_path
 .. autofunction:: connection.asterisk_conf
 .. autofunction:: connection.context
 
 Connection Settings
-*******************
+###################
 
 .. autofunction:: connection.config
 
