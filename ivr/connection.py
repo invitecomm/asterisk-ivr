@@ -74,12 +74,11 @@ import ConfigParser
 settings = ConfigParser.RawConfigParser()
 settings.read(os.path.join(asterisk_path,asterisk_conf))
 
-config = {
-  'user' : settings.get(context, 'dbuser'),
-  'password' : settings.get(context, 'dbpass'),
-  'host' : settings.get(context, 'dbhost'),
-  'database' : settings.get(context, 'dbhost'),
-  'raise_on_warnings' : True,
-}
-
-print config
+if __name__ == "__main__": 
+    config = {
+      'user' : settings.get(context, 'dbuser'),
+      'password' : settings.get(context, 'dbpass'),
+      'host' : settings.get(context, 'dbhost'),
+      'database' : settings.get(context, 'dbhost'),
+      'raise_on_warnings' : True,
+    }
