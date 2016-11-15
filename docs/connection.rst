@@ -7,7 +7,7 @@
 Database Connection Settings
 ******************************
 
-.. module:: connection
+.. automodule:: connection
    
 
 Configuration
@@ -18,7 +18,7 @@ Configuration
 Connection Settings
 ******************************
 
-.. automethod:: connection.config
+.. automodule:: connection.config
 
 
 .. toctree::
