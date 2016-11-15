@@ -3,8 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    
-.. automodule:: connection
-   :members: asterisk_path, asterisk_conf, context, config
+.. autofunction:: connection.config
 
 .. toctree::
    :maxdepth: 2
