@@ -95,7 +95,8 @@ else:
         param3 (str): `connection.context`_
         
     Returns:
-        Array of values for the database connection.
+        list: Comma-separated list of elements used to connect to the database.
+             
     """
 
 print config
