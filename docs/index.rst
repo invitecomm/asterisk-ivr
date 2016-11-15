@@ -21,7 +21,7 @@ Contents:
 .. autoclass:: ivr.IVR
    :members: dummy
    
-.. automodule:: example_google
+.. automodule:: connection
    :members:
 
 
