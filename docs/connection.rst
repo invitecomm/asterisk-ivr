@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
    
 ******************************
-Auto Doc
+Database Connection Settings
 ******************************
    
 .. automodule:: connection
