@@ -30,9 +30,11 @@ Example:
     sections. Sections support any reStructuredText formatting, including
     literal blocks::
 
-        import ivr.connection
-        config = ivr.connection.config
-        database = mysql.connect(**config)
+        .. code-block:: python
+            :linenos:
+            import ivr.connection
+            config = ivr.connection.config
+            database = mysql.connect(**config)
         
 
 .. seealso:: This is a simple **seealso** note.
