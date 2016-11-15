@@ -7,7 +7,7 @@
 Database Connection Settings
 ******************************
 
-.. module:: connection.config
+.. module:: connection
    
 
 Configuration
