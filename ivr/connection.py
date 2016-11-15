@@ -55,8 +55,10 @@ context = 'general'
 The docstring may span multiple lines. The type may optionally be specified
 on the first line, separated by a colon.:
 
-    [general]
-    host = foo
-    two = here
+    .. code-block::
+        [general]
+        host = foo
+        two = here
+        
 """
 
