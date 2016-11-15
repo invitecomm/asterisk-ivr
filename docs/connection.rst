@@ -3,6 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    
+Settings
+********
+   
+.. autofunction:: connection.asterisk_path
+.. autofunction:: connection.asterisk_conf
+.. autofunction:: connection.context
+
+Connection Settings
+*******************
+
 .. autofunction:: connection.config
 
 .. toctree::
