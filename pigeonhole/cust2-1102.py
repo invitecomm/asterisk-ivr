@@ -95,6 +95,7 @@ wombat = agi.get_variable('WOMBAT_HOPPER_ID')
 #warlist = agi.get_variable('agi_accountcode')
 newTable = agi.get_variable('table')
 warlist = agi.env['agi_accountcode']
+
 #
 # Changed to DID
 #
@@ -117,6 +118,8 @@ if amdstatus == "MACHINE":
 
 data_insert(db_update % (newTable, 'amdstatus', '%s' % (amdstatus), warlist))
 data_insert(db_update % (newTable, 'amdreason', '%s' % (amdreason), warlist))
+data_insert(db_update % (newTable, 'calldate', 'NOW()', warlist))
+
 
 agi.stream_file('wardial/20161102/Start')
 
