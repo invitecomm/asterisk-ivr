@@ -17,14 +17,6 @@ Contents:
    
 .. automodule:: connection
    :members:
-
-.. autoclass:: ivr.IVR
-   :members: dummy
-   
-.. automodule:: connection
-   :members:
-
-
    
 Indices and tables
 ==================
