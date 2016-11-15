@@ -49,12 +49,7 @@ Attributes:
         one convention to document module level variables and be consistent
         with it.
 
-.. sidebar:: Sidebar Title
-    :subtitle: Optional Sidebar Subtitle
 
-    Subsequent indented lines comprise
-    the body of the sidebar, and are
-    interpreted as body elements.
 
 .. note::  This is a **note** box.
 
