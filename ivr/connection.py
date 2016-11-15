@@ -26,6 +26,8 @@ This module demonstrates documentation as specified by the `Google Python
 Style Guide`_. Docstrings may extend over multiple lines. Sections are created
 with a section header and a colon followed by a block of indented text.
 
+.. warning:: note the space between the directive and the text
+
 Example:
     Examples can be given using either the ``Example`` or ``Examples``
     sections. Sections support any reStructuredText formatting, including
