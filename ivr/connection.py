@@ -81,6 +81,3 @@ config = {
   'database':   settings.get(context, 'dbhost'),
   'raise_on_warnings': True,
 }
-"""Array: Festch the data
-
-"""
