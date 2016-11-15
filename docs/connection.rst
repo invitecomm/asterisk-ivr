@@ -4,10 +4,22 @@
    contain the root `toctree` directive.
    
 .. automodule:: connection
+
+Settings
+********
    :members: asterisk_path, asterisk_conf, context, config
+
+Connection Data
+***************
+ 
+   :members: config
+
 
 .. toctree::
    :maxdepth: 2
+   :glob:
+
+   *
    
 Indices and tables
 ==================
