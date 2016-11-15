@@ -37,8 +37,22 @@ Example:
 """
 
 asterisk_path = '/etc/asterisk'
-"""str: Directory Path.
+"""String: Directory Path
 
 The path to the Asterisk Configuration Files.
+"""
+
+asterisk_conf = 'res_config_mysql.conf'
+"""String: Name of the configuration file you want to use.
+
+The docstring may span multiple lines. The type may optionally be specified
+on the first line, separated by a colon.
+"""
+
+context = 'general'
+"""String: Section (context) of the configration file to use.
+
+The docstring may span multiple lines. The type may optionally be specified
+on the first line, separated by a colon.
 """
 
