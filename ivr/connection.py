@@ -34,7 +34,7 @@ Example:
 
 """
 
-asterisk_path = '/etc/asterisk'
+asterisk_path = ''
 """String: Directory Path
 
 The path to the Asterisk Configuration Files for **your** installation.
