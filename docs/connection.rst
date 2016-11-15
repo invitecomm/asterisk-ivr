@@ -10,10 +10,10 @@ Database Connection Settings
 .. automodule:: connection
    
 
-	Configuration
-	******************************
+Configuration
+******************************
 
-.. :members:
+.. members:: asterisk_path, asterisk_file
 
 Connection Settings
 ******************************
