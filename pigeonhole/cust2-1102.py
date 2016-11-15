@@ -73,8 +73,8 @@ def data_insert(query):
         agi.verbose("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `%s` (`clid`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE did = '%s'")
+db_insert = ("INSERT INTO `%s` (`id`, `%s`) VALUES ('%s', '%s')")
+db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 #
 # Changed to DID
 #
@@ -94,7 +94,8 @@ clid = agi.env['agi_accountcode']
 wombat = agi.get_variable('WOMBAT_HOPPER_ID')
 #warlist = agi.get_variable('agi_accountcode')
 newTable = agi.get_variable('table')
-warlist = agi.env['agi_accountcode']
+warlist = agi.get_variable('warlist')
+#warlist = agi.env['agi_accountcode']
 
 #
 # Changed to DID
