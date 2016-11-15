@@ -88,6 +88,12 @@ else:
     """Array of Values
     
     This read from the config file
+    
+    Args:
+        None
+        
+    Returns:
+        Array of values
     """
 
 print config
