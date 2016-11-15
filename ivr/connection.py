@@ -55,8 +55,22 @@ Todo:
     * For module TODOs
     * You have to also use ``sphinx.ext.todo`` extension
 
+.. topic:: Your Topic Title
+
+    Subsequent indented lines comprise
+    the body of the topic, and are
+    interpreted as body elements.
+    
+
 .. _Google Python Style Guide:
    http://google.github.io/styleguide/pyguide.html
+
+.. sidebar:: Sidebar Title
+    :subtitle: Optional Sidebar Subtitle
+
+    Subsequent indented lines comprise
+    the body of the sidebar, and are
+    interpreted as body elements.
 
 """
 
