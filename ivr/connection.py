@@ -66,3 +66,11 @@ The Asterisk configuration file can be read by the Python ConfigParser.  Just sp
     requirements=warn ; or createclose or createchar
         
 """
+
+import os
+import ConfigParser
+
+settings = ConfigParser.RawConfigParser()
+settings.read('/etc/asterisk/res_config_mysql.conf')
+
+
