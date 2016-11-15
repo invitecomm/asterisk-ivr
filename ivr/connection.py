@@ -37,8 +37,8 @@ Example:
 """
 
 asterisk_path = '/etc/asterisk'
-"""int: Module level variable documented inline.
+"""str: Directory Path.
 
-The path to your asterisk configuration files.
+The path to the Asterisk Configuration Files.
 """
 
