@@ -19,12 +19,10 @@
 #
 """
 ******************************************************************
-Example Google style docstrings.
+Database Connection Using Asterisk Settings
 ******************************************************************
 
-This module demonstrates documentation as specified by the `Google Python
-Style Guide`_. Docstrings may extend over multiple lines. Sections are created
-with a section header and a colon followed by a block of indented text.
+This module is used to read the database settings from an Asterisk configuration file.  It uses the Python ConfigParser to extract the setting values from the specified section (context) of the Asterisk configuration file.
 
 .. warning:: note the space between the directive and the text
 
