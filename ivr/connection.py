@@ -84,15 +84,29 @@ if __name__ == "__main__":
       'raise_on_warnings' : True,
     }
 else:
+    # Dummy Module for Sphinx AutoDoc
     config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk'}
-    """Array of Values
-    
+    """    
     Using the arguments defined in this module, `connection.config`_ will return the settings needed to connect to the database.  
     
     Args:
         * `connection.asterisk_path`_
         * `connection.asterisk_conf`_
         * `connection.context`_
+        
+    Example:
+        The following code is used to generate the connection data::
+        
+            settings = ConfigParser.RawConfigParser()
+            settings.read(os.path.join(asterisk_path,asterisk_conf))
+
+            config = {
+              'user' : settings.get(context, 'dbuser'),
+              'password' : settings.get(context, 'dbpass'),
+              'host' : settings.get(context, 'dbhost'),
+              'database' : settings.get(context, 'dbhost'),
+              'raise_on_warnings' : True,
+            }
         
     Returns:
         list: Comma-separated list of elements used to connect to the database.
