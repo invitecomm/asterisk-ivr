@@ -81,7 +81,7 @@ db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 #
 
 agi = AGI()
-agi.answer()
+#agi.answer()
 
 #clid = agi.env['agi_accountcode']
 
@@ -93,7 +93,7 @@ agi.answer()
 #SIPCALLID=1583cd9c69daeca70f5a91477e22f3b7@172.17.70.223:5060
 
 #wombat = agi.get_variable('WOMBAT_HOPPER_ID')
-#warlist = agi.get_variable('agi_accountcode')
+dispo = agi.get_variable('CDR(disposition)')
 #newTable = agi.get_variable('table')
 #warlist = agi.get_variable('warlist')
 #warlist = agi.env['agi_accountcode']
@@ -101,6 +101,7 @@ agi.answer()
 #
 # Changed to DID
 #
+agi.verbose("Dispo: {0}".format(dispo))
 time.sleep(3)
 
 agi.hangup()
