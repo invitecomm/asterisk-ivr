@@ -20,3 +20,4 @@ Connection Settings
 ******************************
 
 .. autodata:: connection.config
+
