@@ -5,7 +5,7 @@
 
 .. info:: 
 	These are my first attempts at mading a fully packaged program.
-	**Good Luck** I hope you find the content useful.
+	**Good Luck** I hope you find the content useful.**
 
 Welcome to Asterisk IVR's documentation!
 ========================================
@@ -18,7 +18,7 @@ Contents:
 .. autoclass:: ivr.IVR
    :members: dummy
    
-.. automodule:: ivr.connection
+.. automodule:: connection
 	:members:
    
    
