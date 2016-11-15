@@ -119,31 +119,39 @@ data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), war
 agi.stream_file('wardial/20161102/Start')
 
 q1 = question('wardial/20161102/Q1', '12')
-data_insert(db_update % (newTable, 'q1', q1, warlist))
+if q1:
+    data_insert(db_update % (newTable, 'q1', q1, warlist))
 
 if q1 == '1':
 
     q2 = question('wardial/20161102/Q2', '12')
-    data_insert(db_update % (newTable, 'q2', q2, warlist))
+    if q2:
+        data_insert(db_update % (newTable, 'q2', q2, warlist))
 
     if q2 == '1':
         q3 = question('wardial/20161102/Q3', '12')
-        data_insert(db_update % (newTable, 'q3', q3, warlist))
+        if q3:
+            data_insert(db_update % (newTable, 'q3', q3, warlist))
 
         q4 = question('wardial/20161102/Q4', '12')
-        data_insert(db_update % (newTable, 'q4', q4, warlist))
+        if q4:
+            data_insert(db_update % (newTable, 'q4', q4, warlist))
 
         q5 = question('wardial/20161102/Q5', '12')
-        data_insert(db_update % (newTable, 'q5', q5, warlist))
+        if q5:
+            data_insert(db_update % (newTable, 'q5', q5, warlist))
 
         q6 = question('wardial/20161102/Q6', '12')
-        data_insert(db_update % (newTable, 'q6', q6, warlist))
+        if q6:
+            data_insert(db_update % (newTable, 'q6', q6, warlist))
         
         q7 = question('wardial/20161102/Q7', '12')
-        data_insert(db_update % (newTable, 'q7', q7, warlist))        
+        if q7:
+            data_insert(db_update % (newTable, 'q7', q7, warlist))        
 
         q8 = question('wardial/20161102/Q8', '12')
-        data_insert(db_update % (newTable, 'q8', q8, warlist))
+        if q8:
+            data_insert(db_update % (newTable, 'q8', q8, warlist))
 
 agi.stream_file('wardial/20161102/End')
 
