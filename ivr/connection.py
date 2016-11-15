@@ -26,9 +26,7 @@ This module is used to read the database settings from an Asterisk configuration
 .. note:: You need the `MySQL Connector/Python <https://dev.mysql.com/downloads/connector/python/>`_ installed on your system to connect to the database.
 
 Example:
-    Examples can be given using either the ``Example`` or ``Examples``
-    sections. Sections support any reStructuredText formatting, including
-    literal blocks::
+    Import the module and access the config settings::
 
         import ivr.connection
         config = ivr.connection.config
@@ -70,4 +68,18 @@ The Asterisk configuration file can be read by the Python ConfigParser.  Just sp
     requirements=warn ; or createclose or createchar
         
 """
+
+import os
+import ConfigParser
+
+settings = ConfigParser.RawConfigParser()
+settings.read('/etc/asterisk/res_config_mysql.conf')
+
+config = {
+  'user': settings.get('general', 'dbuser'),
+  'password': settings.get('general', 'dbpass'),
+  'host': settings.get('general', 'dbhost'),
+  'database': 'kaos_portal_live',
+  'raise_on_warnings': True,
+}
 
