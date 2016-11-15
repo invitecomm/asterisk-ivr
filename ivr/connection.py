@@ -46,6 +46,7 @@ asterisk_conf = 'res_config_mysql.conf'
 .. warning:: 
 
     The MySQL Connector/Python does not support DSN configuration options.
+    **Do not use Asterisk ODBC settings!**
     
 You can use any Asterisk configration file that contains the host, database, user, and password details.  *You could create a dedicate configuration file too.*
 """
@@ -71,6 +72,15 @@ import os
 import ConfigParser
 
 settings = ConfigParser.RawConfigParser()
-settings.read('/etc/asterisk/res_config_mysql.conf')
+settings.read(os.path.join(asterisk_path,asterisk_conf))
 
+config = {
+  'user':       settings.get(context, 'dbuser'),
+  'password':   settings.get(context, 'dbpass'),
+  'host':       settings.get(context, 'dbhost'),
+  'database':   settings.get(context, 'dbhost'),
+  'raise_on_warnings': True,
+}
+"""Array: Festch the data
 
+"""
