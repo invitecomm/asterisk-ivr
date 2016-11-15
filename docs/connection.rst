@@ -20,9 +20,3 @@ Connection Settings
 ******************************
 
 .. autodata:: connection.config
-
-.. toctree::
-   :maxdepth: 2
-   :glob:
-   
-   *
