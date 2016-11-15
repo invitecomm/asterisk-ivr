@@ -50,18 +50,17 @@ on the first line, separated by a colon.
 """
 
 context = 'general'
-"""String: Section (context) of the configration file to use.
+"""String: The section (context) of the configration file to use.
 
-The docstring may span multiple lines. The type may optionally be specified
-on the first line, separated by a colon::
+The Asterisk configuration file can be read by the Python ConfigParser.  Just specify the section of the configration you would like to use, as shown in the following configuration file example::
 
     [general]
-    dbhost = localhost
-    dbname = myDatabase
-    dbuser = myUsername
-    dbpass = mySecretPassword
+    dbhost = 127.0.0.1
+    dbname = asterisk
+    dbuser = myuser
+    dbpass = mypass
     dbport = 3306
-    ;dbsock = /tmp/mysql.sock
+    dbsock = /tmp/mysql.sock
     dbcharset = utf8
     requirements=warn ; or createclose or createchar
         
