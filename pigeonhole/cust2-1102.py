@@ -118,7 +118,7 @@ if amdstatus == "MACHINE":
 
 data_insert(db_update % (newTable, 'amdstatus', '%s' % (amdstatus), warlist))
 data_insert(db_update % (newTable, 'amdreason', '%s' % (amdreason), warlist))
-data_insert(db_update % (newTable, 'calldate', 'NOW()', warlist))
+data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
 
 
 agi.stream_file('wardial/20161102/Start')
