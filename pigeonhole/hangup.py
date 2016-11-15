@@ -94,6 +94,7 @@ agi = AGI()
 
 #wombat = agi.get_variable('WOMBAT_HOPPER_ID')
 dispo = agi.get_variable('CDR(disposition)')
+billsec = agi.get_variable('CDR(billsec)')
 #newTable = agi.get_variable('table')
 #warlist = agi.get_variable('warlist')
 #warlist = agi.env['agi_accountcode']
@@ -103,8 +104,10 @@ dispo = agi.get_variable('CDR(disposition)')
 #
 agi.verbose("Dispo: {0}".format(dispo))
 time.sleep(3)
+agi.verbose("Dispo: {0}".format(billsec))
 
-agi.hangup()
+
+#agi.hangup()
 
 # calltime = agi.get_variable('ANSWEREDTIME')
 # data_insert(db_update % ('reply', calltime, warlist))
