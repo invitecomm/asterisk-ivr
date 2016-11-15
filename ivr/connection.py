@@ -34,7 +34,7 @@ Example:
 """
 
 asterisk_path = '/etc/asterisk'
-"""String: Directory Path
+"""String: Asterisk Configuration Directory Path
 
 The path to the Asterisk Configuration Files for **your** installation.
 """
@@ -48,13 +48,14 @@ asterisk_conf = 'res_config_mysql.conf'
     
     **Do not use Asterisk ODBC configuration files!**
     
-You can use any Asterisk configration file that contains the host, database, user, and password details.  *You could create a dedicate configuration file too.*
+You can use any Asterisk configration file that contains the host, database, user, and password details.  
+*You could create a dedicate configuration file too.*
 """
 
 context = 'general'
 """String: The section (context) of the configration file to use.
 
-The Asterisk configuration file can be read by the Python ConfigParser.  Just specify the section of the configration you would like to use, as shown in the following configuration file example::
+The Asterisk configuration file can be read by the Python ConfigParser.  Just specify the section of the configration you would like to use.  The section is contained in square brackets, as shown in the following configuration file example::
 
     [general]
     dbhost = 127.0.0.1
@@ -79,14 +80,14 @@ if __name__ == "__main__":
       'user' : settings.get(context, 'dbuser'),
       'password' : settings.get(context, 'dbpass'),
       'host' : settings.get(context, 'dbhost'),
-      'database' : settings.get(context, 'dbhost'),
+      'database' : settings.get(context, 'dbname'),
       'raise_on_warnings' : True,
     }
 else:
     # Dummy Module for Sphinx AutoDoc
     config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk'}
     """    
-    Using the arguments defined in this module, `connection.config`_ will return the settings needed to connect to the database.  
+    Using the configuration arguments defined in this module, `connection.config`_ will return the settings needed to connect to the database from your Asterisk configuration.
            
     Example:
         The following code is used to generate the connection data::
@@ -98,7 +99,7 @@ else:
               'user' : settings.get(context, 'dbuser'),
               'password' : settings.get(context, 'dbpass'),
               'host' : settings.get(context, 'dbhost'),
-              'database' : settings.get(context, 'dbhost'),
+              'database' : settings.get(context, 'dbname'),
               'raise_on_warnings' : True,
             }
         
