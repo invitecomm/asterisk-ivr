@@ -56,8 +56,14 @@ The docstring may span multiple lines. The type may optionally be specified
 on the first line, separated by a colon::
 
     [general]
-    host = foo
-    two = here
+    dbhost = localhost
+    dbname = myDatabase
+    dbuser = myUsername
+    dbpass = mySecretPassword
+    dbport = 3306
+    ;dbsock = /tmp/mysql.sock
+    dbcharset = utf8
+    requirements=warn ; or createclose or createchar
         
 """
 
