@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. info:: 
+.. warning:: 
 	These are my first attempts at mading a fully packaged program.
 	**Good Luck** I hope you find the content useful.**
 
