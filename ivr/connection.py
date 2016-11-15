@@ -87,7 +87,7 @@ else:
     config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk'}
     """Array of Values
     
-    Using the argumenst defined in this file, config will return the settings needed to connect to the database.  
+    Using the argumenst defined in this file, `connection.config`_ will return the settings needed to connect to the database.  
     
     Args:
         connection.asterisk_path: The first parameter.
@@ -95,7 +95,7 @@ else:
         connection.context: The first parameter.
         
     Returns:
-        Array of values
+        Array of values for the database connection.
     """
 
 print config
