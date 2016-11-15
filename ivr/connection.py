@@ -107,5 +107,3 @@ else:
         list: Comma-separated list of elements used to connect to the database.
              
     """
-
-print config

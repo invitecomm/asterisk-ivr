@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
    
 .. automodule:: connection
-   :members:
+   :members: asterisk_path, asterisk_conf, context, config
 
 .. toctree::
    :maxdepth: 2
