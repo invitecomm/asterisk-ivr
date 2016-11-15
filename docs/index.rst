@@ -18,8 +18,8 @@ Contents:
 .. autoclass:: ivr.IVR
    :members: dummy
    
- .. automodule:: ivr.connection
-    :members:
+.. automodule:: ivr.connection
+	:members:
    
    
 Indices and tables

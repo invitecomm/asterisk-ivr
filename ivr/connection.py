@@ -18,19 +18,19 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-"""Touble with Japanese in the DB.  Testing for a solution."""
+"""Database Connection Settings from Asterisk.
 
-# [START import_libraries]
-from __future__ import print_function
+This module is used to read the database settings from an Asterisk configuration file.  It uses the Python ConfigParser to extract the setting values from the specified section (context) of the Asterisk configuration file.
 
-#from asterisk.agi import *
-import re
+"""
+
+asterisk_path = '/etc/asterisk'
+asterisk_conf = 'res_config_mysql.conf'
+
+context = 'general'
+
+import os
 import ConfigParser
-import pprint
-
-
-from datetime import date, datetime, timedelta
-import mysql.connector as mariadb
 
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
@@ -42,65 +42,3 @@ config = {
   'database': 'kaos_portal_live',
   'raise_on_warnings': True,
 }
-
-#settings.get('general', 'dbname'),
-
-def data_insert(query):                           
-    try:
-        mariadb_connection = mariadb.connect(**config)
-        cursor = mariadb_connection.cursor()
-        cursor.execute(query)
-        record = cursor.lastrowid
-        mariadb_connection.commit()
-        cursor.close()
-        mariadb_connection.close()
-    except mariadb.Error as error:
-        print("Database Error: {0}".format(error))
-    return record
-
-def data_select(query):                           
-    try:
-        mariadb_connection = mariadb.connect(**config)
-        cursor = mariadb_connection.cursor(dictionary=True)
-        cursor.execute(query)
-        results = cursor.fetchall()
-        cursor.close()
-        mariadb_connection.close()
-    except mariadb.Error as error:
-        print("Database Error: {0}".format(error))
-    return results
-
-#db_insert = ("INSERT INTO `name` (`did`, `name`, `番号`) VALUES ('0238764234', '日本語', '5')")
-
-#db_insert = ("INSERT INTO `name` (`did`, `name`, `%s`) VALUES ('%s', '%s', '%s')")
-#data_insert(db_insert % ('番号', '03-6867-1137', 'カタカナ',  45))
-
-#db_query = ("SELECT * FROM `name`")
-
-db_query = ("SELECT dtmf, dtmf_next FROM `survey_questions_dtmf` WHERE question = 'proj00000520'")
-
-
-string =  data_select(db_query)
-#res = string.encode('utf8', 'replace')
-
-##string.decode('UTF-8')
-
-# Create Dictionary and string of digits
-x = {}
-digits = ''
-for val in string:
-    x[val['dtmf'].encode('utf8', 'replace')] = val['dtmf_next'].encode('utf8', 'replace')
-    digits += val['dtmf']
-#    print(x[2].encode('utf8', 'replace'))
-
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(x)
-
-print(x['3'])
-print(digits)
-
-#data_insert(db_insert)
-
-
-
-
