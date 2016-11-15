@@ -26,7 +26,7 @@ This module is used to read the database settings from an Asterisk configuration
 .. note:: You need the `MySQL Connector/Python <https://dev.mysql.com/downloads/connector/python/>`_ installed on your system to connect to the database.
 
 Example:
-    Import the module and access the config settings::
+    Import the module, get the config settings, and pass them to your mysql connection::
 
         import ivr.connection
         config = ivr.connection.config
