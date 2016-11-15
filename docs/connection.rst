@@ -20,6 +20,11 @@ Connection Settings
 
 .. automodule:: connection.config
 
+.. autofunction:: connection.config
+.. autodata:: connection.config
+.. automethod:: connection.config
+.. autoattribute:: connection.config
+
 
 .. toctree::
    :maxdepth: 2
