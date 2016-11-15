@@ -5,12 +5,14 @@
    
 .. automodule:: connection
 
-	Settings
-	********
+Settings
+********
+.. module:: connection
    :members: asterisk_path, asterisk_conf, context, config
 
-	Connection Data
-	***************
+Connection Data
+***************
+.. module:: connection
 	:members: config
 
 .. toctree::
