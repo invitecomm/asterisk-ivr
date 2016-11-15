@@ -53,12 +53,11 @@ context = 'general'
 """String: Section (context) of the configration file to use.
 
 The docstring may span multiple lines. The type may optionally be specified
-on the first line, separated by a colon.:
+on the first line, separated by a colon::
 
-    .. code-block::
-        [general]
-        host = foo
-        two = here
+    [general]
+    host = foo
+    two = here
         
 """
 
