@@ -114,6 +114,7 @@ if amdstatus == "MACHINE":
     agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
     data_insert(db_update % (newTable, 'amdstatus', '%s' % (amdstatus), warlist))
     data_insert(db_update % (newTable, 'amdreason', '%s' % (amdreason), warlist))
+    data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
     agi.hangup()
 
 data_insert(db_update % (newTable, 'amdstatus', '%s' % (amdstatus), warlist))
