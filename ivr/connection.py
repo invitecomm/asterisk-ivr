@@ -35,6 +35,8 @@ Example:
 
         $ python example_google.py
 
+.. seealso:: This is a simple **seealso** note.
+
 Section breaks are created by resuming unindented text. Section breaks
 are also implicitly created anytime a new section starts.
 
@@ -46,6 +48,8 @@ Attributes:
         Either form is acceptable, but the two should not be mixed. Choose
         one convention to document module level variables and be consistent
         with it.
+
+.. note::  This is a **note** box.
 
 Todo:
     * For module TODOs
