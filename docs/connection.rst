@@ -3,22 +3,21 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
    
-********
+******************************
 Auto Doc
-********
-
+******************************
    
 .. automodule:: connection
 
 Settings
-##################
+******************************
    
 .. autofunction:: connection.asterisk_path
 .. autofunction:: connection.asterisk_conf
 .. autofunction:: connection.context
 
 Connection Settings
-###################
+******************************
 
 .. autofunction:: connection.config
 
