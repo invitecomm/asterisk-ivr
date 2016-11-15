@@ -26,7 +26,7 @@ This module is used to read the database settings from an Asterisk configuration
 
 .. warning:: MySQL Connector/Python
 
-    You need to have the `MySQL Connector/Python <https://dev.mysql.com/downloads/connector/python/>`_ installed on your system.
+    You need to have the `MySQL Connector/Python <https://dev.mysql.com/downloads/connector/python/>`_ installed on your system to connect to the database.
 
 Example:
     Examples can be given using either the ``Example`` or ``Examples``
