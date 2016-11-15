@@ -13,7 +13,7 @@ Database Connection Settings
 	Configuration
 	******************************
 
-	:members:
+.. :members:
 
 Connection Settings
 ******************************
