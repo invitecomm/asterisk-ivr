@@ -90,9 +90,9 @@ else:
     Using the argumenst defined in this file, `connection.config`_ will return the settings needed to connect to the database.  
     
     Args:
-        connection.asterisk_path: The first parameter.
-        connection.asterisk_conf: The first parameter.
-        connection.context: The first parameter.
+        param1 (str): `connection.asterisk_path`_
+        param2 (str): `connection.asterisk_conf`_
+        param3 (str): `connection.context`_
         
     Returns:
         Array of values for the database connection.
