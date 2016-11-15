@@ -31,7 +31,7 @@ The path to your asterisk configuration files.
 """
 
 asterisk_conf = 'res_config_mysql.conf'
-"""int: Module level variable documented inline.
+"""int: The configuration file you want to use.
 
 The docstring may span multiple lines. The type may optionally be specified
 on the first line, separated by a colon.
