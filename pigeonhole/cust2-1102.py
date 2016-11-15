@@ -34,7 +34,9 @@ import mysql.connector as mariadb
 def question(file, valid_digits):
     regexp = re.compile(r'[' + valid_digits + ']')
     
-    res = agi.get_data(file, 20000, 1)
+    res = agi.get_data(file, 0, 1)
+    if not res:
+        res = agi.get_data('silence', 20000, 1)
     if regexp.search(res) is not None:
         return res
 
