@@ -13,14 +13,16 @@ Database Connection Settings
 Configuration
 ******************************
 
-.. members:: asterisk_path, asterisk_file
+.. autodata:: connection.config
+.. autodata:: connection.config
+.. autodata:: connection.config
 
 Connection Settings
 ******************************
 
 .. automodule:: connection.config
 
-.. autodata:: connection.config
+.. autodata:: connection.asterisk_file
 .. automethod:: connection.asterisk_path
 .. autoattribute:: connection.context
 
