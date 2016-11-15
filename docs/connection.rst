@@ -7,8 +7,8 @@
 Database Connection Settings
 ******************************
    
-.. automodule:: connection
-	:members: asterisk_path
+.. automodule:: connection.asterisk_path
+	:members:
 
 Connection Settings
 ******************************
