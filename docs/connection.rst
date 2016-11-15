@@ -16,7 +16,7 @@ Configuration
 Connection Settings
 ******************************
 
-.. autofunction:: connection.config
+.. automethod:: connection.config
 
 
 .. toctree::
