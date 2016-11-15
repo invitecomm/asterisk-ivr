@@ -33,49 +33,12 @@ Example:
         import ivr.connection
         config = ivr.connection.config
         database = mysql.connect(**config)
-        
-
-.. seealso:: This is a simple **seealso** note.
-
-Section breaks are created by resuming unindented text. Section breaks
-are also implicitly created anytime a new section starts.
-
-Attributes:
-    module_level_variable1 (int): Module level variables may be documented in
-        either the ``Attributes`` section of the module docstring, or in an
-        inline docstring immediately following the variable.
-
-        Either form is acceptable, but the two should not be mixed. Choose
-        one convention to document module level variables and be consistent
-        with it.
-
-
-
-.. note::  This is a **note** box.
-
-Todo:
-    * For module TODOs
-    * You have to also use ``sphinx.ext.todo`` extension
-
-.. topic:: Your Topic Title
-
-    Subsequent indented lines comprise
-    the body of the topic, and are
-    interpreted as body elements.
-    
-
-.. _Google Python Style Guide:
-   http://google.github.io/styleguide/pyguide.html
-
 
 """
 
-module_level_variable1 = 12345
-
-module_level_variable2 = 98765
+asterisk_path = '/etc/asterisk'
 """int: Module level variable documented inline.
 
-The docstring may span multiple lines. The type may optionally be specified
-on the first line, separated by a colon.
+The path to your asterisk configuration files.
 """
 
