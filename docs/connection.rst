@@ -9,22 +9,17 @@ Database Connection Settings
 
 .. automodule:: connection
    
-
 Configuration
 ******************************
 
-.. autodata:: connection.config
-.. autodata:: connection.config
-.. autodata:: connection.config
+.. autodata:: connection.asterisk_path
+.. autodata:: connection.asterisk_conf
+.. autodata:: connection.context
 
 Connection Settings
 ******************************
 
-.. automodule:: connection.config
-
-.. autodata:: connection.asterisk_file
-.. automethod:: connection.asterisk_path
-.. autoattribute:: connection.context
+.. autodata:: connection.config
 
 
 .. toctree::
