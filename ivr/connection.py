@@ -17,7 +17,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-"""Example Google style docstrings.
+"""
+******************************************************************
+Example Google style docstrings.
 ******************************************************************
 
 This module demonstrates documentation as specified by the `Google Python
