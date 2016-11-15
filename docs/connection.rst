@@ -12,11 +12,11 @@ Database Connection Settings
 Settings
 ******************************
    
-.. automodule:: connection.asterisk_path
-   :members:
+.. module:: connection
+	:members: asterisk_path
 
 .. automodule:: connection.asterisk_conf
-   :members:
+	:members:
 
 .. autofunction:: connection.context
 
