@@ -24,7 +24,9 @@ Database Connection Using Asterisk Settings
 
 This module is used to read the database settings from an Asterisk configuration file.  It uses the Python ConfigParser to extract the setting values from the specified section (context) of the Asterisk configuration file.
 
-.. warning:: note the space between the directive and the text
+.. warning:: MySQL Connector/Python
+
+    You need to have the `MySQL Connector/Python <https://dev.mysql.com/downloads/connector/python/>`_ installed on your system.
 
 Example:
     Examples can be given using either the ``Example`` or ``Examples``
