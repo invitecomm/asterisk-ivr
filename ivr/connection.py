@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 """
-Database Connection Using Asterisk Settings
+Database Connection Settings from Asterisk
 ======================================================
 
 This module is used to read the database settings from an Asterisk configuration file.  It uses the Python ConfigParser to load the setting values directly from the specified section (context) of the Asterisk configuration file.
@@ -47,6 +47,11 @@ asterisk_conf = 'res_config_mysql.conf'
 
 The docstring may span multiple lines. The type may optionally be specified
 on the first line, separated by a colon.
+
+.. warning:: 
+
+    The MySQL Connector/Python does not support DSN configuration options.
+    
 """
 
 context = 'general'
