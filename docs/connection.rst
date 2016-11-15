@@ -6,11 +6,13 @@
 ******************************
 Database Connection Settings
 ******************************
+
+.. automodule:: connection
    
 
-Configuration
-******************************
-.. module:: connection.asterisk_path
+	Configuration
+	******************************
+
 	:members:
 
 Connection Settings
