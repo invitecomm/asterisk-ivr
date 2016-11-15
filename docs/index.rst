@@ -14,13 +14,17 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   
+.. automodule:: connection
+   :members:
 
 .. autoclass:: ivr.IVR
    :members: dummy
    
-.. automodule:: connection
-	:members:
-   
+.. autoclass:: example_google.ExampleClass
+   :members:
+
+
    
 Indices and tables
 ==================
