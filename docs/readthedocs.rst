@@ -7,8 +7,11 @@
 Read the Docs
 ****
 
-Getting it working::
+Getting it working
 ##################
+
+Importing Python Docstrings
+*************
 
 ::
 
