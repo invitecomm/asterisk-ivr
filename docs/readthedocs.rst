@@ -22,18 +22,17 @@ Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have bee
 Sphinx Markup
 ##################
 
+This is a code block
 ::
-
+	This is a code block
 	::
 		This is how code is ``written``.
 		Good luck!  maybe
 		
-Indentation Level Matters
+The level of indentation matters
 	::
-
-		Indentation Level Matters
+		The level of indentation matters
 			::
-		
 				Deeper Code Block
 				Goes Here
 
