@@ -22,6 +22,13 @@
 Nothing to see here yet
 """
 
+module_level_variable2 = 98765
+"""int: Module level variable documented inline.
+
+The docstring may span multiple lines. The type may optionally be specified
+on the first line, separated by a colon.
+"""
+
 from asterisk.agi import *
 from distutils.util import strtobool
 
