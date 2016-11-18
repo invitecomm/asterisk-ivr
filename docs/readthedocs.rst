@@ -19,7 +19,8 @@ Getting it working::
 	A Simple Example
 	"""
 	import mysql.connector as mariadb
-
+	
+	config = {'data': 'ommited'}
 	connection = mariadb.connect(**config)
 	"""
 	Establish Database Connection
