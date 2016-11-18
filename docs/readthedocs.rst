@@ -21,6 +21,9 @@ Getting it working::
 	from asterisk.agi import *
 
 	agi = AGI()
+	"""
+	Create an AGI Instance 
+	"""
 	agi.answer()
 
 Topic 1
