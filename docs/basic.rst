@@ -7,5 +7,5 @@
 Basic Settings
 ******************************
 
-.. automodule:: example_google
+.. automodule:: basic
 	:members:
