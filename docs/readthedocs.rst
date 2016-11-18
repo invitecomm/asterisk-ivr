@@ -9,10 +9,14 @@ Read the Docs
 
 Read the Docs isn't just another site to post documentation.  It supports various markup languages, which just provides flexibility.  
 
-The real **power** of Read the Docs is the ability to generate documentation from the docstrings contained within the code.  *The only problem is HOW TO generate this documentation, isn't documented well.*
+The real **power** of Read the Docs is the ability to generate documentation from the docstrings contained within your code.  *The only problem is how to generate this documentation, isn't documented well.*
 
 Banging on the Keyboard
 ##################
+
+Getting it working, getting Read the Docs to generate documentation using the docstrings was a frustrating experience.  Lot's of *Banging on the Keyboard*, trying different things, and making changes all over the place.
+
+Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have been the solution.  *..or helped get closer to making documentation with the ``docstrings``.
 
 Importing Python Docstrings
 *************
@@ -45,7 +49,7 @@ Importing Python Docstrings
 
 	This does not work.  `Read the Docs <https://readthedocs.org/>`_  doesn't display anything.
 	
-	It appears to choke when it reaches agi.answer()
+	It appears to choke when it reaches ``agi.answer()``
 	
 Advanced Settings: Install Project:
 *************
