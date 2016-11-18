@@ -39,8 +39,9 @@ Importing Python Docstrings
 
 .. warning:: 
 
-	This does not work.  Read the Docs doesn't display anything.
-	It appears to _choke on agi.answer()
+	This does not work.  `Read the Docs <https://readthedocs.org/>`_  doesn't display anything.
+	
+	It appears to choke when it reaches agi.answer()
 	
 Advanced Settings: Install Project:
 *************
