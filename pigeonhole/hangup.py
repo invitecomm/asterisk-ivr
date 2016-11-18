@@ -74,8 +74,10 @@ def data_insert(query):
         agi.verbose("Database Error: {0}".format(error))
     return record
 
-db_insert = ("INSERT INTO `%s` (`id`, `%s`) VALUES ('%s', '%s')")
-db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
+#db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
+new_update = ("UPDATE `{0}` SET `{1}` = '{2}' WHERE id = {3}")
+
+
 #
 # Changed to DID
 #
@@ -102,12 +104,19 @@ warlist = agi.get_variable('warlist')
 #
 # Changed to DID
 #
-data_insert(db_update % (newTable, 'billsec', '%s' % (billsec), warlist))
-data_insert(db_update % (newTable, 'disposition', '%s' % (dispo), warlist))
 
-time.sleep(3)
-agi.verbose("Billing: {0}".format(billsec))
-agi.verbose("Dispo: {0}".format(dispo))
+
+
+#data_insert(db_update % (newTable, 'billsec', '%s' % (billsec), warlist))
+data_insert(new_update.format(newTable,'billsec',billsec,warlist))
+
+#data_insert(db_update % (newTable, 'disposition', '%s' % (dispo), warlist))
+data_insert(new_update.format(newTable,'disposition',dispo,warlist))
+
+
+#time.sleep(3)
+#agi.verbose("Billing: {0}".format(billsec))
+#agi.verbose("Dispo: {0}".format(dispo))
 
 
 #agi.hangup()
