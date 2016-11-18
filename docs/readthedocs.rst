@@ -10,12 +10,20 @@ Read the Docs
 Getting it working::
 ##################
 
-	::
+::
 
+	#! /usr/bin/env python
+	# -*- coding: utf-8 -*-
+	# vim: set et sw=4 fenc=utf-8:
+	"""
+	A Simple Example
+	"""
+	import mysql.connector as mariadb
 
-		this should be code
-		this too
-		maybe?
+	connection = mariadb.connect(**config)
+	"""
+	Establish Database Connection
+	"""
 
 Topic 1
 *************
