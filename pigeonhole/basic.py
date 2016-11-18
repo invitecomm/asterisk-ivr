@@ -19,6 +19,7 @@
 #
 
 """
+Nothing to see here yet
 """
 
 from asterisk.agi import *
