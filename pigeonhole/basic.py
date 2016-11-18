@@ -25,10 +25,8 @@ from asterisk.agi import *
 
 agi = AGI()
 agi.answer()
-agi.verbose('call answered')
 agi.appexec('AMD')
-agi.verbose('after AMD')
-
+agi.appexec('DumpChan')
 
 agi.stream_file('tt-monty-knights')
 
