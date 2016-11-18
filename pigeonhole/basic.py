@@ -26,7 +26,7 @@ from asterisk.agi import *
 agi = AGI()
 agi.answer()
 agi.verbose('call answered')
-agi.execute('AMD')
+agi.appexec('AMD')
 agi.verbose('after AMD')
 
 
