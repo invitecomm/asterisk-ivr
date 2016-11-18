@@ -25,17 +25,17 @@ from asterisk.agi import *
 
 agi = AGI()
 agi.answer()
-agi.appexec('AMD')
+    
+if(agi.get_variable('amd')):
+    agi.appexec('AMD')
 
-amdstatus = agi.get_variable('AMDSTATUS')
-amdcause = agi.get_variable('AMDCAUSE')
+    amdstatus = agi.get_variable('AMDSTATUS')
+    amdcause = agi.get_variable('AMDCAUSE')
+    agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
 
-agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
-
-agi.appexec('DumpChan')
-
-
-
+#variable = agi.get_variable('variable')
+#env = agi.env['agi_arg_1']
+#agi.appexec('DumpChan')
 
 agi.stream_file('tt-monty-knights')
 
