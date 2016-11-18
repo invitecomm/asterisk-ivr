@@ -18,6 +18,7 @@ Getting it working, getting Read the Docs to generate documentation using the do
 
 Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have been the solution.  *..or helped get closer to making the documentation with ``docstrings``.*
 
+
 Sphinx Markup
 ##################
 
