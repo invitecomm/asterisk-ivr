@@ -29,7 +29,7 @@ from distutils.util import strtobool
 
 agi = AGI()
 """
-foo 1 2 3
+foo 1 2 3 and more
 """
 
 #agi.answer()
