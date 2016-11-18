@@ -16,9 +16,9 @@ Banging on the Keyboard
 
 Getting it working, getting Read the Docs to generate documentation using the docstrings was a frustrating experience.  Lot's of *Banging on the Keyboard*, trying different things, and making changes all over the place.
 
-Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have been the solution.  
+Installing ``sphinx`` locally &f1b0; running ``sphinx-quickstart`` **may** have been the solution.  
 
-*..or helped get closer to making the documentation with* ``docstrings``*.*
+*..or helped get closer to making the documentation with* ``docstrings.``
 
 
 Sphinx Markup
