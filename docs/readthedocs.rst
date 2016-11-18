@@ -18,13 +18,10 @@ Getting it working::
 	"""
 	A Simple Example
 	"""
-	import mysql.connector as mariadb
-	
-	config = {'data': 'ommited'}
-	connection = mariadb.connect(**config)
-	"""
-	Establish Database Connection
-	"""
+	from asterisk.agi import *
+
+	agi = AGI()
+	agi.answer()
 
 Topic 1
 *************
