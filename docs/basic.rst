@@ -4,13 +4,13 @@
    contain the root `toctree` directive.
 
 ****   
-Stub
+Basic
 ****
 
 Sub Title 1
 ##################
 
-.. automodule:: connection
+.. automodule:: basic
 	:members:
 
 Topic 1
