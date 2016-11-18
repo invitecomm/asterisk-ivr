@@ -22,22 +22,23 @@
 """
 
 from asterisk.agi import *
+from distutils.util import strtobool
 
 agi = AGI()
 agi.answer()
     
 #bool(int(True))
 
-foo = agi.get_variable('amd')
-agi.verbose(int(foo))
+#foo = agi.get_variable('amd')
+#agi.verbose(int(foo))
 
 
-#if():
-#    agi.appexec('AMD')
-#
-#    amdstatus = agi.get_variable('AMDSTATUS')
-#    amdcause = agi.get_variable('AMDCAUSE')
-#    agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+if(strtobool(agi.get_variable('amd'))):
+    agi.appexec('AMD')
+
+    amdstatus = agi.get_variable('AMDSTATUS')
+    amdcause = agi.get_variable('AMDCAUSE')
+    agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
 
 #variable = agi.get_variable('variable')
 #env = agi.env['agi_arg_1']
