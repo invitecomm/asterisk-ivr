@@ -7,4 +7,5 @@
 Basic Settings
 ******************************
 
-.. automodule:: basic
+.. autoclass:: basic
+	:members:
