@@ -22,6 +22,9 @@ Topic 1
 Topic 2
 *************
 
+.. automodule:: basic
+
+
 Sub Title 2
 ##################
 
