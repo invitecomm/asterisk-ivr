@@ -48,27 +48,3 @@ class ExampleError(Exception):
     def __init__(self, msg, code):
         self.msg = msg
         self.code = code
-
-try:
-    """
-    Check AMD dialplan variable for affirmitive setting.
-    Variables evaluated in the dialplan are case-insensitive.
-    
-    Set(AMD = true)
-    
-    True values are y, yes, t, true, on and 1; 
-    false values are n, no, f, false, off and 0. 
-    Raises ValueError if val is anything else.
-    
-    When the dialpaln variable is not set, ValueError is ignored.
-    """
-    if(strtobool(agi.get_variable('amd'))):
-        agi.appexec('AMD')
-        amdstatus = agi.get_variable('AMDSTATUS')
-        amdcause = agi.get_variable('AMDCAUSE')
-        agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
-    else:
-        agi.verbose('AMD Disabled')
-except ValueError:
-    agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!',2)
-    pass
