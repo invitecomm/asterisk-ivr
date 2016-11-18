@@ -21,9 +21,6 @@ Importing Python Docstrings
 	"""
 	
 	from asterisk.agi import *
-	"""
-	Import AGI Module from the pyst2 Package
-	"""
 
 	agi = AGI()
 	"""
