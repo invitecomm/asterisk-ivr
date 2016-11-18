@@ -7,7 +7,11 @@
 Read the Docs
 ****
 
-Getting it working
+Read the Docs isn't just another site to post documentation.  It supports various markup languages, which just provides flexibility.  
+
+The real **power** of Read the Docs is the ability to generate documentation from the docstrings contained within the code.  *The only problem is HOW TO generate this documentation, isn't documented well.*
+
+Banging on the Keyboard
 ##################
 
 Importing Python Docstrings
