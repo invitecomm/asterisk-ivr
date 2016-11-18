@@ -22,6 +22,11 @@ Importing Python Docstrings
 	
 	from asterisk.agi import *
 
+	myVar = 'some data'
+	"""
+	A Simple Variable
+	"""
+
 	agi = AGI()
 	"""
 	Create an AGI Instance 
