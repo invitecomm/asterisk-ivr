@@ -47,8 +47,8 @@ try:
         agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
     else:
         agi.verbose('AMD Disabled')
-except ValueError as e:
-    agi.verbose('WARNING: AMD Dialplan Variable NOT Set! {0}'.format(e),2)
+except ValueError:
+    agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!',2)
     pass
     
 
