@@ -29,20 +29,8 @@ from distutils.util import strtobool
 
 agi = AGI()
 """
-foo
+Basic Sample
+######################################################
+Nothing to see here yet!
+
 """
-
-agi.answer()
-"""
-bar
-"""
-
-
-
-#variable = agi.get_variable('variable')
-#env = agi.env['agi_arg_1']
-#agi.appexec('DumpChan')
-
-agi.stream_file('tt-monty-knights')
-
-agi.hangup()
