@@ -26,22 +26,30 @@ from distutils.util import strtobool
 
 agi = AGI()
 agi.answer()
-    
-#bool(int(True))
-
-#foo = agi.get_variable('amd')
-#agi.verbose(int(foo))
 
 try:
+    """
+    Check AMD dialplan variable for affirmitive setting.
+    Variables evaluated in the dialplan are case-insensitive.
+    
+    Set(AMD = true)
+    
+    True values are y, yes, t, true, on and 1; 
+    false values are n, no, f, false, off and 0. 
+    Raises ValueError if val is anything else.
+    
+    If the dialpaln is not set, ValueError is ignored.
+    """
     if(strtobool(agi.get_variable('amd'))):
         agi.appexec('AMD')
-
         amdstatus = agi.get_variable('AMDSTATUS')
         amdcause = agi.get_variable('AMDCAUSE')
-        agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+        #agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
 except ValueError:
     pass
     
+
+
 #variable = agi.get_variable('variable')
 #env = agi.env['agi_arg_1']
 #agi.appexec('DumpChan')
