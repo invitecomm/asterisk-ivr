@@ -26,7 +26,9 @@ from asterisk.agi import *
 agi = AGI()
 agi.answer()
     
-if(agi.get_variable('amd')):
+#bool(int(True))
+
+if(bool(ing(agi.get_variable('amd')))):
     agi.appexec('AMD')
 
     amdstatus = agi.get_variable('AMDSTATUS')
