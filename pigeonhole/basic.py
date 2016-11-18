@@ -32,7 +32,7 @@ amdcause = agi.get_variable('AMDCAUSE')
 
 agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
 
-#agi.appexec('DumpChan')
+agi.appexec('DumpChan')
 
 
 
