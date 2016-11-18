@@ -7,8 +7,12 @@
 Read the Docs
 ****
 
-Getting it working
+Getting it working::
 ##################
+
+	this should be code
+	this too
+	maybe?
 
 Topic 1
 *************
