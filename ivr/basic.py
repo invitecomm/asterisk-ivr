@@ -27,5 +27,5 @@ Nothing to see here yet!
 from asterisk.agi import *
 from distutils.util import strtobool
 
-#agi = AGI()
+agi = AGI()
 #agi.answer()
