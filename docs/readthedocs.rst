@@ -12,9 +12,7 @@ Getting it working::
 
 ::
 
-	#! /usr/bin/env python
 	# -*- coding: utf-8 -*-
-	# vim: set et sw=4 fenc=utf-8:
 	"""
 	A Simple Example
 	"""
@@ -29,11 +27,15 @@ Getting it working::
 	I/O Communications: stdin, stdout, and stderr
 	"""
 
-Topic 1
+Advanced Settings: Install Project:
 *************
 
-Topic 2
+setup.py install
 *************
+setup.py::
+    # Package dependencies:
+    install_requires = ['six>=1.9.0','google-api-python-client==1.5.3','pyst2'],
+
 
 Sub Title 2
 ##################
