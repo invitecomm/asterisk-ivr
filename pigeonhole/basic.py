@@ -28,12 +28,16 @@ agi.answer()
     
 #bool(int(True))
 
-if(bool(ing(agi.get_variable('amd')))):
-    agi.appexec('AMD')
+foo = agi.get_variable('amd')
+agi.verbose(foo)
 
-    amdstatus = agi.get_variable('AMDSTATUS')
-    amdcause = agi.get_variable('AMDCAUSE')
-    agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+
+#if():
+#    agi.appexec('AMD')
+#
+#    amdstatus = agi.get_variable('AMDSTATUS')
+#    amdcause = agi.get_variable('AMDCAUSE')
+#    agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
 
 #variable = agi.get_variable('variable')
 #env = agi.env['agi_arg_1']
