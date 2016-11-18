@@ -32,14 +32,16 @@ agi.answer()
 #foo = agi.get_variable('amd')
 #agi.verbose(int(foo))
 
+try:
+    if(strtobool(agi.get_variable('amd'))):
+        agi.appexec('AMD')
 
-if(strtobool(agi.get_variable('amd'))):
-    agi.appexec('AMD')
-
-    amdstatus = agi.get_variable('AMDSTATUS')
-    amdcause = agi.get_variable('AMDCAUSE')
-    agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
-
+        amdstatus = agi.get_variable('AMDSTATUS')
+        amdcause = agi.get_variable('AMDCAUSE')
+        agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+except ValueError:
+    pass
+    
 #variable = agi.get_variable('variable')
 #env = agi.env['agi_arg_1']
 #agi.appexec('DumpChan')
