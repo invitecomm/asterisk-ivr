@@ -8,6 +8,11 @@ from asterisk.agi import *
 Import AGI Module from the pyst2 Package
 """
 
+myVar = 'some data'
+"""
+A Simple Variable
+"""
+
 #agi = AGI()
 #"""
 #Create an AGI Instance 
