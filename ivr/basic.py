@@ -13,6 +13,7 @@ myVar = 'some data'
 A Simple Variable
 """
 
+
 #agi = AGI()
 #"""
 #Create an AGI Instance 
