@@ -38,13 +38,15 @@ try:
     false values are n, no, f, false, off and 0. 
     Raises ValueError if val is anything else.
     
-    If the dialpaln is not set, ValueError is ignored.
+    When the dialpaln variable is not set, ValueError is ignored.
     """
     if(strtobool(agi.get_variable('amd'))):
         agi.appexec('AMD')
         amdstatus = agi.get_variable('AMDSTATUS')
         amdcause = agi.get_variable('AMDCAUSE')
-        #agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+        agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+    else:
+        agi.verbose('AMD Disabled')
 except ValueError:
     pass
     
