@@ -26,7 +26,7 @@ Getting it working::
 	"""
 	agi.answer()
 	"""
-	stdin stdout
+	I/O Communications: stdin, stdout, and stderr
 	"""
 
 Topic 1
