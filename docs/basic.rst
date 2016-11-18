@@ -16,6 +16,9 @@ Sub Title 1
 Topic 1
 *************
 
+.. autoclass example_google
+	:members:
+
 Topic 2
 *************
 
