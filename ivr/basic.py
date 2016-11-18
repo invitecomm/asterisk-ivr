@@ -28,4 +28,7 @@ from asterisk.agi import *
 from distutils.util import strtobool
 
 agi = AGI()
+"""
+start
+"""
 #agi.answer()
