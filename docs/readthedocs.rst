@@ -25,6 +25,9 @@ Getting it working::
 	Create an AGI Instance 
 	"""
 	agi.answer()
+	"""
+	stdin stdout
+	"""
 
 Topic 1
 *************
