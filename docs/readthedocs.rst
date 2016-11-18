@@ -16,7 +16,11 @@ Getting it working::
 	"""
 	A Simple Example
 	"""
+	
 	from asterisk.agi import *
+	"""
+	Import AGI Module from the pyst2 Package
+	"""
 
 	agi = AGI()
 	"""
@@ -35,7 +39,7 @@ setup.py install
 setup.py::
    
 	# Package dependencies:
-	install_requires = ['six>=1.9.0','google-api-python-client==1.5.3','pyst2'],
+	install_requires = ['pyst2'],
 
 
 Sub Title 2
