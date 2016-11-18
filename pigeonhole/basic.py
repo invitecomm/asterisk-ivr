@@ -26,7 +26,16 @@ from asterisk.agi import *
 agi = AGI()
 agi.answer()
 agi.appexec('AMD')
-agi.appexec('DumpChan')
+
+amdstatus = agi.get_variable('AMDSTATUS')
+amdcause = agi.get_variable('AMDCAUSE')
+
+agi.verbose('Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+
+#agi.appexec('DumpChan')
+
+
+
 
 agi.stream_file('tt-monty-knights')
 
