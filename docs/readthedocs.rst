@@ -37,6 +37,11 @@ Importing Python Docstrings
 	I/O Communications: stdin, stdout, and stderr
 	"""
 
+.. warning:: 
+
+	This does not work.  Read the Docs doesn't display anything.
+	It appears to _choke on agi.answer()
+	
 Advanced Settings: Install Project:
 *************
 
