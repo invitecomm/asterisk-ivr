@@ -28,14 +28,14 @@ Sphinx Markup
 		This is how code is ``written``.
 		Good luck!  maybe
 		
-foo
-
+Indentation Level Matters
 	::
+
+		Indentation Level Matters
+			::
 		
-		::
-		
-			Deeper Code Block
-			Goes Here
+				Deeper Code Block
+				Goes Here
 
 	
 		
