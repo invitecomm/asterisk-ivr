@@ -33,8 +33,9 @@ Advanced Settings: Install Project:
 setup.py install
 *************
 setup.py::
-    # Package dependencies:
-    install_requires = ['six>=1.9.0','google-api-python-client==1.5.3','pyst2'],
+   
+	# Package dependencies:
+	install_requires = ['six>=1.9.0','google-api-python-client==1.5.3','pyst2'],
 
 
 Sub Title 2
