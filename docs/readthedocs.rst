@@ -18,15 +18,13 @@ Getting it working, getting Read the Docs to generate documentation using the do
 
 Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have been the solution.  *..or helped get closer to making the documentation with ``docstrings``.*
 
-****   
 Sphinx Markup
-****
+##################
 
 ::
 
-	::
-	This is how code is ``written``.
-	Good luck!  maybe
+This is how code is ``written``.
+Good luck!  maybe
 		
 
 Importing Python Docstrings
