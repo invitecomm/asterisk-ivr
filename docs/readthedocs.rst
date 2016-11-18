@@ -26,7 +26,7 @@ Font Awesome ?
 Copyright |copy| 2003, |BogusMegaCorp (TM)| |---|
 all rights reserved.
 
-.. |copy| unicode:: 0xxf1b0 .. copyright sign
+.. |copy| unicode:: 0xf1b0 .. copyright sign
 .. |BogusMegaCorp (TM)| unicode:: BogusMegaCorp U+2122
    .. with trademark sign
 .. |---| unicode:: U+02014 .. em dash
