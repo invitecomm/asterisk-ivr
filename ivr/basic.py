@@ -34,3 +34,4 @@ Basic Sample
 Nothing to see here yet!
 
 """
+agi.answer()
