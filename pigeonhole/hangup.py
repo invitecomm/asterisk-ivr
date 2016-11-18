@@ -113,7 +113,7 @@ warlist = agi.get_variable('warlist')
 #data_insert(db_update % (newTable, 'billsec', '%s' % (billsec), warlist))
 data_insert(new_count.format(newTable,'billsec',billsec,warlist))
 
-data_insert(new_count.format(newTable,'note',1,warlist))
+data_insert(new_count.format(newTable,'attempts',1,warlist))
 
 
 #data_insert(db_update % (newTable, 'disposition', '%s' % (dispo), warlist))
