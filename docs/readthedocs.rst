@@ -24,15 +24,19 @@ Sphinx Markup
 
 This is a code block
 ::
+
 	This is a code block
 	::
+	
 		This is how code is ``written``.
 		Good luck!  maybe
 		
 The level of indentation matters
 	::
+	
 		The level of indentation matters
 			::
+			
 				Deeper Code Block
 				Goes Here
 
