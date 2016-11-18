@@ -25,7 +25,7 @@ from asterisk.agi import *
 
 agi = AGI()
 agi.answer()
-agi.exec_command('AMD')
+agi.exec_command('AMD()')
 
 agi.stream_file('tt-monty-knights')
 
