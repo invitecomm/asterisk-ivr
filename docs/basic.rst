@@ -7,5 +7,5 @@
 Basic Settings
 ******************************
 
-.. autoclass:: example_google
+.. automodule:: example_google
 	:members:
