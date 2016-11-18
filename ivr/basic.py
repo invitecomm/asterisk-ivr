@@ -23,6 +23,7 @@ Nothing to see here yet
 
 Need to add text here.
 """
+
 class ExampleError(Exception):
     """Exceptions are documented in the same way as classes.
 
