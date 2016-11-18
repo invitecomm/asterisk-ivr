@@ -29,7 +29,7 @@ agi.answer()
 #bool(int(True))
 
 foo = agi.get_variable('amd')
-agi.verbose(foo)
+agi.verbose(int(foo))
 
 
 #if():
