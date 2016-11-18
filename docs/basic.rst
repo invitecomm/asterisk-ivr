@@ -10,7 +10,7 @@ Basic
 Sub Title 1
 ##################
 
-.. automodule:: basic
+.. autoclass:: basic
 	:members:
 
 Topic 1
