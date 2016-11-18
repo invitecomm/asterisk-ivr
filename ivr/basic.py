@@ -24,14 +24,9 @@ Nothing to see here yet!
 
 """
 
-from asterisk.agi import *
+#from asterisk.agi import *
 from distutils.util import strtobool
 
-agi = AGI()
-"""
-Basic Sample
-######################################################
-Nothing to see here yet!
+#agi = AGI()
 
-"""
 #agi.answer()
