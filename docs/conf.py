@@ -13,11 +13,15 @@
 
 import sys, os
 #import mock
-from mock import MagicMock
+from mock
 #
-MOCK_MODULES = ['AGI.answer']
+MOCK_MODULES = ['AGI']
 for mod_name in MOCK_MODULES:
-    sys.modules[mod_name] = MagicMock()
+    class Mock(sys.modules[mod_name]):
+        __all__ = []
+
+
+#    sys.modules[mod_name] = MagicMock()
    
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
