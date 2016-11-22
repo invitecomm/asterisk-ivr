@@ -22,6 +22,9 @@
 Nothing to see here yet
 """
 
-import ivr.basic 
+import types
+import ivr.basic
 
-print dir(basic)
+print [ivr.basic.__dict__.get(a) for a in dir(ivr.basic)
+  if isinstance(ivr.basic.__dict__.get(a), types.FunctionType)]
+
