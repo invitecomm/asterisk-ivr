@@ -7,8 +7,6 @@
 Read the Docs
 ****
 
-Read the Docs isn't just another site to post documentation.  It supports various markup languages, which just provides flexibility.  
-
 The real **power** of Read the Docs is the ability to generate documentation from the docstrings contained within your code.  *The only problem is how to generate this documentation, isn't documented well.*
 
 Banging on the Keyboard
@@ -16,46 +14,9 @@ Banging on the Keyboard
 
 Getting it working, getting Read the Docs to generate documentation using the docstrings was a frustrating experience.  Lot's of *Banging on the Keyboard*, trying different things, and making changes all over the place.
 
-Installing ``sphinx`` locally &#xf1b0; running ``sphinx-quickstart`` **may** have been the solution.  
+Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have been the solution.  
 
 *..or helped get closer to making the documentation with* ``docstrings.``
-
-Font Awesome ?
-##################
-
-Copyright |copy| 2003, |BogusMegaCorp (TM)| |---|
-all rights reserved.
-
-.. |copy| unicode:: 0xf1b0 .. copyright sign
-.. |BogusMegaCorp (TM)| unicode:: BogusMegaCorp U+2122
-   .. with trademark sign
-.. |---| unicode:: U+02014 .. em dash
-   :trim:
-
-
-Sphinx Markup
-##################
-
-This is a code block
-::
-
-	This is a code block
-	::
-	
-		This is how code is ``written``.
-		Good luck!  maybe
-		
-The level of indentation matters
-	::
-	
-		The level of indentation matters
-			::
-			
-				Deeper Code Block
-				Goes Here
-
-	
-		
 
 Importing Python Docstrings
 *************
@@ -90,27 +51,6 @@ Importing Python Docstrings
 	
 	It appears to choke when it reaches ``agi.answer()``
 	
-Advanced Settings: Install Project:
-*************
-
-setup.py install
-*************
-setup.py::
-   
-	# Package dependencies:
-	install_requires = ['pyst2'],
-
-
-Sub Title 2
-##################
-
-Topic 3
-*************
-
-Topic 4
-*************
-
-
 
 
 .. toctree::
