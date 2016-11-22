@@ -15,7 +15,7 @@ import sys, os
 #import mock
 from mock import MagicMock
 #
-MOCK_MODULES = ['AGI.answer']
+MOCK_MODULES = ['answer']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = MagicMock()
    
