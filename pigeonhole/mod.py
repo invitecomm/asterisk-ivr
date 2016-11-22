@@ -24,5 +24,5 @@ Nothing to see here yet
 
 from ivr.basic import *
 
-print dir(ivr.basic.AGI)
+print dir(AGI)
 
