@@ -25,5 +25,5 @@ Nothing to see here yet
 import types
 import ivr.basic
 
-print dir(ivr.basic)
+print dir(ivr.basic.AGI)
 
