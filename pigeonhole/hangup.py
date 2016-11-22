@@ -98,39 +98,27 @@ agi = AGI()
 #SIPCALLID=1583cd9c69daeca70f5a91477e22f3b7@172.17.70.223:5060
 
 #wombat = agi.get_variable('WOMBAT_HOPPER_ID')
-dispo = agi.get_variable('CDR(disposition)')
-billsec = agi.get_variable('CDR(billsec)')
-newTable = agi.get_variable('table')
-warlist = agi.get_variable('warlist')
+
 #warlist = agi.env['agi_accountcode']
 
 #
 # Changed to DID
 #
 
-agi.appexec('DumpChan')
+#agi.appexec('DumpChan')
+#WOMBAT_HOPPER_ID
 
+    
+    
+if(agi.get_variable('WOMBAT_HOPPER_ID')):    
 
-#data_insert(db_update % (newTable, 'billsec', '%s' % (billsec), warlist))
-data_insert(new_count.format(newTable,'billsec',billsec,warlist))
+    dispo = agi.get_variable('CDR(disposition)')
+    billsec = agi.get_variable('CDR(billsec)')
+    newTable = agi.get_variable('table')
+    warlist = agi.get_variable('warlist')
 
-#data_insert(new_count.format(newTable,'attempts',1,warlist))
+    data_insert(new_count.format(newTable,'billsec',billsec,warlist))
 
-
-#data_insert(db_update % (newTable, 'disposition', '%s' % (dispo), warlist))
-data_insert(new_update.format(newTable,'disposition',dispo,warlist))
-
-
-#time.sleep(3)
-#agi.verbose("Billing: {0}".format(billsec))
-#agi.verbose("Dispo: {0}".format(dispo))
-
-
-#agi.hangup()
-
-# calltime = agi.get_variable('ANSWEREDTIME')
-# data_insert(db_update % ('reply', calltime, warlist))
-
-
+    data_insert(new_update.format(newTable,'disposition',dispo,warlist))
 
 
