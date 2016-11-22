@@ -21,6 +21,8 @@ Installing ``sphinx`` locally and running ``sphinx-quickstart`` **may** have bee
 Importing Python Docstrings
 *************
 
+Dealing with external modules or system I/O, `Read the Docs <https://readthedocs.org/>`_ is **not** importing the docstrings.  It's not showing any output from the module.  See: basic_
+
 ::
 
 	# -*- coding: utf-8 -*-
@@ -45,7 +47,7 @@ Importing Python Docstrings
 	I/O Communications: stdin, stdout, and stderr
 	"""
 
-.. info:: 
+.. warning:: 
 
 	This does not work.  `Read the Docs <https://readthedocs.org/>`_  doesn't display anything.
 	
