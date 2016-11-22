@@ -108,6 +108,7 @@ warlist = agi.get_variable('warlist')
 # Changed to DID
 #
 
+agi.appexec('DumpChan')
 
 
 #data_insert(db_update % (newTable, 'billsec', '%s' % (billsec), warlist))
