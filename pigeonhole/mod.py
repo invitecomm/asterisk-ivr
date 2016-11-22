@@ -22,8 +22,7 @@
 Nothing to see here yet
 """
 
-import types
-import ivr.basic
+from ivr.basic import *
 
-print dir(ivr.basic.AGI)
+print dir(ivr.basic)
 
