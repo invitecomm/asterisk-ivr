@@ -15,7 +15,7 @@ import sys, os
 #import mock
 from mock import MagicMock
 #
-MOCK_MODULES = ['asterisk.agi', 'asterisk.agi.AGI', 'AGI', 'AGI()']
+MOCK_MODULES = ['AGI']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = MagicMock()
    
