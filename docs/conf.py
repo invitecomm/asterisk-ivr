@@ -13,7 +13,7 @@
 
 import sys, os
 #import mock
-from mock
+import mock
 #
 MOCK_MODULES = ['AGI']
 for mod_name in MOCK_MODULES:
