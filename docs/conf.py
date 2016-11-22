@@ -12,11 +12,11 @@
 # serve to show the default.
 
 import sys, os
-#import mock
+import mock
 #
-#MOCK_MODULES = ['agi.answer']
-#for mod_name in MOCK_MODULES:
-#   sys.modules[mod_name] = mock.Mock() 
+MOCK_MODULES = ['agi', 'agi.AGI']
+for mod_name in MOCK_MODULES:
+   sys.modules[mod_name] = mock.Mock() 
    
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the

@@ -15,7 +15,7 @@ agi = AGI()
 Create an AGI Instance 
 """
 
-agi.answer()
-"""
-I/O Communications: stdin, stdout, and stderr
-"""
+#agi.answer()
+#"""
+#I/O Communications: stdin, stdout, and stderr
+#"""
