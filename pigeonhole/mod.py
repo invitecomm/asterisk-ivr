@@ -22,6 +22,6 @@
 Nothing to see here yet
 """
 
-from ivr import basic
+import ivr.basic 
 
-#print dir(basic)
+print dir(basic)
