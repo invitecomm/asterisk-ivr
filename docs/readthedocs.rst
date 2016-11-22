@@ -45,11 +45,24 @@ Importing Python Docstrings
 	I/O Communications: stdin, stdout, and stderr
 	"""
 
-.. warning:: 
+.. info:: 
 
 	This does not work.  `Read the Docs <https://readthedocs.org/>`_  doesn't display anything.
 	
+	It appears to choke when it reaches ``agi = AGI()`` unless **Install Project** is 
+	enabled in  `Read the Docs <https://readthedocs.org/>`_.
+	
+	This happens because ``AGI()`` calls an external module.
+	
+
+
+.. warning:: 
+
+	``agi.answer()`` does not work, with or without `Read the Docs <https://readthedocs.org/>`_  installing the project inside a virtualenv.
+	
 	It appears to choke when it reaches ``agi.answer()``
+	
+	The is probably due to the ``answer()`` function working with ``stdin`` and ``stdout``.
 	
 
 
