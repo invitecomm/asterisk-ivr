@@ -32,20 +32,6 @@ from datetime import date, datetime, timedelta
 import time
 import mysql.connector as mariadb
 
-def question(file, valid_digits):
-    regexp = re.compile(r'[' + valid_digits + ']')
-    
-    res = agi.get_data(file, 20000, 1)
-    if regexp.search(res) is not None:
-        return res
-
-    res = agi.get_data(file, 20000, 1)    
-    if regexp.search(res) is not None:
-        return res
-        
-    if not res:
-        agi.hangup()
-
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
 
@@ -58,7 +44,6 @@ config = {
 }
 
 #  'database': settings.get('general', 'dbname'),
-
 
 def data_insert(query):                           
     agi.verbose(query)
@@ -76,39 +61,16 @@ def data_insert(query):
 
 #db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 new_update = ("UPDATE `{0}` SET `{1}` = '{2}' WHERE id = {3}")
+"""
+Update a specific value in a table.
+"""
 
 new_count = ("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}")
-
-
-
-#
-# Changed to DID
-#
+"""
+Math increment of a INT value in a table.
+"""
 
 agi = AGI()
-#agi.answer()
-
-#clid = agi.env['agi_accountcode']
-
-# Asterisk Dial-plan Application 'DumpChan()'
-#Variables:
-#WOMBAT_HOPPER_ID=2145573608
-#warlist=38418
-#NUM=
-#SIPCALLID=1583cd9c69daeca70f5a91477e22f3b7@172.17.70.223:5060
-
-#wombat = agi.get_variable('WOMBAT_HOPPER_ID')
-
-#warlist = agi.env['agi_accountcode']
-
-#
-# Changed to DID
-#
-
-#agi.appexec('DumpChan')
-#WOMBAT_HOPPER_ID
-
-    
     
 if(agi.get_variable('WOMBAT_HOPPER_ID')):    
 
@@ -118,7 +80,4 @@ if(agi.get_variable('WOMBAT_HOPPER_ID')):
     warlist = agi.get_variable('warlist')
 
     data_insert(new_count.format(newTable,'billsec',billsec,warlist))
-
     data_insert(new_update.format(newTable,'disposition',dispo,warlist))
-
-
