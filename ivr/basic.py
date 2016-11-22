@@ -5,6 +5,7 @@
 A Simple Example
 """
 
+import sys
 from asterisk.agi import *
 
 myVar = 'some data'
@@ -21,3 +22,5 @@ Create an AGI Instance
 #"""
 #I/O Communications: stdin, stdout, and stderr
 #"""
+
+print sys.modules
