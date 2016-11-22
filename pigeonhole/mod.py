@@ -22,7 +22,7 @@
 Nothing to see here yet
 """
 
-from ivr.basic import *
+from asterisk.agi import *
 
-print dir(ivr.basic)
+print dir(asterisk.agi)
 
