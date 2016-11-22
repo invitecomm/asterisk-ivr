@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.abspath('../ivr'))
 
 autoclass_content = 'both'
 
-html_style = 'css/my_theme.css' 
+#html_style = 'css/my_theme.css' 
 
 # -- General configuration -----------------------------------------------------
 
