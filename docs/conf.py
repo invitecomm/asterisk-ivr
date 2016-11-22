@@ -14,7 +14,7 @@
 import sys, os
 import mock
 #
-MOCK_MODULES = ['AGI', 'AGI.answer']
+MOCK_MODULES = ['agi', 'agi.AGI()', 'AGI', 'AGI.answer']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = mock.Mock()
    
