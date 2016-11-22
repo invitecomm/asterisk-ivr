@@ -1,4 +1,6 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
+# vim: set et sw=4 fenc=utf-8:
 """
 A Simple Example
 """
@@ -15,7 +17,7 @@ agi = AGI()
 Create an AGI Instance 
 """
 
-#agi.answer()
-#"""
-#I/O Communications: stdin, stdout, and stderr
-#"""
+agi.answer()
+"""
+I/O Communications: stdin, stdout, and stderr
+"""
