@@ -101,7 +101,7 @@ warlist = agi.env['agi_accountcode']
 
 
 agi.verbose("Database Record: {0}".format(warlist))
-## -broken- data_insert(db_update % ('timestamp', 'now()', warlist))
+## -broken- #data_insert(db_update % ('timestamp', 'now()', warlist))
 
 
 amdstatus = agi.env['agi_arg_2']
@@ -111,37 +111,37 @@ amdreason = agi.env['agi_arg_3']
 
 if amdstatus == "MACHINE":
     agi.appexec('UserEvent', 'CALLSTATUS, UniqueID:%s,V:AMD' % wombat)
-    data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), warlist))
+    #data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), warlist))
     agi.hangup()
 
-data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), warlist))
+#data_insert(db_update % (newTable, 'note', '%s:%s' % (amdstatus, amdreason), warlist))
 
 agi.stream_file('wardial/cust2-start')
 
 q1 = question('wardial/cust2-q1', '12')
-data_insert(db_update % (newTable, 'q1', q1, warlist))
+#data_insert(db_update % (newTable, 'q1', q1, warlist))
 
 if q1 == '1':
 
     q2 = question('wardial/cust2-q2', '12')
-    data_insert(db_update % (newTable, 'q2', q2, warlist))
+    #data_insert(db_update % (newTable, 'q2', q2, warlist))
 
     if q2 == '1':
         q3 = question('wardial/cust2-q3', '12')
-        data_insert(db_update % (newTable, 'q3', q3, warlist))
+        #data_insert(db_update % (newTable, 'q3', q3, warlist))
 
         q4 = question('wardial/cust2-q4', '12')
-        data_insert(db_update % (newTable, 'q4', q4, warlist))
+        #data_insert(db_update % (newTable, 'q4', q4, warlist))
 
         q5 = question('wardial/cust2-q5', '123')
-        data_insert(db_update % (newTable, 'q5', q5, warlist))
+        #data_insert(db_update % (newTable, 'q5', q5, warlist))
 
 agi.stream_file('wardial/cust2-end')
 
 agi.hangup()
 
 # calltime = agi.get_variable('ANSWEREDTIME')
-# data_insert(db_update % ('reply', calltime, warlist))
+# #data_insert(db_update % ('reply', calltime, warlist))
 
 
 
