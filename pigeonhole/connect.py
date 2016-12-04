@@ -18,18 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-""" ivr - A set of IVR functions for Asterisk.
+from ivr.connection import *
 
-The pyst project includes several python modules to assist in programming
-asterisk with python:
+print ivr.connection.config
 
-ivr     - The IVR Template
-
-"""
-
-#from ivr.ivr import *
-
-__all__ = ['ivr','test','connection']
-__version__ = '0.0.3'
-
-#from .test import joke
