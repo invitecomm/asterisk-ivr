@@ -75,35 +75,10 @@ import ConfigParser
 settings = ConfigParser.RawConfigParser()
 settings.read(os.path.join(asterisk_path,asterisk_conf))
 
-if __name__ == "__main__": 
-    config = {
-      'user' : settings.get(context, 'dbuser'),
-      'password' : settings.get(context, 'dbpass'),
-      'host' : settings.get(context, 'dbhost'),
-      'database' : settings.get(context, 'dbname'),
-      'raise_on_warnings' : True,
-    }
-else:
-    # Dummy Module for Sphinx AutoDoc
-    config = {'user':'myuser', 'password':'mypass', 'host':'127.0.0.1', 'database':'asterisk'}
-    """    
-    Using the configuration arguments defined in this module, `connection.config`_ will return the settings needed to connect to the database from your Asterisk configuration.
-           
-    Example:
-        The following code is used to generate the connection data::
-        
-            settings = ConfigParser.RawConfigParser()
-            settings.read(os.path.join(asterisk_path,asterisk_conf))
-
-            config = {
-              'user' : settings.get(context, 'dbuser'),
-              'password' : settings.get(context, 'dbpass'),
-              'host' : settings.get(context, 'dbhost'),
-              'database' : settings.get(context, 'dbname'),
-              'raise_on_warnings' : True,
-            }
-        
-    Returns:
-        list: Comma-separated list of elements used to connect to the database.
-             
-    """
+config = {
+  'user' : settings.get(context, 'dbuser'),
+  'password' : settings.get(context, 'dbpass'),
+  'host' : settings.get(context, 'dbhost'),
+  'database' : settings.get(context, 'dbname'),
+  'raise_on_warnings' : True,
+}
