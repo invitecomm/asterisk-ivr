@@ -75,7 +75,7 @@ import ConfigParser
 settings = ConfigParser.RawConfigParser()
 settings.read(os.path.join(asterisk_path,asterisk_conf))
 
-def config(*context, *args):
+def config(*args):
     if not args:
         data = {
             'user' : settings.get(context, 'dbuser'),
@@ -87,10 +87,10 @@ def config(*context, *args):
         return data
     else:
         data = {
-            'user' : settings.get(context, 'dbuser'),
-            'password' : settings.get(context, 'dbpass'),
-            'host' : settings.get(context, 'dbhost'),
-            'database' : args[0],
+            'user' : settings.get(args[0], 'dbuser'),
+            'password' : settings.get(args[0], 'dbpass'),
+            'host' : settings.get(args[0], 'dbhost'),
+            'database' : settings.get(args[0], 'dbname'),
             'raise_on_warnings' : True,
         }
         return data 
