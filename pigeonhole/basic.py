@@ -56,6 +56,10 @@ except ValueError:
     pass
     
 
+project = agi.env['agi_arg_1']
+agi.verbose('Processing campaign: {0}'.format(project))
+
+
 
 #variable = agi.get_variable('variable')
 #env = agi.env['agi_arg_1']
