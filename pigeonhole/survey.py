@@ -141,8 +141,11 @@ def prompt(project_next):
     
     agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format((project_next), label, dtmf))
     
-    entered = random.choice(dtmf)
+    entered = question(project_next, dtmf)
+    
+    #entered = random.choice(dtmf)
     agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
+    
     update(db_update % ('brian', label, entered, '3'))
 
     
@@ -152,6 +155,20 @@ def prompt(project_next):
     if next not in listData:
         prompt(next)
 
+
+def question(file, valid_digits):
+    regexp = re.compile(r'[' + valid_digits + ']')
+    
+    res = agi.get_data(file, 2000, 1)
+    if regexp.search(res) is not None:
+        return res
+
+    res = agi.get_data(file, 2000, 1)    
+    if regexp.search(res) is not None:
+        return res
+        
+    if not res:
+        agi.hangup()
 
 #print ('Playback: {0}'.format((project_start)))    
 #prompt(project_next)    
