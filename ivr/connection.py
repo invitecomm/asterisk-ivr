@@ -75,9 +75,7 @@ import ConfigParser
 settings = ConfigParser.RawConfigParser()
 settings.read(os.path.join(asterisk_path,asterisk_conf))
 
-
-
-def config(*args):
+def config(*context=context,*args):
     if not args:
         data = {
             'user' : settings.get(context, 'dbuser'),
