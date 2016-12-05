@@ -36,7 +36,7 @@ sys.setdefaultencoding("utf-8")
 from datetime import date, datetime, timedelta
 import mysql.connector as mariadb
 
-config = ivr.connection.config()
+config = ivr.connection.config('portal')
 results = ivr.connection.config('wardial')
 
 def database(query):                           
