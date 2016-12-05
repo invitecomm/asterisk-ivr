@@ -20,15 +20,3 @@ Connection Settings
 ******************************
 
 .. autodata:: connection.config
-
-PHP Test
-******************************
-
-.. php:method:: repair_table($table_name)
-
-		:param	string	$table_name:	Name of the table to repair
-		:returns:	Array of repair messages or FALSE on failure
-		:rtype:	array
-
-		Repairs a database table.
-
