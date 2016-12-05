@@ -139,10 +139,10 @@ def prompt(project_next, listData):
     dtmf = digits(project_next)
     label = (label_question(project_next))
     
-    print ('Prompt: {0}, Label: {1} Digits: {2}'.format((project_next), label, dtmf))
+    agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format((project_next), label, dtmf))
     
     entered = random.choice(dtmf)
-    print ('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
+    agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
     update(db_update % ('brian', label, entered, '3'))
 
     
