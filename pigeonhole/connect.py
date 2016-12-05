@@ -20,5 +20,5 @@
 
 from ivr.connection import *
 
-print config('general')
+print config()
 
