@@ -86,6 +86,7 @@ def config(args):
             'database' : settings.get(context, 'dbname'),
             'raise_on_warnings' : True,
         }
+        return data
     else:
         data = {
             'user' : settings.get(context, 'dbuser'),
@@ -93,6 +94,7 @@ def config(args):
             'host' : settings.get(context, 'dbhost'),
             'database' : args[0],
             'raise_on_warnings' : True,
-        }    
-   return data
+        }
+        return data 
+   
         
