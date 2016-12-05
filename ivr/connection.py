@@ -77,7 +77,7 @@ settings.read(os.path.join(asterisk_path,asterisk_conf))
 
 
 
-def config(*args):
+def config(args):
     if not args:
         data = {
             'user' : settings.get(context, 'dbuser'),
