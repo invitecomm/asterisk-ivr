@@ -27,7 +27,7 @@ import sys
 import random
 import ivr.connection
 from asterisk.agi import *
-
+from distutils.util import strtobool
 
 
 reload(sys)
