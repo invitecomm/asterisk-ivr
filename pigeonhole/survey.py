@@ -135,7 +135,7 @@ db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 
 
 """Recursive Function"""
-def prompt(project_next):
+def prompt(project_next, listData):
     dtmf = digits(project_next)
     label = (label_question(project_next))
     
@@ -213,7 +213,7 @@ listData.pop()  # Remove project_next from end of list
 #agi.appexec('DumpChan')
 
 agi.verbose('Playback: {0}'.format((project_start)))    
-prompt(project_next)    
+prompt(project_next, listData)    
 agi.verbose('Playback: {0}'.format((project_finish)))
 agi.verbose('Done')
 
