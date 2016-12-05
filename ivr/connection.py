@@ -78,15 +78,21 @@ settings.read(os.path.join(asterisk_path,asterisk_conf))
 
 
 def config(*args):
-    data = {
-        'user' : settings.get(context, 'dbuser'),
-        'password' : settings.get(context, 'dbpass'),
-        'host' : settings.get(context, 'dbhost'),
-        if not args:
+    if not args:
+        data = {
+            'user' : settings.get(context, 'dbuser'),
+            'password' : settings.get(context, 'dbpass'),
+            'host' : settings.get(context, 'dbhost'),
             'database' : settings.get(context, 'dbname'),
-        else:
+            'raise_on_warnings' : True,
+        }
+    else:
+        data = {
+            'user' : settings.get(context, 'dbuser'),
+            'password' : settings.get(context, 'dbpass'),
+            'host' : settings.get(context, 'dbhost'),
             'database' : args[0],
-        'raise_on_warnings' : True,
-    }
-   
+            'raise_on_warnings' : True,
+        }    
+   return data
         
