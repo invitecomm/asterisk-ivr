@@ -46,6 +46,9 @@ try:
         amdstatus = agi.get_variable('AMDSTATUS')
         amdcause = agi.get_variable('AMDCAUSE')
         agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+        if amdstatus == "MACHINE":
+            agi.verbose('Machine detected, hanging up')
+            agi.hangup()
     else:
         agi.verbose('AMD Disabled')
 except ValueError:

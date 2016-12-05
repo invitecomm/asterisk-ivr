@@ -18,7 +18,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from ivr.connection import *
+import ivr.connection
+config = ivr.connection.config()
+print config
 
-print config('wardial')
 

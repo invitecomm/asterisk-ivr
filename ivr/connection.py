@@ -28,7 +28,11 @@ Example:
     Import the module, get the config settings, and pass them to your mysql connection::
 
         import ivr.connection
-        config = ivr.connection.config
+        
+        config = ivr.connection.config()
+         -or-
+        config = ivr.connection.config('context')
+        
         database = mysql.connect(**config)
 
 """

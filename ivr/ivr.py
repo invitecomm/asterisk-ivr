@@ -53,12 +53,12 @@ class IVR:
 
     """
     
-    def __init__(self, config='settings.conf'):
+    def __init__(self):
         """Load the configuration.
         """
-       	settings = ConfigParser.RawConfigParser()
-        settings.read(config)
-        self.foo = settings.get('metadata', 'description-file')
+        #       	settings = ConfigParser.RawConfigParser()
+        #        settings.read(config)
+        #        self.foo = settings.get('metadata', 'description-file')
 		
     def f(self):
         """
@@ -83,5 +83,21 @@ class IVR:
         return text
     
     def dummy(self):
+        return 'nothing to see here'
         """ Testing Read The Docs Content Generation """
+
+    def dtmf(file, valid_digits):
+        regexp = re.compile(r'[' + valid_digits + ']')
+    
+        res = agi.get_data(file, 2000, 1)
+        if regexp.search(res) is not None:
+            return res
+
+        res = agi.get_data(file, 2000, 1)    
+        if regexp.search(res) is not None:
+            return res
+        
+        if not res:
+            agi.hangup()        
+        
         
