@@ -21,6 +21,8 @@ Connection Settings
 
 .. autodata:: connection.config
 
+PHP Test
+******************************
 
 .. php:method:: repair_table($table_name)
 
