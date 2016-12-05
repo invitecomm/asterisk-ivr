@@ -26,6 +26,8 @@ import ConfigParser
 import sys
 import random
 import ivr.connection
+from asterisk.agi import *
+
 
 
 reload(sys)
