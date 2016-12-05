@@ -141,7 +141,7 @@ def prompt(project_next):
     
     agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format((project_next), label, dtmf))
     
-    entered = question(project_next, dtmf)
+    entered = question('wardial/' + project_next, dtmf)
     
     #entered = random.choice(dtmf)
     agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
