@@ -146,7 +146,7 @@ def prompt(project_next):
     #entered = random.choice(dtmf)
     agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
     
-    update(db_update % (project_next, label, entered, '3'))
+    update(db_update % (project, label, entered, '3'))
 
     
     next = (next_question(project_next, entered))
