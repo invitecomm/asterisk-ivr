@@ -155,7 +155,7 @@ def prompt(project_next, warlist):
     
     # Check for end of questions
     if next not in listData:
-        prompt(next)
+        prompt(next, warlist)
 
 
 def question(file, valid_digits):
