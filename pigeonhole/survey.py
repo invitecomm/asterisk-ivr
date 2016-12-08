@@ -208,10 +208,10 @@ try:
     if(strtobool(agi.get_variable('amd'))):
         agi.appexec('AMD')
         amdstatus = agi.get_variable('AMDSTATUS')
-        amdreason = agi.get_variable('AMDCAUSE')
+        amdcause = agi.get_variable('AMDCAUSE')
         agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
         update(db_update % (project, 'amdstatus', amdstatus, warlist))
-        update(db_update % (project, 'amdreason', amdreason, warlist))
+        update(db_update % (project, 'amdcause', amdcause, warlist))
         if amdstatus == "MACHINE":
             agi.verbose('Machine detected, hanging up')
             agi.hangup()
