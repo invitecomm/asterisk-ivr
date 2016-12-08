@@ -191,7 +191,8 @@ agi.verbose('VAR')
 agi.verbose('Processing campaign: {0}'.format(project))
 
 #data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
-update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
+#update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
+update(db_update % (project, 'calldate', datetime.now(), warlist))
 agi.verbose('CALLDATE)
 
 
@@ -215,10 +216,10 @@ try:
         amdstatus = agi.get_variable('AMDSTATUS')
         amdcause = agi.get_variable('AMDCAUSE')
         agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
+        update(db_update % (project, 'amdstatus', amdstatus, warlist))
+        update(db_update % (project, 'amdreason', amdreason, warlist))
         if amdstatus == "MACHINE":
             agi.verbose('Machine detected, hanging up')
-            update(db_update % (project, 'amdstatus', '%s' % (amdstatus), warlist))
-            update(db_update % (project, 'amdreason', '%s' % (amdreason), warlist))
             agi.hangup()
     else:
         agi.verbose('AMD Disabled')
