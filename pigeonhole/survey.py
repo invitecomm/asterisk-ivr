@@ -190,6 +190,10 @@ agi.verbose('Processing campaign: {0}'.format(project))
 #data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
 #update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
 update(db_update % (project, 'calldate', datetime.now(), warlist))
+#data_insert(new_count.format(newTable,'billsec',billsec,warlist))
+update(db_update % (project, 'attempts', 'attempts + 1', warlist))
+
+
 
 project_select = ('SELECT intro_id, hangup_id, next FROM survey_details WHERE project = "%s"')
 
