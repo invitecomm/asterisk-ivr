@@ -179,13 +179,17 @@ agi = AGI()
 agi.answer()
 
 project = agi.env['agi_arg_1']
+warlist = agi.get_variable('warlist')
+newTable = project
+
 agi.verbose('Processing campaign: {0}'.format(project))
 
 #data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
 update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
+agi.verbose('ANSWERED')
 
-warlist = agi.get_variable('warlist')
-newTable = project
+
+
 
 try:
     """
