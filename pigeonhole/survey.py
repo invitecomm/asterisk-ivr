@@ -148,7 +148,7 @@ def prompt(project_next, warlist):
     
     if entered:
         update(db_update % (project, label, entered, warlist))
-        agi.verbose('DATABASE)
+        agi.verbose('DATABASE')
         
 
     
