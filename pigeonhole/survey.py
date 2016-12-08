@@ -131,6 +131,7 @@ push.billsec()
 
 
 db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
+new_count = ("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}")
 
 
 
@@ -191,7 +192,7 @@ agi.verbose('Processing campaign: {0}'.format(project))
 #update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
 update(db_update % (project, 'calldate', datetime.now(), warlist))
 #data_insert(new_count.format(newTable,'billsec',billsec,warlist))
-update(db_update % (project, 'attempts', 'attempts + 1', warlist))
+update(new_count % (project, 'attempts', 1, warlist))
 
 
 
