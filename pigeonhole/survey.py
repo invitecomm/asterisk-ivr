@@ -208,7 +208,7 @@ try:
     if(strtobool(agi.get_variable('amd'))):
         agi.appexec('AMD')
         amdstatus = agi.get_variable('AMDSTATUS')
-        amdcause = agi.get_variable('AMDCAUSE')
+        amdreason = agi.get_variable('AMDCAUSE')
         agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
         update(db_update % (project, 'amdstatus', amdstatus, warlist))
         update(db_update % (project, 'amdreason', amdreason, warlist))
