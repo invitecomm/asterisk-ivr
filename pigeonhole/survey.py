@@ -230,10 +230,10 @@ listData.pop()  # Remove project_next from end of list
 #agi.appexec('DumpChan')
 
 agi.verbose('Playback: {0}'.format((project_start)))
-agi.stream_file('wardial/20161102/Start')
+agi.stream_file('wardial/' + project_start)
 prompt(project_next)    
 agi.verbose('Playback: {0}'.format((project_finish)))
-agi.stream_file('wardial/20161102/End')
+agi.stream_file('wardial/' + project_finish)
 agi.verbose('Done')
 
 #agi.stream_file('tt-monty-knights')
