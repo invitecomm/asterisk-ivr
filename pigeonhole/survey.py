@@ -135,7 +135,7 @@ db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 
 
 """Recursive Function"""
-def prompt(project_next):
+def prompt(project_next, warlist):
     dtmf = digits(project_next)
     label = (label_question(project_next))
     
@@ -146,7 +146,7 @@ def prompt(project_next):
     #entered = random.choice(dtmf)
     agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
     
-    update(db_update % (project, label, entered, '3'))
+    update(db_update % (project, label, entered, warlist))
 
     
     next = (next_question(project_next, entered))
@@ -178,6 +178,15 @@ def question(file, valid_digits):
 agi = AGI()
 agi.answer()
 
+project = agi.env['agi_arg_1']
+agi.verbose('Processing campaign: {0}'.format(project))
+
+#data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
+update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
+
+warlist = agi.get_variable('warlist')
+newTable = project
+
 try:
     """
     Check AMD dialplan variable for affirmitive setting.
@@ -198,6 +207,8 @@ try:
         agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
         if amdstatus == "MACHINE":
             agi.verbose('Machine detected, hanging up')
+            update(db_update % (project, 'amdstatus', '%s' % (amdstatus), warlist))
+            update(db_update % (project, 'amdreason', '%s' % (amdreason), warlist))
             agi.hangup()
     else:
         agi.verbose('AMD Disabled')
@@ -206,8 +217,8 @@ except ValueError:
     pass
     
 
-project = agi.env['agi_arg_1']
-agi.verbose('Processing campaign: {0}'.format(project))
+
+
 
 #global project
 #project = 'blue00000080'
@@ -231,7 +242,7 @@ listData.pop()  # Remove project_next from end of list
 
 agi.verbose('Playback: {0}'.format((project_start)))
 agi.stream_file('wardial/' + project_start)
-prompt(project_next)    
+prompt(project_next, warlist)    
 agi.verbose('Playback: {0}'.format((project_finish)))
 agi.stream_file('wardial/' + project_finish)
 agi.verbose('Done')
