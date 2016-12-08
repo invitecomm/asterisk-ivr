@@ -148,11 +148,10 @@ def prompt(project_next, warlist):
     
     if entered:
         update(db_update % (project, label, entered, warlist))
-        agi.verbose('DATABASE')
-        
-
     
     next = (next_question(project_next, entered))
+    agi.verbose('NEXT')
+    
     
     # Check for end of questions
     if next not in listData:
@@ -192,6 +191,18 @@ agi.verbose('Processing campaign: {0}'.format(project))
 #update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
 update(db_update % (project, 'calldate', datetime.now(), warlist))
 
+project_select = ('SELECT intro_id, hangup_id, next FROM survey_details WHERE project = "%s"')
+
+project_data = database(project_select % (project))
+
+# Set Basic Project Details
+project_start = project_data[0][0]
+project_finish = project_data[0][1]
+project_next = project_data[0][2]
+
+# Define List Data (To compare start and end)
+listData = list(project_data[0])
+listData.pop()  # Remove project_next from end of list
 
 
 
@@ -231,18 +242,7 @@ except ValueError:
 #global project
 #project = 'blue00000080'
 
-project_select = ('SELECT intro_id, hangup_id, next FROM survey_details WHERE project = "%s"')
 
-project_data = database(project_select % (project))
-
-# Set Basic Project Details
-project_start = project_data[0][0]
-project_finish = project_data[0][1]
-project_next = project_data[0][2]
-
-# Define List Data (To compare start and end)
-listData = list(project_data[0])
-listData.pop()  # Remove project_next from end of list
 
 #variable = agi.get_variable('variable')
 #env = agi.env['agi_arg_1']
