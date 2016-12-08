@@ -144,9 +144,12 @@ def prompt(project_next, warlist):
     entered = question('wardial/' + project_next, dtmf)
     
     #entered = random.choice(dtmf)
-    agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
+    #agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
     
-    update(db_update % (project, label, entered, warlist))
+    if entered:
+        update(db_update % (project, label, entered, warlist))
+        agi.verbose('DATABASE)
+        
 
     
     next = (next_question(project_next, entered))
