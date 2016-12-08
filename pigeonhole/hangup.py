@@ -39,7 +39,7 @@ config = {
   'user': settings.get('general', 'dbuser'),
   'password': settings.get('general', 'dbpass'),
   'host': settings.get('general', 'dbhost'),
-  'database': 'wardial',
+  'database': 'survey',
   'raise_on_warnings': True,
 }
 
