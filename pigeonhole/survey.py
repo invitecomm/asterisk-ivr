@@ -177,16 +177,22 @@ def question(file, valid_digits):
 
 agi = AGI()
 agi.answer()
+agi.verbose('ANSWERED')
+
 
 project = agi.env['agi_arg_1']
+agi.verbose('ENV')
+
 warlist = agi.get_variable('warlist')
-newTable = project
+agi.verbose('VAR')
+
+#newTable = project
 
 agi.verbose('Processing campaign: {0}'.format(project))
 
 #data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
 update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
-agi.verbose('ANSWERED')
+agi.verbose('CALLDATE)
 
 
 
