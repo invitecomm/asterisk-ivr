@@ -195,7 +195,6 @@ update(db_update % (project, 'calldate', datetime.now(), warlist))
 update(new_count % (project, 'attempts', 1, warlist))
 
 
-
 project_select = ('SELECT intro_id, hangup_id, next FROM survey_details WHERE project = "%s"')
 
 project_data = database(project_select % (project))
