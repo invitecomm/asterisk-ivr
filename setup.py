@@ -46,7 +46,7 @@ setup(
 
     # Package dependencies:
     install_requires = [
-        'mysql-connector-python>=2.0.0',
+        'mysql-connector-python>=2.0.4',
         'six>=1.9.0',
         'google-api-python-client==1.5.3',
         'pyst2'
