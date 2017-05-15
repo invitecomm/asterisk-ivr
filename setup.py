@@ -39,12 +39,17 @@ setup(
     download_url = 'https://github.com/invitecomm/asterisk-ivr/tarball/' + version, # I'll explain this in a second
     keywords = 'python asterisk agi ivr telephony telephony sip voip',
     classifiers = [
-        'Development Status :: 1 - Planning',
+        #'Development Status :: 1 - Planning',
         'Development Status :: 2 - Pre-Alpha',
     ],
     license = 'GNU General Public License',
 
     # Package dependencies:
-    install_requires = ['six>=1.9.0','google-api-python-client==1.5.3','pyst2'],
+    install_requires = [
+        'mysql-connector-python>=2.0.0',
+        'six>=1.9.0',
+        'google-api-python-client==1.5.3',
+        'pyst2'
+    ],
     
 )
