@@ -128,7 +128,8 @@ push.billsec()
     
 """
 
-
+# NEED TO FIX
+# http://www.athenic.net/posts/2017/Jan/21/preventing-sql-injection-in-python/
 
 db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 new_count = ("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}")
