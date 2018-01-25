@@ -30,6 +30,6 @@ ivr     - The IVR Template
 #from ivr.ivr import *
 
 __all__ = ['ivr','test','connection']
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 #from .test import joke

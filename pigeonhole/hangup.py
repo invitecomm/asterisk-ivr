@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 # vim: set et sw=4 fenc=utf-8:
 #
-# Copyright 2016 INVITE Communications Co., Ltd. All Rights Reserved.
+# Copyright 2016-2018 INVITE Communications Co., Ltd. All Rights Reserved.
+# Copyright 2018 Sergei Turukin All Rights Reserved.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,13 +25,27 @@
 # [START import_libraries]
 from __future__ import print_function
 
-from asterisk.agi import *
-import re
 import ConfigParser
-
-from datetime import date, datetime, timedelta
+import logging
+import logging.handlers
+import re
 import time
+from datetime import date, datetime, timedelta
+
 import mysql.connector as mariadb
+import retry
+from asterisk.agi import *
+
+
+# Setup logging
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+
+handler = logging.handlers.SysLogHandler(address = '/dev/log')
+formatter = logging.Formatter('%(module)s.%(funcName)s: %(message)s')
+handler.setFormatter(formatter)
+
+log.addHandler(handler)
 
 settings = ConfigParser.RawConfigParser()
 settings.read('/etc/asterisk/res_config_mysql.conf')
@@ -45,19 +60,28 @@ config = {
 
 #  'database': settings.get('general', 'dbname'),
 
-def data_insert(query):                           
-    agi.verbose(query)
+def verbose(statement):
+    agi.verbose(statement)
+    log.info(statement)
+
+
+@retry.retry(tries=3, delay=5)
+def data_insert(queries):
     try:
-        mariadb_connection = mariadb.connect(**config)
-        cursor = mariadb_connection.cursor()
-        cursor.execute(query)
-        record = cursor.lastrowid
-        mariadb_connection.commit()
+        conn = mariadb.connect(**config)
+        cursor = conn.cursor()
+        for query in queries:
+            verbose(query)
+            cursor.execute(query)
+        conn.commit()
         cursor.close()
-        mariadb_connection.close()
+        conn.close()
+    except (mariadb.OperationalError) as error:
+        verbose("Database Error: {0}".format(error))
+        # initiate retry
+        raise
     except mariadb.Error as error:
-        agi.verbose("Database Error: {0}".format(error))
-    return record
+        verbose("Database Error: {0}".format(error))
 
 #db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 new_update = ("UPDATE `{0}` SET `{1}` = '{2}' WHERE id = {3}")
@@ -79,5 +103,6 @@ if(agi.get_variable('WOMBAT_HOPPER_ID')):
     newTable = agi.get_variable('table')
     warlist = agi.get_variable('warlist')
 
-    data_insert(new_count.format(newTable,'billsec',billsec,warlist))
-    data_insert(new_update.format(newTable,'disposition',dispo,warlist))
+    data_insert([
+        new_count.format(newTable,'billsec',billsec,warlist),
+        new_update.format(newTable,'disposition',dispo,warlist)])
