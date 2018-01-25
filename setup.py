@@ -50,6 +50,7 @@ setup(
         'google-api-python-client==1.5.3',
         'pyst2',
         'mysql-connector-python>=2.1.0',
+        'retry',
     ],
     
 )
