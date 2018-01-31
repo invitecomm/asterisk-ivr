@@ -22,7 +22,7 @@
 AGI Connection with Error Handling.
 To be used to handle processing after hangup.
 """
-from traceback import format_exc
+import traceback
 from asterisk.agi import *
 
 def alpha(string):
@@ -38,8 +38,8 @@ try:
     agi.hangup()
     #raise AGIAppError('Hangup','Script Complete')
     alpha('Script Completed')
-#except AGIAppError:
-#    alpha('Premature Hangup')
+except AGIAppError:
+    alpha('Premature Hangup')
 except Exception as e:
     alpha(traceback.format_exc())
 
