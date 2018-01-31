@@ -21,7 +21,7 @@
 """
 AGI Connection with Error Handling
 """
-
+import traceback
 from asterisk.agi import *
 
 try:
@@ -30,7 +30,7 @@ try:
     agi.verbose('Connected')
     agi.appexec('Milliwatt')
     #agi.hangup()
-except:
+except Exception as e:
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write("disconnected")
+        myfile.write(traceback.format_exc())
 
