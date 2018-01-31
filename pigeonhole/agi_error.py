@@ -26,7 +26,7 @@ from asterisk.agi import *
 
 def alpha(string):
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write(string)
+        myfile.write(string + '\r\n')
 
 try:
     agi = AGI()
