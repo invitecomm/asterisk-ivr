@@ -28,9 +28,9 @@ try:
     agi = AGI()
     agi.answer()
     agi.verbose('Connected')
+    d = {'col1': 'val1', 'col2': 'val2'}
     #agi.appexec('Milliwatt')
     agi.stream_file('tt-monty-knights')
-    d = {'col1': 'val1', 'col2': 'val2'}
     agi.hangup()
     raise AGIAppError('Hangup','Script Complete')
 except AGIAppError:
