@@ -28,8 +28,8 @@ try:
     agi = AGI()
     agi.answer()
     agi.verbose('Connected')
-    agi.appexec('Milliwatt')
-    #agi.hangup()
+    agi.appexec('Milliwattt')
+    agi.hangup()
 except AGIAppError:
     with open("/tmp/agi.txt", "a") as myfile:
         myfile.write('Hangup')
