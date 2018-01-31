@@ -34,7 +34,7 @@ try:
     agi.answer()
     agi.verbose('Connected')
     #agi.appexec('Milliwatt')
-    agi.stream_file('ttt-monty-knights')
+    agi.stream_file('tt-monty-knights')
     agi.hangup()
     #raise AGIAppError('Hangup','Script Complete')
     alpha('Script Completed')
