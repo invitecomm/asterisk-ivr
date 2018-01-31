@@ -30,9 +30,9 @@ try:
     agi.verbose('Connected')
     agi.appexec('Milliwatt')
     #agi.hangup()
-except AGIAppError as e:
-    with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write("I/O error({0}): {1}".format(e.errno, e.strerror))
+#except AGIAppError as e:
+#    with open("/tmp/agi.txt", "a") as myfile:
+#        myfile.write("I/O error({0}): {1}".format(e.errno, e.strerror))
 except Exception as e:
     with open("/tmp/agi.txt", "a") as myfile:
         myfile.write(traceback.format_exc())
