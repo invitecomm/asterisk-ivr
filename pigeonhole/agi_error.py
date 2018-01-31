@@ -28,16 +28,13 @@ try:
     agi = AGI()
     agi.answer()
     agi.verbose('Connected')
-    d = {'col1': 'val1', 'col2': 'val2'}
-    agi.verbose('UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d)))
     #agi.appexec('Milliwatt')
     agi.stream_file('tt-monty-knights')
     agi.hangup()
     raise AGIAppError('Hangup','Script Complete')
 except AGIAppError:
-    #sql = 'UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d))
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write('UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d)))
+        myfile.write('Hangup')
 except Exception as e:
     with open("/tmp/agi.txt", "a") as myfile:
         myfile.write(traceback.format_exc())
