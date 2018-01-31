@@ -34,9 +34,9 @@ try:
     agi.hangup()
     raise AGIAppError('Hangup','Script Complete')
 except AGIAppError:
-    sql = 'UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d))
+    #sql = 'UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d))
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write(sql)
+        myfile.write('UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d)))
 except Exception as e:
     with open("/tmp/agi.txt", "a") as myfile:
         myfile.write(traceback.format_exc())
