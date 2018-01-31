@@ -30,7 +30,7 @@ try:
     agi.verbose('Connected')
     agi.appexec('Milliwatt')
     #agi.hangup()
-except:
+except (AGIException, AGIError, AGIUnknownError, AGIAppError, AGIHangup, AGISIGHUPHangup, AGISIGPIPEHangup, AGIResultHangup, AGIDBError, AGIUsageError, AGIInvalidCommand) as e:
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write("disconnected")
+        myfile.write("I/O error({0}): {1}".format(e.errno, e.strerror))
 
