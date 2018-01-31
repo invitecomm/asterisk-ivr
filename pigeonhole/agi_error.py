@@ -22,7 +22,6 @@
 AGI Connection with Error Handling
 """
 
-import sys
 from asterisk.agi import *
 
 try:
@@ -33,6 +32,5 @@ try:
     #agi.hangup()
 except:
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write("Unexpected error:", sys.exc_info()[0])
-        
+        myfile.write("disconnected")
 
