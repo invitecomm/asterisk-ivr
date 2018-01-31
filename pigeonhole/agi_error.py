@@ -30,5 +30,5 @@ try:
     agi.verbose('Connected')
     agi.appexec('Milliwatt')
     agi.hangup()
-except AGIHangup:
+except:
     agi.verbose('Hangup')
