@@ -29,6 +29,7 @@ try:
     agi.answer()
     agi.verbose('Connected')
     d = {'col1': 'val1', 'col2': 'val2'}
+    agi.verbose('UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d)))
     #agi.appexec('Milliwatt')
     agi.stream_file('tt-monty-knights')
     agi.hangup()
