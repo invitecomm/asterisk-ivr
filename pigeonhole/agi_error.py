@@ -30,11 +30,13 @@ try:
     agi.verbose('Connected')
     #agi.appexec('Milliwatt')
     agi.stream_file('tt-monty-knights')
+    d = {'col1': 'val1', 'col2': 'val2'}
     agi.hangup()
-    raise OtherAGIAppError('Hangup','Script Complete')
+    raise AGIAppError('Hangup','Script Complete')
 except AGIAppError:
+    sql = 'UPDATE table SET {}'.format(', '.join('{}=%s'.format(k) for k in d))
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write('Hangup')
+        myfile.write(sql)
 except Exception as e:
     with open("/tmp/agi.txt", "a") as myfile:
         myfile.write(traceback.format_exc())
