@@ -24,8 +24,11 @@ AGI Connection with Error Handling
 
 from asterisk.agi import *
 
-agi = AGI()
-agi.answer()
-agi.verbose('Connected')
-agi.appexec('Milliwatt')
-agi.hangup()
+try:
+    agi = AGI()
+    agi.answer()
+    agi.verbose('Connected')
+    agi.appexec('Milliwatt')
+    agi.hangup()
+except AGIHangup:
+    agi.verbose('Hangup')
