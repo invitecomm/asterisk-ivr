@@ -31,7 +31,7 @@ try:
     #agi.appexec('Milliwatt')
     agi.stream_file('tt-monty-knights')
     agi.hangup()
-    raise AGIAppError
+    raise AGIAppError('Hangup','Script Complete')
 except AGIAppError:
     with open("/tmp/agi.txt", "a") as myfile:
         myfile.write('Hangup')
