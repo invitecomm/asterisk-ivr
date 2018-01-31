@@ -22,6 +22,7 @@
 AGI Connection with Error Handling
 """
 
+import sys
 from asterisk.agi import *
 
 try:
@@ -30,7 +31,8 @@ try:
     agi.verbose('Connected')
     agi.appexec('Milliwatt')
     #agi.hangup()
-except (AGIException, AGIError, AGIUnknownError, AGIAppError, AGIHangup, AGISIGHUPHangup, AGISIGPIPEHangup, AGIResultHangup, AGIDBError, AGIUsageError, AGIInvalidCommand) as e:
+except:
     with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write("I/O error({0}): {1}".format(e.errno, e.strerror))
+        myfile.write("Unexpected error:", sys.exc_info()[0])
+        
 
