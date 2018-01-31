@@ -24,6 +24,10 @@ AGI Connection with Error Handling
 import traceback
 from asterisk.agi import *
 
+def alpha(string):
+    with open("/tmp/agi.txt", "a") as myfile:
+        myfile.write(string)
+
 try:
     agi = AGI()
     agi.answer()
@@ -31,11 +35,10 @@ try:
     #agi.appexec('Milliwatt')
     agi.stream_file('tt-monty-knights')
     agi.hangup()
-    raise AGIAppError('Hangup','Script Complete')
+    #raise AGIAppError('Hangup','Script Complete')
+    alpha('Script Completed')
 except AGIAppError:
-    with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write('Hangup')
+    alpha('Premature Hangup')
 except Exception as e:
-    with open("/tmp/agi.txt", "a") as myfile:
-        myfile.write(traceback.format_exc())
+    alpha(traceback.format_exc())
 
