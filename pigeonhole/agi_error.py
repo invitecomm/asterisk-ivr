@@ -28,8 +28,8 @@ try:
     agi = AGI()
     agi.answer()
     agi.verbose('Connected')
-    agi.test_hangup()
-    agi.appexec('Milliwatt')
+    #agi.appexec('Milliwatt')
+    agi.stream_file('tt-monty-knights')
     agi.hangup()
 except AGIAppError:
     with open("/tmp/agi.txt", "a") as myfile:
