@@ -28,6 +28,7 @@ try:
     agi = AGI()
     agi.answer()
     agi.verbose('Connected')
+    agi.test_hangup()
     agi.appexec('Milliwatt')
     agi.hangup()
 except AGIAppError:
