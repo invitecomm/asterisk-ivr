@@ -31,4 +31,6 @@ try:
     agi.appexec('Milliwatt')
     agi.hangup()
 except:
-    agi.verbose('Hangup')
+    with open("/tmp/agi.txt", "a") as myfile:
+        myfile.write("disconnected")
+
