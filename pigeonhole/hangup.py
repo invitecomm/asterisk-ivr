@@ -85,6 +85,7 @@ def data_insert(queries):
         verbose("Database Error: {0}".format(error))
         for query in queries:
             verbose(query)
+        raise
 
 #db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
 new_update = ("UPDATE `{0}` SET `{1}` = '{2}' WHERE id = {3}")
