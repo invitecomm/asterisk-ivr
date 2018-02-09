@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: set et sw=4 fenc=utf-8:
 #
-# Copyright 2016 INVITE Communications Co., Ltd. All Rights Reserved.
+# Copyright 2016~2018 INVITE Communications Co., Ltd. All Rights Reserved.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ ivr     - The IVR Template
 
 #from ivr.ivr import *
 
-__all__ = ['ivr','test','connection']
-__version__ = '0.0.6'
+__all__ = ['ivr','test','connection', 'odbc']
+__version__ = '0.0.8'
 
 #from .test import joke

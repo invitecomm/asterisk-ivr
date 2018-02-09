@@ -18,8 +18,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-import ivr.connection
-config = ivr.connection.config()
+import ivr.odbc
+config = ivr.odbc.config()
 print config
+#import ConfigParser
+#import re
+
+#settings = ConfigParser.RawConfigParser()
+#settings.read('/etc/odbc.ini')
+
+#print settings.items('aws')
 
 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # vim: set et sw=4 fenc=utf-8:
 #
-# Copyright 2016 INVITE Communications Co., Ltd. All Rights Reserved.
+# Copyright 2016~2018 INVITE Communications Co., Ltd. All Rights Reserved.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
