@@ -19,39 +19,20 @@
 #
 
 """
-Nothing to see here yet
+Dictionary to MySQL UPDATE. 
+Uses set of key: value pairs
 """
 
-from string import strip
 data = {}
 
-#data = {'purple': 'zero', 'blue': 'one', 'blue': 'nine', 'red': 'two', 'green': 'three', 'yellow': 'four'}
-
+data['white'] = 'two'
 data['green'] = 'three'
 data['red'] = 'four'
 
-sql = "UPDATE table SET ({columns}) VALUES ({values})"
 db_update = ("UPDATE `%s` SET %s WHERE id = '%s'")
-
-
-#print(data.keys())
-#print(data.values())
-
 
 def fields(data):
     SEPERATOR = ', '
     return SEPERATOR.join("`{}` = '{}'".format(k,v) for (k,v) in data.items())
-
-def entries(data):
-    SEPERATOR = ', '
-    return SEPERATOR.join("'{}'".format(x) for x in data)
-
-
-#print(SEPERATOR.join(["'{}'".format(v) for v in data])
-#print(SEPERATOR.join("'{}'".format(v) for v in data.values()))
-
-#print(flatten(data.keys()))
-#print(flatten(data.values()))
-
 
 print(db_update % ('my_table', fields(data), '12345' ))
