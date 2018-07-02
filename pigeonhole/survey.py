@@ -20,259 +20,192 @@
 
 """General Database Interaction with Survey Data"""
 
-from __future__ import print_function
-
-import ConfigParser
+import re
 import sys
-import random
 import ivr.connection
 from asterisk.agi import *
 from distutils.util import strtobool
-
+import survey_model
+import logging
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from datetime import date, datetime, timedelta
+from datetime import datetime
 import mysql.connector as mariadb
 
-config = ivr.connection.config('portal')
-results = ivr.connection.config('survey')
 
-def database(query):                           
+if sys.stdout.isatty():
+    # colorizing exception in console for better readability
     try:
-        mariadb_connection = mariadb.connect(**config)
-        cursor = mariadb_connection.cursor()
-        cursor.execute(query)
-        data = cursor.fetchall()
-        mariadb_connection.close()
-    except mariadb.Error as error:
-        print("Database Error: {0}".format(error))
-    return data
+        import colored_traceback.auto
+    except ImportError:
+        pass
 
-def update(query):                           
-    try:
-        mariadb_connection = mariadb.connect(**results)
-        cursor = mariadb_connection.cursor()
-        cursor.execute(query)
-        record = cursor.lastrowid
-        mariadb_connection.commit()
-        cursor.close()
-        mariadb_connection.close()
-    except mariadb.Error as error:
-        print("Database Error: {0}".format(error))
-    return record
-    
-#question_id = 'blue00000041'
+logging.basicConfig(level=logging.INFO)  # logging.DEBUG to print SQL queries
 
-survey_questions_dtmf = ('SELECT * FROM survey_questions_dtmf WHERE question = "%s"')
-
-#
-#   DTMF Functions
-#
-
-"""Get Concatinated List of Valid Digits"""
-def digits(question_id):
-    db_select = survey_questions_dtmf
-    results = database(db_select % (question_id))
-    data = ''
-    for values in results:
-        data += str(values[5])
-    return data 
-#print (digits(question_id))
-
-"""Get Next Questions Based on Entered DTMF"""
-def next_question(question_id, dtmf):
-    db_select = ('SELECT dtmf_next FROM survey_questions_dtmf WHERE question = "%s" AND dtmf = "%s"')
-    results = database(db_select % (question_id, dtmf))
-    data = results[0]
-    return ''.join(data)    # Use JOIN to fix UTF8
-#print (next_question(question_id, 2))
-
-"""Get Label used by the DB"""
-def label_question(question_id):
-    db_select = ('SELECT question_label FROM survey_questions WHERE question = "%s"')
-    results = database(db_select % (question_id))
-    data = results[0]
-    return ''.join(data)    # Use JOIN to fix UTF8
-#print (next_question(question_id, 2))
-
-"""Get Next Questions Based on Entered DTMF"""
-def test(col, val):
-    db_select = ('SELECT * FROM name WHERE `%s` = "%s"')
-    results = database(db_select % (col, val))
-    for values in results:
-        foo = str(values[2])    
-        print (foo)
-#print (test('番号', 45))
+source_db_config = ivr.connection.config('portal')
+destination_db_config = ivr.connection.config('survey')
 
 
-#
-#   Survey Start
-#
+class SurveyScript:
 
-"""
-
-sighup.handle()
-
-for data in survey:
-
-    playback.greeting()
-
-    if data.next not in basic:
-        ask.next.question()
-
-    playback.thanks() 
-
-push.billsec()
-    
-"""
-
-# NEED TO FIX
-# http://www.athenic.net/posts/2017/Jan/21/preventing-sql-injection-in-python/
-
-db_update = ("UPDATE `%s` SET `%s` = '%s' WHERE id = '%s'")
-new_count = ("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}")
-
-
-
-"""Recursive Function"""
-def prompt(project_next, warlist):
-    dtmf = digits(project_next)
-    label = (label_question(project_next))
-    
-    agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format((project_next), label, dtmf))
-    
-    entered = question('wardial/' + project_next, dtmf)
-    
-    #entered = random.choice(dtmf)
-    #agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
-    
-    if entered:
-        update(db_update % (project, label, entered, warlist))
-    
-    next = (next_question(project_next, entered))
-    agi.verbose('NEXT')
-    
-    
-    # Check for end of questions
-    if next not in listData:
-        prompt(next, warlist)
-
-
-def question(file, valid_digits):
-    regexp = re.compile(r'[' + valid_digits + ']')
-    
-    res = agi.get_data(file, 2000, 1)
-    if regexp.search(res) is not None:
-        return res
-
-    res = agi.get_data(file, 2000, 1)    
-    if regexp.search(res) is not None:
-        return res
-        
-    if not res:
-        agi.hangup()
-
-#print ('Playback: {0}'.format((project_start)))    
-#prompt(project_next)    
-#print ('Playback: {0}'.format((project_finish)))
-#print ('Done')
-
-agi = AGI()
-agi.answer()
-
-project = agi.env['agi_arg_1']
-warlist = agi.get_variable('warlist')
-
-#newTable = project
-
-agi.verbose('Processing campaign: {0}'.format(project))
-
-#data_insert(db_update % (newTable, 'calldate', '%s' % datetime.now(), warlist))
-#update(db_update % (project, 'calldate', %s % datetime.now(), warlist))
-update(db_update % (project, 'calldate', datetime.now(), warlist))
-#data_insert(new_count.format(newTable,'billsec',billsec,warlist))
-#update(new_count.format(project, 'attempts', 1, warlist))
-
-
-project_select = ('SELECT intro_id, hangup_id, next FROM survey_details WHERE project = "%s"')
-
-project_data = database(project_select % (project))
-
-# Set Basic Project Details
-project_start = project_data[0][0]
-project_finish = project_data[0][1]
-project_next = project_data[0][2]
-
-# Define List Data (To compare start and end)
-listData = list(project_data[0])
-listData.pop()  # Remove project_next from end of list
-
-
-
-try:
     """
-    Check AMD dialplan variable for affirmitive setting.
-    Variables evaluated in the dialplan are case-insensitive.
-    
-    Set(AMD = true)
-    
-    True values are y, yes, t, true, on and 1; 
-    false values are n, no, f, false, off and 0. 
-    Raises ValueError if val is anything else.
-    
-    When the dialpaln variable is not set, ValueError is ignored.
+    sighup.handle()
+
+    for data in survey:
+        playback.greeting()
+
+        if data.next not in basic:
+            ask.next.question()
+
+        playback.thanks()
+
+    push.billsec()
     """
-    if(strtobool(agi.get_variable('amd'))):
-        agi.appexec('AMD')
-        amdstatus = agi.get_variable('AMDSTATUS')
-        amdcause = agi.get_variable('AMDCAUSE')
-        agi.verbose('AMD Status: {0} Cause: {1}'.format(amdstatus, amdcause))
-        update(db_update % (project, 'amdstatus', amdstatus, warlist))
-        update(db_update % (project, 'amdreason', amdcause, warlist))
-        if amdstatus == "MACHINE":
-            agi.verbose('Machine detected, hanging up')
-            agi.hangup()
-    else:
-        agi.verbose('AMD Disabled')
-except ValueError:
-    agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!',2)
-    pass
-    
+
+    _agi = None  # type: AGI
+
+    _model = None  # type: survey_model.SurveyModel
+
+    def main(self):
+        self._agi = AGI()
+
+        # XXX 'env' is not in the pyst docs ~Roman Dudin
+        project = self._agi.env['agi_arg_1']
+        if not project:
+            raise ValueError('No project specified')
+        warlist = self._agi.get_variable('warlist')
+
+        self._agi.verbose('Processing campaign: {0}'.format(project))
+
+        self._agi.answer()
+
+        self._model = survey_model.SurveyModel(mariadb.connect(**source_db_config),
+                                               mariadb.connect(**destination_db_config),
+                                               project, warlist)
+
+        call_result = {'calldate': datetime.now()}
+
+        # update("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}".format(project, 'attempts', 1, warlist))
+
+        project_data = self._model.get_details()
+
+        # set basic project details
+        project_start = project_data['intro_id']
+        project_finish = project_data['hangup_id']
+        project_next = project_data['next']
+
+        try:
+            """
+            Check AMD dialplan variable for affirmitive setting.
+            Variables evaluated in the dialplan are case-insensitive.
+            
+            Set(AMD = true)
+            
+            True values are y, yes, t, true, on and 1; 
+            false values are n, no, f, false, off and 0. 
+            Raises ValueError if val is anything else.
+            
+            When the dialpaln variable is not set, ValueError is ignored.
+            """
+            if strtobool(self._agi.get_variable('amd')):
+                self._agi.appexec('AMD')
+                amd_status = self._agi.get_variable('AMDSTATUS')
+                amd_cause = self._agi.get_variable('AMDCAUSE')
+                self._agi.verbose('AMD Status: {0} Cause: {1}'.format(amd_status, amd_cause))
+                call_result['amdstatus'] = amd_status
+                call_result['amdreason'] = amd_cause
+                if amd_status == 'MACHINE':
+                    self._agi.verbose('Machine detected, hanging up')
+                    self._model.update(call_result)
+                    self._agi.hangup()
+                    return
+            else:
+                self._agi.verbose('AMD Disabled')
+        except ValueError:
+            self._agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!', 2)
+
+        self._agi.verbose('Playback: {0}'.format(project_start))
+        self._agi.stream_file('wardial/' + project_start)
+        self.prompt(project, project_next, [project_start, project_finish], warlist, call_result)
+        self._agi.verbose('Playback: {0}'.format(project_finish))
+        self._agi.stream_file('wardial/' + project_finish)
+        self._agi.verbose('Done')
+
+        self._agi.hangup()
+
+    def prompt(self, project, question_id, exit_questions, warlist, call_result):
+        """
+        Prompts for digits in a loop and receives the dialed digits,
+        saves the result in the destination database
+
+        :param question_id:    ID of the first question for the survey
+        :type  question_id:    str
+        :param warlist:        ID for the record in the destination database
+        :type  warlist:        str
+        :param exit_questions: List of question IDs which terminate the survey
+        :type  exit_questions: List[string]
+        :param project:        ID of the survey
+        :type  project:        string
+        :param call_result:    Aggregated parameters to update in the destination database
+        :type  call_result:    dict
+        """
+        try:
+            while True:
+                valid_digits = self._model.get_valid_digits(question_id)
+                question_label = self._model.get_question_label(question_id)
+
+                self._agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format(question_id, question_label, valid_digits))
+
+                entered_digit = self.question('wardial/' + question_id, valid_digits)
+
+                #entered = random.choice(dtmf)
+                #self._agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
+
+                if entered_digit:
+                    call_result[question_label] = entered_digit
+
+                question_id = self._model.get_next_question(question_id, entered_digit)
+                self._agi.verbose('NEXT')
+
+                # check for end of questions
+                if question_id in exit_questions:
+                    break
+        finally:
+            # if agi.AGIHangup is raised, the results are still written
+            # XXX might want to catch agi.AGIHangup specifically and skip other exceptions
+            self._model.update(call_result)
+
+    def question(self, prompt_file, valid_digits):
+        """
+        Prompts for a digit to dial and returns the received digit
+
+        Hangs up if no valid digits are received.
+
+        :param prompt_file: File to stream, prompting for a digit
+        :type prompt_file: str
+        :param valid_digits: Digits that will be accepted if dialed
+        :type valid_digits: List[int|str]
+        :return: Dialed digit, if valid
+        :rtype: str
+        """
+        regexp = re.compile(r'[' + ''.join(valid_digits) + ']')
+
+        # two attempts at receiving a valid digit
+        for i in xrange(2):
+            # XXX check if the result should be converted to unicode,
+            #     for compatibility with other data in the script
+            result = self._agi.get_data(prompt_file, 2000, 1)
+            if regexp.search(result) is not None:
+                return result
+
+        # TODO if an invalid digit is received, this doesn't hang up but returns None instead,
+        #      and get_next_question() will fail.
+        if not result:
+            # XXX call self._model.update explicitly? (e.g. raise an exception and catch it in prompt())
+            self._agi.hangup()
 
 
-
-
-#global project
-#project = 'blue00000080'
-
-
-
-#variable = agi.get_variable('variable')
-#env = agi.env['agi_arg_1']
-#agi.appexec('DumpChan')
-
-agi.verbose('Playback: {0}'.format((project_start)))
-agi.stream_file('wardial/' + project_start)
-prompt(project_next, warlist)    
-agi.verbose('Playback: {0}'.format((project_finish)))
-agi.stream_file('wardial/' + project_finish)
-agi.verbose('Done')
-
-#agi.stream_file('tt-monty-knights')
-
-agi.hangup()
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-
+script = SurveyScript()
+script.main()
