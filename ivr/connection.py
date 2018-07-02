@@ -52,14 +52,14 @@ asterisk_conf = 'res_config_mysql.conf'
     
     **Do not use Asterisk ODBC configuration files!**
     
-You can use any Asterisk configration file that contains the host, database, user, and password details.  
+You can use any Asterisk configuration file that contains the host, database, user, and password details.  
 *You could create a dedicate configuration file too.*
 """
 
 context = 'general'
-"""String: The section (context) of the configration file to use.
+"""String: The section (context) of the configuration file to use.
 
-The Asterisk configuration file can be read by the Python ConfigParser.  Just specify the section of the configration you would like to use.  The section is contained in square brackets, as shown in the following configuration file example::
+The Asterisk configuration file can be read by the Python ConfigParser.  Just specify the section of the configuration you would like to use.  The section is contained in square brackets, as shown in the following configuration file example::
 
     [general]
     dbhost = 127.0.0.1
@@ -77,26 +77,25 @@ import os
 import ConfigParser
 
 settings = ConfigParser.RawConfigParser()
-settings.read(os.path.join(asterisk_path,asterisk_conf))
+settings.read(os.path.join(asterisk_path, asterisk_conf))
+
 
 def config(*args):
     if not args:
         data = {
-            'user' : settings.get(context, 'dbuser'),
-            'password' : settings.get(context, 'dbpass'),
-            'host' : settings.get(context, 'dbhost'),
-            'database' : settings.get(context, 'dbname'),
-            'raise_on_warnings' : True,
+            'user':              settings.get(context, 'dbuser'),
+            'password':          settings.get(context, 'dbpass'),
+            'host':              settings.get(context, 'dbhost'),
+            'database':          settings.get(context, 'dbname'),
+            'raise_on_warnings': True,
         }
         return data
     else:
         data = {
-            'user' : settings.get(args[0], 'dbuser'),
-            'password' : settings.get(args[0], 'dbpass'),
-            'host' : settings.get(args[0], 'dbhost'),
-            'database' : settings.get(args[0], 'dbname'),
-            'raise_on_warnings' : True,
+            'user':              settings.get(args[0], 'dbuser'),
+            'password':          settings.get(args[0], 'dbpass'),
+            'host':              settings.get(args[0], 'dbhost'),
+            'database':          settings.get(args[0], 'dbname'),
+            'raise_on_warnings': True,
         }
-        return data 
-   
-        
+        return data
