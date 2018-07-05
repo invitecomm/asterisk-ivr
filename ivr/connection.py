@@ -20,7 +20,9 @@
 """
 Asterisk Configuration File
 ######################################################
-This module is used to read the database settings from an Asterisk configuration file.  It uses the Python ConfigParser to load the setting values directly from the specified section (context) of the Asterisk configuration file.
+This module is used to read the database settings from an Asterisk configuration file.
+It uses the Python ConfigParser to load the setting values directly from the specified
+section (context) of the Asterisk configuration file.
 
 .. note:: You need the `MySQL Connector/Python <https://dev.mysql.com/downloads/connector/python/>`_ installed on your system to connect to the database.
 
@@ -59,7 +61,9 @@ You can use any Asterisk configuration file that contains the host, database, us
 context = 'general'
 """String: The section (context) of the configuration file to use.
 
-The Asterisk configuration file can be read by the Python ConfigParser.  Just specify the section of the configuration you would like to use.  The section is contained in square brackets, as shown in the following configuration file example::
+The Asterisk configuration file can be read by the Python ConfigParser.
+Just specify the section of the configuration you would like to use.
+The section is contained in square brackets, as shown in the following configuration file example::
 
     [general]
     dbhost = 127.0.0.1
@@ -69,8 +73,7 @@ The Asterisk configuration file can be read by the Python ConfigParser.  Just sp
     dbport = 3306
     dbsock = /tmp/mysql.sock
     dbcharset = utf8
-    requirements=warn ; or createclose or createchar
-        
+    requirements=warn  ; or createclose or createchar        
 """
 
 import os
