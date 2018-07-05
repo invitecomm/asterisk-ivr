@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+"""Database storage layer for the survey"""
+
 import mysql.connector
 import logging
 
@@ -23,7 +25,7 @@ import logging
 logger = logging.getLogger('survey.model')
 
 
-class SurveyModel:
+class SurveyModel(object):
     """Database storage layer for the survey"""
 
     _project = None  # type: str
@@ -72,13 +74,22 @@ class SurveyModel:
 
     def get_question_label(self, question_id):
         """
-        Get label (field name) used for questions in the project table
+        Get label (field name) used for a question in the destination project table
+        """
+        return self._get_questions()[question_id]
+        # return ''.join(results[0].values())  # Use JOIN to fix UTF8  # TODO why the join()?
+
+    def _get_questions(self):
+        """
+        Gets the list of all questions for the survey and their labels (destination table field names)
+
+        :return: Dictionary: {question: label}
+        :rtype:  dict
         """
         if self._questions is None:
-            self._questions = dict((row['question'], row['question_label']) for row in self._query('SELECT `question`, `question_label` FROM `survey_questions` WHERE `project` = %s', [self._project]))
-
-        return self._questions[question_id]
-        # return ''.join(results[0].values())  # Use JOIN to fix UTF8  # TODO why the join()?
+            self._questions = dict((row['question'], row['question_label']) for row in self._query(
+                'SELECT `question`, `question_label` FROM `survey_questions` WHERE `project` = %s', [self._project]))
+        return self._questions
 
     def get_valid_digits(self, question_id):
         """
@@ -86,32 +97,33 @@ class SurveyModel:
 
         :rtype: List[str]
         """
-        if not self._question_answers:
-            self._get_all_valid_digits()
-
-        return self._question_answers[question_id].keys()
+        return self._get_question_answers()[question_id].keys()
 
     def get_next_question(self, current_question_id, entered_digit):
         """
-        Get next question based on entered DTMF
-        """
-        if not self._question_answers:
-            self._get_all_valid_digits()
+        Get ID of the next question based on an entered DTMF
 
-        return self._question_answers[current_question_id][entered_digit]
+        :rtype: str
+        """
+        return self._get_question_answers()[current_question_id][entered_digit]
         # return ''.join(results[0].values())  # Use JOIN to fix UTF8  # TODO why the join()?
 
-    def _get_all_valid_digits(self):
+    def _get_question_answers(self):
         """
-        Gets the list of valid digits for all question in the current survey
+        Gets the list of valid answers and next questions for all questions in the current survey
+
+        :return: Dictionary: {question: { digit: next_question, ... } }
+        :rtype:  dict
         """
-        result = {}
-        for row in self._query(
-                'SELECT `question`, `dtmf`, `dtmf_next` FROM `survey_questions_dtmf` WHERE `project` = %s',
-                [self._project]):
-            if row['question'] not in result: result[row['question']] = {}
-            result[row['question']][row['dtmf']] = row['dtmf_next']
-        self._question_answers = result
+        if self._question_answers is None:
+            result = {}
+            for row in self._query(
+                    'SELECT `question`, `dtmf`, `dtmf_next` FROM `survey_questions_dtmf` WHERE `project` = %s',
+                    [self._project]):
+                if row['question'] not in result: result[row['question']] = {}
+                result[row['question']][row['dtmf']] = row['dtmf_next']
+            self._question_answers = result
+        return self._question_answers
 
     def update(self, parameters):
         """

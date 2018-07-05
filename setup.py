@@ -51,6 +51,7 @@ setup(
         'pyst2',
         'mysql-connector-python>=2.1.0',
         'retry',
+        'redis==2.10.*'
     ],
     
 )
