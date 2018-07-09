@@ -26,6 +26,7 @@ import ivr.connection
 from asterisk.agi import *
 from distutils.util import strtobool
 import survey_model
+import survey_model_cached
 import logging
 
 reload(sys)
@@ -46,6 +47,11 @@ logging.basicConfig(level=logging.INFO)  # logging.DEBUG to print SQL queries
 
 source_db_config = ivr.connection.config('portal')
 destination_db_config = ivr.connection.config('survey')
+
+use_redis_cache = True
+# XXX should receive these from the config
+redis_config = {'host': 'localhost', 'port': 6379}
+redis_ttl = 300
 
 
 class SurveyScript:
@@ -81,9 +87,15 @@ class SurveyScript:
 
         self._agi.answer()
 
-        self._model = survey_model.SurveyModel(mariadb.connect(**source_db_config),
-                                               mariadb.connect(**destination_db_config),
-                                               project, warlist)
+        if use_redis_cache:
+            self._model = survey_model_cached.SurveyModelCached(mariadb.connect(**source_db_config),
+                                                                mariadb.connect(**destination_db_config),
+                                                                project, warlist,
+                                                                redis_config, redis_ttl)
+        else:
+            self._model = survey_model.SurveyModel(mariadb.connect(**source_db_config),
+                                                   mariadb.connect(**destination_db_config),
+                                                   project, warlist)
 
         call_result = {'calldate': datetime.now()}
 
