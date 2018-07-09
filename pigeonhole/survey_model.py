@@ -126,6 +126,7 @@ class SurveyModel:
         cursor = self._destination_db.cursor()
         try:
             cursor.execute('UPDATE `' + self._project + '` SET ' + ', '.join(fields_sql) + ' WHERE id = %(id)s', parameters)
+            self._destination_db.commit()
         finally:
             logger.debug('Executed MySQL query: %s', cursor._executed)
 
