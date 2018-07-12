@@ -23,7 +23,7 @@
 import re
 import sys
 import ivr.connection
-from asterisk.agi import *
+import asterisk.agi
 from distutils.util import strtobool
 import survey_model
 import survey_model_cached
@@ -70,12 +70,12 @@ class SurveyScript:
     push.billsec()
     """
 
-    _agi = None  # type: AGI
+    _agi = None  # type: asterisk.agi.AGI
 
     _model = None  # type: survey_model.SurveyModel
 
     def main(self):
-        self._agi = AGI()
+        self._agi = asterisk.agi.AGI()
 
         # XXX 'env' is not in the pyst docs ~Roman Dudin
         project = self._agi.env['agi_arg_1']
@@ -84,8 +84,6 @@ class SurveyScript:
         warlist = self._agi.get_variable('warlist')
 
         self._agi.verbose('Processing campaign: {0}'.format(project))
-
-        self._agi.answer()
 
         if use_redis_cache:
             self._model = survey_model_cached.SurveyModelCached(mariadb.connect(**source_db_config),
@@ -99,53 +97,60 @@ class SurveyScript:
 
         call_result = {'calldate': datetime.now()}
 
-        # update("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}".format(project, 'attempts', 1, warlist))
-
-        project_data = self._model.get_details()
-
-        # set basic project details
-        project_start = project_data['intro_id']
-        project_finish = project_data['hangup_id']
-        project_next = project_data['next']
-
         try:
-            """
-            Check AMD dialplan variable for affirmitive setting.
-            Variables evaluated in the dialplan are case-insensitive.
-            
-            Set(AMD = true)
-            
-            True values are y, yes, t, true, on and 1; 
-            false values are n, no, f, false, off and 0. 
-            Raises ValueError if val is anything else.
-            
-            When the dialpaln variable is not set, ValueError is ignored.
-            """
-            if strtobool(self._agi.get_variable('amd')):
-                self._agi.appexec('AMD')
-                amd_status = self._agi.get_variable('AMDSTATUS')
-                amd_cause = self._agi.get_variable('AMDCAUSE')
-                self._agi.verbose('AMD Status: {0} Cause: {1}'.format(amd_status, amd_cause))
-                call_result['amdstatus'] = amd_status
-                call_result['amdreason'] = amd_cause
-                if amd_status == 'MACHINE':
-                    self._agi.verbose('Machine detected, hanging up')
-                    self._model.update(call_result)
-                    self._agi.hangup()
-                    return
-            else:
-                self._agi.verbose('AMD Disabled')
-        except ValueError:
-            self._agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!', 2)
+            self._agi.answer()
 
-        self._agi.verbose('Playback: {0}'.format(project_start))
-        self._agi.stream_file('wardial/' + project_start)
-        self.prompt(project, project_next, [project_start, project_finish], warlist, call_result)
-        self._agi.verbose('Playback: {0}'.format(project_finish))
-        self._agi.stream_file('wardial/' + project_finish)
-        self._agi.verbose('Done')
+            # update("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}".format(project, 'attempts', 1, warlist))
 
-        self._agi.hangup()
+            project_data = self._model.get_details()
+
+            # set basic project details
+            project_start = project_data['intro_id']
+            project_finish = project_data['hangup_id']
+            project_next = project_data['next']
+
+            try:
+                # Check AMD dialplan variable for affirmative setting.
+                # Variables evaluated in the dialplan are case-insensitive.
+                #
+                # Set(AMD = true)
+                #
+                # True values are y, yes, t, true, on and 1;
+                # false values are n, no, f, false, off and 0.
+                # Raises ValueError if val is anything else.
+                #
+                # When the dialplan variable is not set, ValueError is ignored.
+                if strtobool(self._agi.get_variable('amd')):
+                    self._agi.appexec('AMD')
+                    amd_status = self._agi.get_variable('AMDSTATUS')
+                    amd_cause = self._agi.get_variable('AMDCAUSE')
+                    self._agi.verbose('AMD Status: {0} Cause: {1}'.format(amd_status, amd_cause))
+                    call_result['amdstatus'] = amd_status
+                    call_result['amdreason'] = amd_cause
+                    if amd_status == 'MACHINE':
+                        self._agi.verbose('Machine detected, hanging up')
+                        self._model.update(call_result)
+                        self._agi.hangup()
+                        return
+                else:
+                    self._agi.verbose('AMD Disabled')
+            except ValueError:
+                self._agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!', 2)
+
+            self._agi.verbose('Playback: {0}'.format(project_start))
+            self._agi.stream_file('wardial/' + project_start)
+            self.prompt(project, project_next, [project_start, project_finish], warlist, call_result)
+            self._agi.verbose('Playback: {0}'.format(project_finish))
+            self._agi.stream_file('wardial/' + project_finish)
+            self._agi.verbose('Done')
+
+            self._agi.hangup()
+
+            self._model.update(call_result)
+        except asterisk.agi.AGIHangup:
+            # if the callee hangs up, the results are still written
+            self._model.update(call_result)
+            raise
 
     def prompt(self, project, question_id, exit_questions, warlist, call_result):
         """
@@ -160,34 +165,30 @@ class SurveyScript:
         :type  exit_questions: List[string]
         :param project:        ID of the survey
         :type  project:        string
-        :param call_result:    Aggregated parameters to update in the destination database
+        :param call_result:    Aggregated parameters to update in the destination database—
+                               this variable will be MODIFIED.
         :type  call_result:    dict
         """
-        try:
-            while True:
-                valid_digits = self._model.get_valid_digits(question_id)
-                question_label = self._model.get_question_label(question_id)
+        while True:
+            valid_digits = self._model.get_valid_digits(question_id)
+            question_label = self._model.get_question_label(question_id)
 
-                self._agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format(question_id, question_label, valid_digits))
+            self._agi.verbose('Prompt: {0}, Label: {1} Digits: {2}'.format(question_id, question_label, valid_digits))
 
-                entered_digit = self.question('wardial/' + question_id, valid_digits)
+            entered_digit = self.question('wardial/' + question_id, valid_digits)
 
-                #entered = random.choice(dtmf)
-                #self._agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
+            #entered = random.choice(dtmf)
+            #self._agi.verbose('Tabel: {0}, Col: {1} Data: {2}'.format(project, label, entered))
 
-                if entered_digit:
-                    call_result[question_label] = entered_digit
+            if entered_digit:
+                call_result[question_label] = entered_digit
 
-                question_id = self._model.get_next_question(question_id, entered_digit)
-                self._agi.verbose('NEXT')
+            question_id = self._model.get_next_question(question_id, entered_digit)
+            self._agi.verbose('NEXT')
 
-                # check for end of questions
-                if question_id in exit_questions:
-                    break
-        finally:
-            # if agi.AGIHangup is raised, the results are still written
-            # XXX might want to catch agi.AGIHangup specifically and skip other exceptions
-            self._model.update(call_result)
+            # check for end of questions
+            if question_id in exit_questions:
+                break
 
     def question(self, prompt_file, valid_digits):
         """
