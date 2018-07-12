@@ -147,7 +147,7 @@ class SurveyScript:
             self._agi.hangup()
 
             self._model.update(call_result)
-        except asterisk.agi.AGIHangup:
+        except (asterisk.agi.AGIHangup, asterisk.agi.AGIAppError):
             # if the callee hangs up, the results are still written
             self._model.update(call_result)
             raise
