@@ -54,6 +54,20 @@ redis_config = {'host': 'localhost', 'port': 6379}
 redis_ttl = 300
 
 
+class NoAnswerError(Exception):
+    """
+    Signifies that no valid answer was received in the allotted time
+    """
+    pass
+
+
+class AsteriskConnectionLostError(Exception):
+    """
+    Raised when there's a problem communicating with Asterisk while getting callee input
+    """
+    pass
+
+
 class SurveyScript:
 
     """
@@ -137,20 +151,28 @@ class SurveyScript:
             except ValueError:
                 self._agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!', 2)
 
-            self._agi.verbose('Playback: {0}'.format(project_start))
-            self._agi.stream_file('wardial/' + project_start)
+            self.play_file(project_start)
             self.prompt(project, project_next, [project_start, project_finish], warlist, call_result)
-            self._agi.verbose('Playback: {0}'.format(project_finish))
-            self._agi.stream_file('wardial/' + project_finish)
+            self.play_file(project_finish)
             self._agi.verbose('Done')
 
             self._agi.hangup()
 
             self._model.update(call_result)
-        except (asterisk.agi.AGIHangup, asterisk.agi.AGIAppError):
+        except NoAnswerError:
+            self._model.update(call_result)
+            self._agi.hangup()
+        except (asterisk.agi.AGIHangup, asterisk.agi.AGIAppError, AsteriskConnectionLostError):
             # if the callee hangs up, the results are still written
             self._model.update(call_result)
             raise
+
+    def play_file(self, file_name):
+        try:
+            self._agi.verbose('Playback: {0}'.format(file_name))
+            self._agi.stream_file('wardial/' + file_name)
+        except IOError:
+            raise AsteriskConnectionLostError()
 
     def prompt(self, project, question_id, exit_questions, warlist, call_result):
         """
@@ -209,15 +231,14 @@ class SurveyScript:
         for i in xrange(2):
             # XXX check if the result should be converted to unicode,
             #     for compatibility with other data in the script
-            result = self._agi.get_data(prompt_file, 2000, 1)
-            if regexp.search(result) is not None:
-                return result
+            try:
+                result = self._agi.get_data(prompt_file, 2000, 1)
+                if regexp.search(result) is not None:
+                    return result
+            except IOError:
+                raise AsteriskConnectionLostError()
 
-        # TODO if an invalid digit is received, this doesn't hang up but returns None instead,
-        #      and get_next_question() will fail.
-        if not result:
-            # XXX call self._model.update explicitly? (e.g. raise an exception and catch it in prompt())
-            self._agi.hangup()
+        raise NoAnswerError()
 
 
 script = SurveyScript()
