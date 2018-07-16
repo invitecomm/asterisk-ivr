@@ -132,12 +132,14 @@ class SurveyModel(object):
         :param parameters: A dictionary of fields to update
         :type  parameters: dict
         """
-        fields_sql = [ '`{0}` = %({0})s'.format(field) for field in parameters.keys() ]
-        parameters['id'] = self._id
+        # convert unicode keys to strings so the mysql connector finds mappings from fields in the query
+        values = dict((str(key), value) for key, value in parameters.items())
+        fields_sql = [ '`{0}` = %({0})s'.format(field) for field in values.keys()]
+        values['id'] = self._id
 
         cursor = self._destination_db.cursor()
         try:
-            cursor.execute('UPDATE `' + self._project + '` SET ' + ', '.join(fields_sql) + ' WHERE id = %(id)s', parameters)
+            cursor.execute('UPDATE `' + self._project + '` SET ' + ', '.join(fields_sql) + ' WHERE id = %(id)s', values)
             self._destination_db.commit()
         finally:
             logger.debug('Executed MySQL query: %s', cursor._executed)
