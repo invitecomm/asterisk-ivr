@@ -22,7 +22,7 @@
 import re
 import sys
 import ivr.connection
-import asterisk.agi
+import asterisk.agi as agi
 from distutils.util import strtobool
 import model
 import model.cached
@@ -83,12 +83,12 @@ class Script:
     push.billsec()
     """
 
-    _agi = None  # type: asterisk.agi.AGI
+    _agi = None  # type: agi.AGI
 
     _model = None  # type: model.SurveyModel
 
-    def main(self):
-        self._agi = asterisk.agi.AGI()
+    def run(self):
+        self._agi = agi.AGI()
 
         # XXX 'env' is not in the pyst docs ~Roman Dudin
         project = self._agi.env['agi_arg_1']
@@ -161,7 +161,7 @@ class Script:
         except NoAnswerError:
             self._model.update(call_result)
             self._agi.hangup()
-        except (asterisk.agi.AGIHangup, asterisk.agi.AGIAppError, AsteriskConnectionLostError):
+        except (agi.AGIHangup, agi.AGIAppError, AsteriskConnectionLostError):
             # if the callee hangs up, the results are still written
             self._model.update(call_result)
             raise
