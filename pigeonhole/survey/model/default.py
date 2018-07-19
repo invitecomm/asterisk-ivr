@@ -22,6 +22,7 @@ Database storage layer for the survey
 (This module should be imported as just 'survey.model'.)
 """
 
+from __future__ import print_function
 import mysql.connector
 import logging
 
@@ -40,14 +41,20 @@ class SurveyModel(object):
     _source_db = None  # type: mysql.connector.MySQLConnection
     _destination_db = None  # type: mysql.connector.MySQLConnection
 
+    _survey = None  # type: dict
+    """The survey record"""
+
     _details = None  # type: dict
-    """Survey parameters"""
+    """Survey details"""
 
-    _questions = None  # type: dict
-    """Parameters for all questions in the survey: {question: label}"""
+    _user = None  # type: dict
+    """Record for the user"""
 
-    _question_answers = None  # type: dict
-    """Valid answers for all questions in the survey: {question: { digit: next_question, ... } }"""
+    _questions = None  # type: list[dict]
+    """List of all questions in the survey: records from the 'survey_questions' table"""
+
+    _question_answers = None  # type: list
+    """List of DTMF records for all questions"""
 
     def __init__(self, source_db, destination_db, project, id):
         """
@@ -65,34 +72,49 @@ class SurveyModel(object):
         self._project = project
         self._id = id
 
+    def get_survey(self):
+        """
+        Get survey record (from the 'survey' table)
+        """
+        if self._survey is None:
+            self._survey = self._query('SELECT * FROM `survey` WHERE `project` = %s', [self._project])[0]
+        return self._survey
+
     def get_details(self):
         """
-        Get survey parameters
+        Get survey details (from the 'survey_details' table)
         """
         if self._details is None:
-            self._details = self._query(
-                'SELECT `intro_id`, `hangup_id`, `next` FROM `survey_details` WHERE `project` = %s',
-                [self._project]
-            )[0]
+            self._details = self._query('SELECT * FROM `survey_details` WHERE `project` = %s', [self._project])[0]
         return self._details
 
-    def get_question_label(self, question_id):
+    def get_user(self):
         """
-        Get label (field name) used for a question in the destination project table
+        Get the user
         """
-        return self._get_questions()[question_id]
-        # return ''.join(results[0].values())  # Use JOIN to fix UTF8  # TODO why the join()?
+        if self._user is None:
+            self._user = self._query('SELECT * FROM `users` WHERE `id` = %s',
+                                     [self.get_survey()['user']])[0]
+        return self._user
 
-    def _get_questions(self):
+    def get_question_by_name(self, question_name):
         """
-        Gets the list of all questions for the survey and their labels (destination table field names)
+        Get a question record by its 'question' field
+        """
+        for item in self.get_questions():
+            if item['question'] == question_name:
+                return item
+        raise KeyError('No question with the name "{0}" in the question list'.format(question_name))
+
+    def get_questions(self):
+        """
+        Gets the list of all questions for the survey
 
         :return: Dictionary: {question: label}
-        :rtype:  dict
+        :rtype:  list[dict]
         """
         if self._questions is None:
-            self._questions = dict((row['question'], row['question_label']) for row in self._query(
-                'SELECT `question`, `question_label` FROM `survey_questions` WHERE `project` = %s', [self._project]))
+            self._questions = self._query('SELECT * FROM `survey_questions` WHERE `project` = %s', [self._project])
         return self._questions
 
     def get_valid_digits(self, question_id):
@@ -101,7 +123,7 @@ class SurveyModel(object):
 
         :rtype: List[str]
         """
-        return self._get_question_answers()[question_id].keys()
+        return [row['dtmf'] for row in self.get_question_answers() if row['question'] == question_id]
 
     def get_next_question(self, current_question_id, entered_digit):
         """
@@ -109,24 +131,22 @@ class SurveyModel(object):
 
         :rtype: str
         """
-        return self._get_question_answers()[current_question_id][entered_digit]
-        # return ''.join(results[0].values())  # Use JOIN to fix UTF8  # TODO why the join()?
+        for row in self.get_question_answers():
+            if row['question'] == current_question_id and row['dtmf'] == entered_digit:
+                return row['dtmf_next']
+        raise KeyError(
+            'No DTMF record for question "{0}" and entered digit "{1}"'.format(current_question_id, entered_digit))
 
-    def _get_question_answers(self):
+    def get_question_answers(self):
         """
         Gets the list of valid answers and next questions for all questions in the current survey
 
-        :return: Dictionary: {question: { digit: next_question, ... } }
-        :rtype:  dict
+        :return: List of DTMF records for all questions
+        :rtype:  list
         """
         if self._question_answers is None:
-            result = {}
-            for row in self._query(
-                    'SELECT `question`, `dtmf`, `dtmf_next` FROM `survey_questions_dtmf` WHERE `project` = %s',
-                    [self._project]):
-                if row['question'] not in result: result[row['question']] = {}
-                result[row['question']][row['dtmf']] = row['dtmf_next']
-            self._question_answers = result
+            self._question_answers = self._query('SELECT * FROM `survey_questions_dtmf` WHERE `project` = %s',
+                                                 [self._project])
         return self._question_answers
 
     def update(self, parameters):

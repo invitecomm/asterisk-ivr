@@ -82,23 +82,25 @@ class SurveyModelCached(default.SurveyModel):
             )
         return self._details
 
-    def _get_questions(self):
+    def get_questions(self):
         if self._questions is None:
             self._questions = self._get_cached(
                 'survey_questions_' + self._project,
-                super(SurveyModelCached, self)._get_questions,
+                super(SurveyModelCached, self).get_questions,
                 'Got question labels from the cache for the survey ' + self._project
             )
         return self._questions
 
-    def _get_question_answers(self):
+    def get_question_answers(self):
         if self._question_answers is None:
             self._question_answers = self._get_cached(
                 'survey_question_answers_' + self._project,
-                super(SurveyModelCached, self)._get_question_answers,
+                super(SurveyModelCached, self).get_question_answers,
                 'Got question answers from the cache for the survey ' + self._project
             )
         return self._question_answers
+
+    # TODO add caching for other methods
 
     def _get_cached(self, cache_key, fetch_func, log_message):
         """

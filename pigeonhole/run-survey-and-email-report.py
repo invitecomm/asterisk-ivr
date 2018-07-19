@@ -18,7 +18,7 @@
 #
 
 """
-AGI entry point for running the survey script
+AGI endpoint for running the survey script with an email report being sent to the user afterwards
 
 The main body of the script is in the survey.script module.
 """
@@ -26,4 +26,4 @@ The main body of the script is in the survey.script module.
 import survey.script
 
 script = survey.script.Script()
-script.run()
+script.run(True)
