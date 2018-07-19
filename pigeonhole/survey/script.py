@@ -1,4 +1,3 @@
-#! /usr/bin/env python
 # -*- coding: utf-8 -*-
 # vim: set et sw=4 fenc=utf-8:
 #
@@ -25,8 +24,8 @@ import sys
 import ivr.connection
 import asterisk.agi
 from distutils.util import strtobool
-import survey_model
-import survey_model_cached
+import model
+import model.cached
 import logging
 
 reload(sys)
@@ -68,7 +67,7 @@ class AsteriskConnectionLostError(Exception):
     pass
 
 
-class SurveyScript:
+class Script:
 
     """
     sighup.handle()
@@ -86,7 +85,7 @@ class SurveyScript:
 
     _agi = None  # type: asterisk.agi.AGI
 
-    _model = None  # type: survey_model.SurveyModel
+    _model = None  # type: model.SurveyModel
 
     def main(self):
         self._agi = asterisk.agi.AGI()
@@ -100,12 +99,12 @@ class SurveyScript:
         self._agi.verbose('Processing campaign: {0}'.format(project))
 
         if use_redis_cache:
-            self._model = survey_model_cached.SurveyModelCached(mariadb.connect(**source_db_config),
+            self._model = model.cached.SurveyModelCached(mariadb.connect(**source_db_config),
                                                                 mariadb.connect(**destination_db_config),
                                                                 project, warlist,
                                                                 redis_config, redis_ttl)
         else:
-            self._model = survey_model.SurveyModel(mariadb.connect(**source_db_config),
+            self._model = model.SurveyModel(mariadb.connect(**source_db_config),
                                                    mariadb.connect(**destination_db_config),
                                                    project, warlist)
 
@@ -239,7 +238,3 @@ class SurveyScript:
                 raise AsteriskConnectionLostError()
 
         raise NoAnswerError()
-
-
-script = SurveyScript()
-script.main()

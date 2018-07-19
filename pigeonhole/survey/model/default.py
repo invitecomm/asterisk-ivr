@@ -16,7 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-"""Database storage layer for the survey"""
+"""
+Database storage layer for the survey
+
+(This module should be imported as just 'survey.model'.)
+"""
 
 import mysql.connector
 import logging

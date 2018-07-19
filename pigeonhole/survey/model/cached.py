@@ -23,7 +23,7 @@ All keys created in Redis will begin with 'survey_'.
 """
 
 from __future__ import print_function
-import survey_model
+import default
 import redis
 import json
 import logging
@@ -32,7 +32,7 @@ import logging
 logger = logging.getLogger('survey.model_cached')
 
 
-class SurveyModelCached(survey_model.SurveyModel):
+class SurveyModelCached(default.SurveyModel):
 
     _redis_config = None  # type: dict
     _redis_connection = None  # type: redis.StrictRedis
