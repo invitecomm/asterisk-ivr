@@ -22,10 +22,11 @@ import logging
 import logging.handlers
 
 syslog = logging.getLogger(__name__)
-syslog.setLevel(logging.DEBUG)
 
 syslog_handler = logging.handlers.SysLogHandler('/dev/log')
 formatter = logging.Formatter('%(module)s.%(funcName)s: %(message)s')
+
+syslog.setLevel(logging.DEBUG)
 syslog_handler.setFormatter(formatter)
 syslog.addHandler(syslog_handler)
 
@@ -41,3 +42,4 @@ def hello():
 
 if __name__ == '__main__':
     hello()
+
