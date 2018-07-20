@@ -1,4 +1,21 @@
 # -*- coding: utf-8 -*-
+#
+# Copyright 2016 INVITE Communications Co., Ltd. All Rights Reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
 """
 This module implements a cache for the survey model.
 
@@ -23,7 +40,7 @@ All keys created in Redis will begin with 'survey_'.
 """
 
 from __future__ import print_function
-import survey_model
+import default
 import redis
 import json
 import logging
@@ -32,7 +49,7 @@ import logging
 logger = logging.getLogger('survey.model_cached')
 
 
-class SurveyModelCached(survey_model.SurveyModel):
+class SurveyModelCached(default.SurveyModel):
 
     _redis_config = None  # type: dict
     _redis_connection = None  # type: redis.StrictRedis
@@ -65,23 +82,25 @@ class SurveyModelCached(survey_model.SurveyModel):
             )
         return self._details
 
-    def _get_questions(self):
+    def get_questions(self):
         if self._questions is None:
             self._questions = self._get_cached(
                 'survey_questions_' + self._project,
-                super(SurveyModelCached, self)._get_questions,
+                super(SurveyModelCached, self).get_questions,
                 'Got question labels from the cache for the survey ' + self._project
             )
         return self._questions
 
-    def _get_question_answers(self):
+    def get_question_answers(self):
         if self._question_answers is None:
             self._question_answers = self._get_cached(
                 'survey_question_answers_' + self._project,
-                super(SurveyModelCached, self)._get_question_answers,
+                super(SurveyModelCached, self).get_question_answers,
                 'Got question answers from the cache for the survey ' + self._project
             )
         return self._question_answers
+
+    # TODO add caching for other methods
 
     def _get_cached(self, cache_key, fetch_func, log_message):
         """
