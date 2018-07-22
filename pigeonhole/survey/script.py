@@ -117,84 +117,90 @@ class Script:
     _model = None  # type: model.SurveyModel
 
     def run(self, send_email_report=False):
-        self._agi = agi.AGI()
-
-        # XXX 'env' is not in the pyst docs ~Roman Dudin
-        project = self._agi.env['agi_arg_1']
-        if not project:
-            raise ValueError('No project specified')
-        warlist = self._agi.get_variable('warlist')
-
-        self._agi.verbose('Processing campaign: {0}'.format(project))
-
-        if use_redis_cache:
-            self._model = model.cached.SurveyModelCached(mariadb.connect(**source_db_config),
-                                                         mariadb.connect(**destination_db_config),
-                                                         project, warlist,
-                                                         redis_config, redis_ttl)
-        else:
-            self._model = model.SurveyModel(mariadb.connect(**source_db_config),
-                                            mariadb.connect(**destination_db_config),
-                                            project, warlist)
-
-        call_result = CallResult()
-        call_result.fields = {'calldate': datetime.now()}
-
         try:
-            self._agi.answer()
+            self._agi = agi.AGI()
 
-            # update("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}".format(project, 'attempts', 1, warlist))
+            # XXX 'env' is not in the pyst docs ~Roman Dudin
+            project = self._agi.env['agi_arg_1']
+            if not project:
+                raise ValueError('No project specified')
+            warlist = self._agi.get_variable('warlist')
 
-            project_data = self._model.get_details()
+            self._agi.verbose('Processing campaign: {0}'.format(project))
 
-            # set basic project details
-            project_start = project_data['intro_id']
-            project_finish = project_data['hangup_id']
-            project_next = project_data['next']
+            if use_redis_cache:
+                self._model = model.cached.SurveyModelCached(mariadb.connect(**source_db_config),
+                                                             mariadb.connect(**destination_db_config),
+                                                             project, warlist,
+                                                             redis_config, redis_ttl)
+            else:
+                self._model = model.SurveyModel(mariadb.connect(**source_db_config),
+                                                mariadb.connect(**destination_db_config),
+                                                project, warlist)
+
+            call_result = CallResult()
+            call_result.fields = {'calldate': datetime.now()}
 
             try:
-                # Check AMD dialplan variable for affirmative setting.
-                # Variables evaluated in the dialplan are case-insensitive.
-                #
-                # Set(AMD = true)
-                #
-                # True values are y, yes, t, true, on and 1;
-                # false values are n, no, f, false, off and 0.
-                # Raises ValueError if val is anything else.
-                #
-                # When the dialplan variable is not set, ValueError is ignored.
-                if strtobool(self._agi.get_variable('amd')):
-                    self._agi.appexec('AMD')
-                    amd_status = self._agi.get_variable('AMDSTATUS')
-                    amd_cause = self._agi.get_variable('AMDCAUSE')
-                    self._agi.verbose('AMD Status: {0} Cause: {1}'.format(amd_status, amd_cause))
-                    call_result.fields['amdstatus'] = amd_status
-                    call_result.fields['amdreason'] = amd_cause
-                    if amd_status == 'MACHINE':
-                        self._agi.verbose('Machine detected, hanging up')
-                        self._finish(call_result, send_email_report)
-                        self._agi.hangup()
-                        return
-                else:
-                    self._agi.verbose('AMD Disabled')
-            except ValueError:
-                self._agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!', 2)
+                self._agi.answer()
 
-            self.play_file(project_start)
-            self.prompt(project, project_next, [project_start, project_finish], warlist, call_result)
-            self.play_file(project_finish)
-            self._agi.verbose('Done')
+                # update("UPDATE `{0}` SET `{1}` = `{1}` + {2} WHERE id = {3}".format(project, 'attempts', 1, warlist))
 
-            self._agi.hangup()
+                project_data = self._model.get_details()
 
+                # set basic project details
+                project_start = project_data['intro_id']
+                project_finish = project_data['hangup_id']
+                project_next = project_data['next']
+
+                try:
+                    # Check AMD dialplan variable for affirmative setting.
+                    # Variables evaluated in the dialplan are case-insensitive.
+                    #
+                    # Set(AMD = true)
+                    #
+                    # True values are y, yes, t, true, on and 1;
+                    # false values are n, no, f, false, off and 0.
+                    # Raises ValueError if val is anything else.
+                    #
+                    # When the dialplan variable is not set, ValueError is ignored.
+                    if strtobool(self._agi.get_variable('amd')):
+                        self._agi.appexec('AMD')
+                        amd_status = self._agi.get_variable('AMDSTATUS')
+                        amd_cause = self._agi.get_variable('AMDCAUSE')
+                        self._agi.verbose('AMD Status: {0} Cause: {1}'.format(amd_status, amd_cause))
+                        call_result.fields['amdstatus'] = amd_status
+                        call_result.fields['amdreason'] = amd_cause
+                        if amd_status == 'MACHINE':
+                            self._agi.verbose('Machine detected, hanging up')
+                            self._finish(call_result, send_email_report)
+                            self._agi.hangup()
+                            return
+                    else:
+                        self._agi.verbose('AMD Disabled')
+                except ValueError:
+                    self._agi.verbose('NOTICE: AMD Dialplan Variable NOT Set!', 2)
+
+                self.play_file(project_start)
+                self.prompt(project, project_next, [project_start, project_finish], warlist, call_result)
+                self.play_file(project_finish)
+                self._agi.verbose('Done')
+
+                # Keep this BEFORE hangup()
+                self._finish(call_result, send_email_report)
+
+                self._agi.hangup()
+
+            except NoAnswerError:
+                self._finish(call_result, send_email_report)
+                self._agi.hangup()
+            except (agi.AGIHangup, agi.AGIAppError, AsteriskConnectionLostError):
+                # if the callee hangs up, the results are still written
+                self._finish(call_result, send_email_report)
+                raise
+        except:
+            # Perform UPDATE on ANY failure
             self._finish(call_result, send_email_report)
-        except NoAnswerError:
-            self._finish(call_result, send_email_report)
-            self._agi.hangup()
-        except (agi.AGIHangup, agi.AGIAppError, AsteriskConnectionLostError):
-            # if the callee hangs up, the results are still written
-            self._finish(call_result, send_email_report)
-            raise
 
     def _finish(self, call_result, send_email_report=False):
         """
