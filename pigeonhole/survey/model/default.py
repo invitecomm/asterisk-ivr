@@ -33,6 +33,14 @@ logger = logging.getLogger('survey.model')
 class SurveyModel(object):
     """Database storage layer for the survey"""
 
+    _schema_version = 'v2'
+    """
+    This value must be changed with *any* changes in the structure of data or of values that are returned
+    by the methods of the model, if those methods existed before.
+    
+    Used e.g. for caching (see :py:class:`cached.SurveyModelCached`).
+    """
+
     _project = None  # type: str
     """Name of the survey in the source database"""
     _id = None  # type: str|int
