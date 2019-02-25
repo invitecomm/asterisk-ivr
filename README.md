@@ -1,5 +1,6 @@
 [![PyPI version](https://img.shields.io/pypi/status/ivr.svg)](https://www.invite-comm.jp)  [![PyPI version](https://badge.fury.io/py/ivr.svg)](https://badge.fury.io/py/ivr)  [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)  [![Documentation Status](https://readthedocs.org/projects/asterisk-ivr/badge/?version=latest)](http://asterisk-ivr.readthedocs.io/en/latest/?badge=latest)
 
+This is copy of the live version used through February 2019.
 
 My first PyPI version.  Testing dependencies and working on the structure.
 
