@@ -62,14 +62,14 @@ class SurveyModelCached(default.SurveyModel):
             self._redis_connection = redis.StrictRedis(**self._redis_config)
         return self._redis_connection
 
-    def __init__(self, source_db, destination_db, project, id, redis_config, ttl=None):
+    def __init__(self, source_db_config, destination_db_config, project, id, redis_config, ttl=None):
         """
         :param redis_config: Connection parameters for redis.StrictRedis — host, port, etc (see redis-py's docs)
         :type  redis_config: dict
         :param ttl:          TTL for records written in Redis, in seconds, or None/0/False to not set the TTL
         :type  ttl:          int|None
         """
-        super(SurveyModelCached, self).__init__(source_db, destination_db, project, id)
+        super(SurveyModelCached, self).__init__(source_db_config, destination_db_config, project, id)
         self._redis_config = redis_config
         self._ttl = ttl
 

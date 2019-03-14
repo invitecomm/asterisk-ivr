@@ -34,7 +34,6 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 from datetime import datetime
-import mysql.connector as mariadb
 
 
 if sys.stdout.isatty():
@@ -129,13 +128,13 @@ class Script:
             self._agi.verbose('Processing campaign: {0}'.format(project))
 
             if use_redis_cache:
-                self._model = model.cached.SurveyModelCached(mariadb.connect(**source_db_config),
-                                                             mariadb.connect(**destination_db_config),
+                self._model = model.cached.SurveyModelCached(source_db_config,
+                                                             destination_db_config,
                                                              project, warlist,
                                                              redis_config, redis_ttl)
             else:
-                self._model = model.SurveyModel(mariadb.connect(**source_db_config),
-                                                mariadb.connect(**destination_db_config),
+                self._model = model.SurveyModel(source_db_config,
+                                                destination_db_config,
                                                 project, warlist)
 
             call_result = CallResult()
