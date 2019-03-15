@@ -38,8 +38,13 @@ class SurveyModel(object):
     _id = None  # type: str|int
     """ID of the survey in the stats table (aka 'warlist')"""
 
-    _source_db = None  # type: mysql.connector.MySQLConnection
-    _destination_db = None  # type: mysql.connector.MySQLConnection
+    _source_db_config = None  # type: dict
+    """Params for MySQL connection to the source DB"""
+    _destination_db_config = None  # type: dict
+    """Params for MySQL connection to the destination DB"""
+
+    _source_db_connection = None  # type: mysql.connector.MySQLConnection
+    _destination_db_connection = None  # type: mysql.connector.MySQLConnection
 
     _survey = None  # type: dict
     """The survey record"""
@@ -56,19 +61,19 @@ class SurveyModel(object):
     _question_answers = None  # type: list
     """List of DTMF records for all questions"""
 
-    def __init__(self, source_db, destination_db, project, id):
+    def __init__(self, source_db_config, destination_db_config, project, id):
         """
-        :param source_db:      Source database connection (read-only)
-        :type  source_db:      mysql.connector.MySQLConnection
-        :param destination_db: Connection to the database for collected survey stats (writable)
-        :type  destination_db: mysql.connector.MySQLConnection
-        :param project:        Name of the survey in the source database
-        :type  project:        str
-        :param id:             ID of the survey in the stats table (aka 'warlist')
-        :type  id:             str|int
+        :param source_db_config:      Params for connecting to the source database (which is read-only to the script)
+        :type  source_db_config:      dict
+        :param destination_db_config: Params for connecting to the database for collected survey stats (writable)
+        :type  destination_db_config: dict
+        :param project:  Name of the survey in the source database
+        :type  project:  str
+        :param id:       ID of the survey in the stats table (aka 'warlist')
+        :type  id:       str|int
         """
-        self._source_db = source_db
-        self._destination_db = destination_db
+        self._source_db_config = source_db_config
+        self._destination_db_config = destination_db_config
         self._project = project
         self._id = id
 
@@ -167,6 +172,24 @@ class SurveyModel(object):
             self._destination_db.commit()
         finally:
             logger.debug('Executed MySQL query: %s', cursor._executed)
+
+    @property
+    def _source_db(self):
+        """
+        Opens the connection to the source DB when it's first needed
+        """
+        if self._source_db_connection is None:
+            self._source_db_connection = mysql.connector.connect(**self._source_db_config)
+        return self._source_db_connection
+
+    @property
+    def _destination_db(self):
+        """
+        Opens the connection to the destination DB when it's first needed
+        """
+        if self._destination_db_connection is None:
+            self._destination_db_connection = mysql.connector.connect(**self._destination_db_config)
+        return self._destination_db_connection
 
     def _query(self, query, params=None):
         cursor = self._source_db.cursor(dictionary=True)
