@@ -36,6 +36,11 @@ of records will not be limited, and they will expire only when memory is needed 
 
 All keys created in Redis will begin with 'survey_'.
 
+To have the cache update all data when schema is changed, you'll need to edit the field
+:py:attr:`default.SurveyModel._schema_version`. Note that this will invalidate *all* keys in the cache,
+so for more granular invalidation you might want to edit individual keys in the methods of
+:py:class:`SurveyModelCached`.
+
 (For proper consistency, records in Redis caches should be purged when original data is updated.)
 """
 
@@ -108,6 +113,7 @@ class SurveyModelCached(default.SurveyModel):
         :type fetch_func: callable
         :type log_message: str
         """
+        cache_key = cache_key + '_' + self._schema_version
         result = self._get(cache_key)
         if result is None:
             result = fetch_func()
