@@ -52,7 +52,7 @@ setup(
         'mysql-connector-python>=2.1.0',
         'retry',
         'redis==2.10.*',
-        'Jinja2==2.10',
+        'Jinja2==2.11.3',
     ],
     
 )
